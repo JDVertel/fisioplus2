@@ -3,7 +3,7 @@ import * as actions from "./actions";
 import * as getters from "./getters";
 import * as mutations from "./mutations";
 
-const hcModule = {
+const HcModule = {
   namespaced: true,
   actions,
   getters,
@@ -11,4 +11,4 @@ const hcModule = {
   state,
 };
 
-export default hcModule
+export default HcModule

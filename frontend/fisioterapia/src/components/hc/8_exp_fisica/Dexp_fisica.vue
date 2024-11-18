@@ -1,12 +1,13 @@
+<!-- hc8_expfisica -->
 <template>
 <div class="accordion-item">
     <h2 class="accordion-header d-flex justify-content-between">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse8" aria-expanded="false" aria-controls="panelsStayOpen-collapse8">
-            <v-icon name="io-construct-sharp" fill="red" scale="0.7" />
+         
             Exploracion Fisica
         </button>
         <!--  -->
-        <button class="btn btn-outline-primary btn-sm">save</button>
+<!--         <button class="btn btn-outline-primary btn-sm">save</button> -->
         <!--  -->
     </h2>
     <div id="panelsStayOpen-collapse8" class="accordion-collapse collapse">
@@ -123,16 +124,7 @@
                         <td><input type="number" class="form-control form-control-sm" v-model="rangosMovimientos.raquisCervical.rotacionIzq" placeholder="DATA"></td>
                         <td><input type="number" class="form-control form-control-sm" v-model="rangosMovimientos.raquisCervical.rotacionDer" placeholder="DATA"></td>
                     </tr>
-                                    <!-- <tr>
-                                        <td>Rotación Izq</td>
-                                        <td> <input type="number" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="DATA"></td>
-                                        <td> <input type="number" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="DATA"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Rotación Der</td>
-                                        <td> <input type="number" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="DATA"></td>
-                                        <td> <input type="number" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="DATA"></td>
-                                    </tr> -->
+                           
                                 </tbody>
                             </table>
                         </div>

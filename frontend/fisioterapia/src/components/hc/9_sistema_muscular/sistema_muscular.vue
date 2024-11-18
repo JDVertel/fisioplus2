@@ -1,3 +1,4 @@
+<!-- hc9_expmuscular -->
 <template>
   <div class="accordion-item">
     <h2 class="accordion-header">
@@ -9,7 +10,7 @@
         aria-expanded="false"
         aria-controls="panelsStayOpen-collapse9"
       >
-        <v-icon name="io-construct-sharp" fill="red" scale="0.7" />
+
         Exploracion Muscular
       </button>
     </h2>

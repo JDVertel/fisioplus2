@@ -1,3 +1,4 @@
+<!-- hc1_datosconsulta -->
 <template>
 <div class="accordion-item">
     <h2 class="accordion-header">
@@ -20,7 +21,7 @@
                     </button>
                 </div>
             </nav>
-            <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-profileA" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
                     <div>
@@ -91,37 +92,42 @@
                     <div class="row">
                         <div class="col-12">
                             <!-- ----------------------------------------------------------------------------- -->
-                            <div >
-                                <div class="mb-1">
-                                    <select v-model="tipoAnt" class="form-select form-select-sm textarea" v-on:change="buscar_enfermedad(this.tipoAnt, this.dataBD,'enfermedades')" aria-label="Default select example" id="tipoAnt">
-                                        <option value="0">--Seleccione--</option>
-                                        <option v-for="(ant) in this.dataBD" :key="ant.id" :value="ant.nombre">
-                                            {{ ant.nombre }}
+                                    <div>
+                                    <div class="mb-1">
+                                        <select v-model="tipoAnt" class="form-select form-select-sm textarea"
+                                            v-on:change="buscar_enfermedad(this.tipoAnt, this.dataBD,'enfermedades')"
+                                            aria-label="Default select example" id="tipoAnt">
+                                            <option value="0">--Seleccione--</option>
+                                            <option v-for="(ant) in this.dataBD" :key="ant.id" :value="ant.nombre">
+                                                {{ ant.nombre }}
+                                            </option>
+                                        </select>
+
+                                    </div>
+
+                                    <select v-model="selectenfermedad" class="form-select form-select-sm textarea"
+                                        id="selectenfermedad" aria-label="Default select example">
+                                        <option value="0">--Seleccione enfermedad--</option>
+                                        <option v-for="item in this.enf" :key="item.id" :value=item>
+                                            {{ item }}
                                         </option>
                                     </select>
 
+                                    <div class="mb-1">
+                                        <textarea class="form-control form-control-sm textarea" id="DetalleEnf"
+                                            placeholder="Detalle" v-model="DetalleEnf" rows="2"></textarea>
+                                    </div>
+                                    <button class="btn btn-primary btn-sm textarea"
+                                        @click="AddAntec(this.tipoAnt, this.selectenfermedad,this.DetalleEnf)">
+                                        + Adicionar
+                                    </button>
                                 </div>
-
-                                <select v-model="selectenfermedad" class="form-select form-select-sm textarea" id="selectenfermedad" aria-label="Default select example">
-                                    <option value="0">--Seleccione enfermedad--</option>
-                                    <option v-for="item in this.enf" :key="item.id" :value=item>
-                                        {{ item }}
-                                    </option>
-                                </select>
-
-                                <div class="mb-1">
-                                    <textarea class="form-control form-control-sm textarea" id="exampleFormControlTextarea1" placeholder="Detalle" v-model="DetalleEnf" rows="2"></textarea>
-                                </div>
-                                <button class="btn btn-primary btn-sm textarea" @click="AddAntec(this.tipoAnt, this.selectenfermedad,this.DetalleEnf)">
-                                    + Adicionar
-                                </button>
-                            </div>
                             <!-- ----------------------------------------------------------------------------- -->
                         </div>
 
                         <div class="col-12 mt-3">
 
-                            <div  v-if="this.NewAntec">
+                            <div v-if="this.NewAntec">
                                 <div class="card-header">
                                     Nuevos Antecedentes
                                 </div>
@@ -142,7 +148,7 @@
                                                 <td>{{item.detalleenf}}</td>
                                                 <td>X</td>
                                             </tr>
-                                      
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -189,11 +195,22 @@
 </template>
 
 <script>
+
+import {
+
+    mapActions,
+    mapGetters,
+    mapState,
+} from "vuex";
+
+import firebase_api from "@/api/firebaseApi";
 import {
     Antecedentes
 } from "./../../../firebase/bd.js";
+
 import {
-    BuscarDetalles, BuscarDetallesNombre
+    BuscarDetalles,
+    BuscarDetallesNombre
 } from "./../../backend/rutinas.js";
 
 export default {
@@ -203,6 +220,8 @@ export default {
         datas: "",
         tipoAnt: "0",
         selectenfermedad: "0",
+        DetalleEnf: "",
+   
 
         motivoConsulta: "",
         Enfermedad: "",
@@ -224,18 +243,15 @@ export default {
         enf: [],
         NewAntec: [],
         regAnt: {},
+        idhc: 1,
 
     }),
 
     methods: {
-/*         buscar_enfermedad(ide, array, resultado) {
-            this.enf = BuscarDetalles(ide, array, resultado);
-        }, */
 
         buscar_enfermedad(ide, array, resultado) {
             this.enf = BuscarDetallesNombre(ide, array, resultado);
         },
-
 
         AddAntec(tipo, enf, detalle) {
             let item = {
@@ -247,9 +263,13 @@ export default {
 
         },
 
-        guardarInfo() {
-            this.ArraySaveConsulta = [];
+        ...mapActions('Hc', ['SaveDatos1']),
+
+        async guardarInfo() {
+            /*   this.ArraySaveConsulta = []; */
             this.ArrayDatosConsulta = [{
+                bd: "hc1_datosconsulta",
+                idhc: this.idhc,
                 motivoConsulta: this.motivoConsulta,
                 Enfermedad: this.Enfermedad,
                 TratPrevios: this.TratPrevios,
@@ -262,25 +282,36 @@ export default {
                 fcardiaca: this.fcardiaca,
                 frespiratoria: this.frespiratoria,
                 tarterial: this.tarterial,
+
             }];
 
-            for (let elemento of this.ArrayDatosConsulta) {
-                for (let propiedad in elemento) {
-                    if (elemento[propiedad] !== '') {
-                        let element = {
-                            [propiedad]: elemento[propiedad]
-                        };
-                        this.ArraySaveConsulta = {
-                            ...this.ArraySaveConsulta,
-                            ...element
-                        };
+            /*             for (let elemento of this.ArrayDatosConsulta) {
+                            for (let propiedad in elemento) {
+                                if (elemento[propiedad] !== '') {
+                                    let element = {
+                                        [propiedad]: elemento[propiedad]
+                                    };
+                                    this.ArraySaveConsulta = {
+                                        ...this.ArraySaveConsulta,
+                                        ...element
+                                    };
 
-                    }
-                }
-                console.log(this.ArraySaveConsulta)
+                                }
+                            }
+                            console.log(this.ArraySaveConsulta);
+                            console.log(this.NewAntec);
 
-            }
+                        } */
+
+            this.SaveDatos1(this.ArrayDatosConsulta[0]);
+
         },
+
+    },
+    computed: {
+
+    },
+    created() {
 
     }
 }

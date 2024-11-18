@@ -1,3 +1,4 @@
+<!-- hc13_ordenmedica -->
 <template>
   <div class="accordion-item">
     <h2 class="accordion-header">
@@ -8,7 +9,7 @@
         data-bs-target="#panelsStayOpen-collapse13"
         aria-expanded="false"
       >
-        <v-icon name="fa-user-check" fill="blue" />Orden medica
+    Orden medica
       </button>
     </h2>
     <div id="panelsStayOpen-collapse13" class="accordion-collapse collapse">

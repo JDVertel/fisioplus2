@@ -1,3 +1,4 @@
+<!-- hc11_diagnostico -->
 <template>
   <div class="accordion-item">
     <h2 class="accordion-header">
@@ -8,7 +9,7 @@
         data-bs-target="#panelsStayOpen-collapse11"
         aria-expanded="false"
       >
-        <v-icon name="fa-user-check" fill="blue" /> Diagnostico
+ Diagnostico
       </button>
     </h2>
     <div id="panelsStayOpen-collapse11" class="accordion-collapse collapse">

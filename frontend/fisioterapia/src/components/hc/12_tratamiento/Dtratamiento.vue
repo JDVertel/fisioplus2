@@ -1,3 +1,4 @@
+<!-- hc12_tratamiento -->
 <template>
   <div class="accordion-item">
     <h2 class="accordion-header">
@@ -9,7 +10,7 @@
         aria-expanded="false"
         aria-controls="panelsStayOpen-collapse12"
       >
-        <v-icon name="fa-hand-holding-medical" fill="blue" />
+  
         Tratamiento
       </button>
     </h2>

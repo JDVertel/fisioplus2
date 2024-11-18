@@ -64,8 +64,9 @@ a {
 
 .imagenhc {
 
-  max-width: 100%;
+  max-width: 40%;
   height: auto;
+  border-radius: 10px;
 }
 
 .centrarcontenido {

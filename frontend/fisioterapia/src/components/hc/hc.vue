@@ -1,8 +1,11 @@
+<!-- hc00_detalle -->
 <template>
   <div>
     <div class="container mt-3" id="panelbusqueda" v-if="registrado == 1">
 
-      <p>ID recibido: {{ iduser }}</p>
+      <p>IDpaciente: {{ iduser }}</p>
+      <p>IDips: {{ idips }}</p>
+      <p>IDprof: {{ idprof }}</p>
 
       <div class="row">
         <h3 class="centrarcontenido">Historia Clinica </h3>
@@ -45,19 +48,19 @@
     <!-- **************************************************************************************************** -->
     <div id="register" v-if="registrado == 0">
       <h6 class="display-6 text-center">Paciente no Encontrado !!!</h6>
-
       <Registro />
     </div>
 
     <!-- **************************************************************************************************** -->
     <div class="container-fluid Cont_hc" v-if="this.iduser !== ''">
       <div class="row">
-        <div class="col-3 col-md-2 centrarcontenido">
+
+        <div class="col-12 col-md-2 centrarcontenido">
           <img src="./../../assets/images/usuario.jpg" class="imagenhc" alt="..." />
         </div>
 
-        <div class="col-9 col-md-10">
-          <div class="container mt-3" style="padding: 25px">
+        <div class="col-12 col-md-10 mt-5">
+     
             <h6>
               <strong> Datos Personales</strong>
             </h6>
@@ -87,16 +90,16 @@
                 <strong>Celular:</strong> 3145563439
               </div>
             </div>
-          </div>
+       
         </div>
       </div>
       <br />
       <C_Hc />
 
-      <br />
+
     </div>
 
-    <v-icon name="fa-home" fill="blue" /><router-link to="/dashboard">Home</router-link>
+<router-link to="/dashboard">Home</router-link>
   </div>
 </template>
 
@@ -118,6 +121,8 @@ export default {
   created() {
     // Recuperar el parámetro 'id' de la ruta
     this.iduser = this.$route.params.idpaciente || 'cc13862306';
+    this.idips = this.$route.params.idips || '01';
+    this.idprof = this.$route.params.idprof || '01';
   }
 };
 </script>

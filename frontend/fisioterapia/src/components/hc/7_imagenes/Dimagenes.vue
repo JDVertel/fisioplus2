@@ -1,8 +1,9 @@
+<!-- hc7_pimagenexamencomp -->
 <template>
     <div class="accordion-item">
         <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse7" aria-expanded="false" aria-controls="panelsStayOpen-collapse7">
-                <v-icon name="ai-biorxiv-square" fill="blue" /> Pruebas de Imagen o Examenes Complementarios
+          Pruebas de Imagen o Examenes Complementarios
             </button>
         </h2>
         <div id="panelsStayOpen-collapse7" class="accordion-collapse collapse">

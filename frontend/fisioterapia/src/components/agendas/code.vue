@@ -40,7 +40,7 @@
                                         <td>
                                             <div class="col-4 fechas">
                                                 <button class="btn btn-primary btn-sm textarea radius" type="submit">
-                                                    <v-icon name="hi-check" />
+                                                  
                                                 </button>
                                             </div>
                                         </td>
@@ -55,7 +55,7 @@
                                         <td>
                                             <div class="col-4 fechas">
                                                 <button class="btn btn-primary btn-sm textarea radius" type="submit">
-                                                    <v-icon name="hi-check" />
+                                             
                                                 </button>
                                             </div>
                                         </td>
@@ -70,7 +70,7 @@
                                         <td>
                                             <div class="col-4 fechas">
                                                 <button class="btn btn-primary btn-sm textarea radius" type="submit">
-                                                    <v-icon name="hi-check" />
+                                          
                                                 </button>
                                             </div>
                                         </td>
@@ -509,14 +509,14 @@
                             <p>Datos de tabla{{ tipocitas }}</p>
                             <p>nuevacita</p>
                             {{ nuevacita }}
-                            }
+                            
                         </div>
                     </div>
                 </div>
             </div>
             <br />
         </div>
-        <v-icon name="fa-home" fill="blue" />
+ 
         <router-link to="/dashboard">Home</router-link>
     </div>
 </div>

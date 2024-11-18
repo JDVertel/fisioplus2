@@ -1,3 +1,4 @@
+<!-- hc10_analisis -->
 <template>
   <div class="accordion-item">
     <h2 class="accordion-header">
@@ -9,7 +10,7 @@
         aria-expanded="false"
         aria-controls="panelsStayOpen-collapse10"
       >
-        <v-icon name="fa-user-check" fill="blue" /> Analisis
+ Analisis
       </button>
     </h2>
     <div id="panelsStayOpen-collapse10" class="accordion-collapse collapse">

@@ -1,3 +1,4 @@
+<!-- hc6_escvisualdolor -->
 <template>
   <div class="accordion-item">
     <h2 class="accordion-header">
@@ -9,7 +10,7 @@
         aria-expanded="false"
         aria-controls="panelsStayOpen-collapse6"
       >
-        <v-icon name="io-construct-sharp" fill="yellow" scale="0.7" />
+    
         Escala Visual Analógica del Dolor
       </button>
     </h2>

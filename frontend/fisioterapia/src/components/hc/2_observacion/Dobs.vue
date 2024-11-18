@@ -1,8 +1,8 @@
+<!-- hc2_observacion -->
 <template>
     <div class="accordion-item">
         <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse2" aria-expanded="false" aria-controls="panelsStayOpen-collapse2">
-                <v-icon name="fa-user-check" fill="blue" />
                 Observacion
             </button>
         </h2>
@@ -27,20 +27,20 @@
                     <div class="tab-pane fade show active" id="nav-homeB" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
                         <div class="container">
                             <br />
-                            <div class="mb-1" v-if="tipoAnt != 0">
+                        
                                 <select v-model="obs_marcha" class="form-select form-select-sm textarea" aria-label="Default select example">
                                     <option value="0">--Seleccione marcha--</option>
-                                    <option v-for="(item, index) in this.data_marcha" :key="index" :value="index">
+                                    <option v-for="(item) in this.data_marcha" :key="item.id" :value="item">
                                         {{ item.nombre }}
                                     </option>
                                 </select>
-                            </div>
+                          
     
                             <div class="mb-1">
                                 <textarea class="form-control form-control-sm textarea" id="exampleFormControlTextarea1" placeholder="Detalle" v-model="detalle_marcha" rows="2"></textarea>
                             </div>
     
-                            <button type="button" class="btn btn-primary" @click="AddAntec('marcha', obs_marcha, detalle_marcha)">
+                            <button type="button" class="btn btn-primary" @click="AddOb('marcha', obs_marcha, detalle_marcha)">
                                 + Adicionar
                             </button>
     
@@ -51,20 +51,20 @@
                         <div class="container">
                             <br />
     
-                            <div class="mb-1" v-if="tipoAnt != 0">
+                     
                                 <select v-model="obs_tipo" class="form-select form-select-sm textarea" aria-label="Default select example">
                                     <option value="0">--Seleccione tipo--</option>
-                                    <option v-for="(item, index) in this.data_movilidad" :key="index" :value="index">
+                                    <option v-for="(item) in this.data_movilidad" :key="item.id" :value="item">
                                         {{ item.nombre }}
                                     </option>
                                 </select>
-                            </div>
+                        
     
                             <div class="mb-1">
                                 <textarea class="form-control form-control-sm textarea" id="exampleFormControlTextarea1" placeholder="Detalle" v-model="detalle_movilidad" rows="2"></textarea>
                             </div>
     
-                            <button type="button" class="btn btn-primary" @click="AddAntec('movilidad', obs_tipo, detalle_movilidad)">
+                            <button type="button" class="btn btn-primary" @click="AddOb('movilidad', obs_tipo, detalle_movilidad)">
                                 + Adicionar
                             </button>
     
@@ -80,17 +80,20 @@
     
                         <table class="table table-sm">
                             <thead>
-                                <tr>
+                                <tr><th>item</th>
                                     <th scope="col">movilidad/traslados</th>
-                                    <th scope="col">First</th>
+                                    <th>Marcha</th>
+                                    <th>observacion</th>
+                                    <th>Opc</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="(item, index) in NewAntec" :key="index">
                                     <th scope="row">{{ index + 1 }}</th>
                                     <td>{{ item.tipo }}</td>
-                                    <td>{{ item.enfermedad }}</td>
-                                    <td>{{ item.detalleenf }}</td>
+                                    <td>{{ item.observacion.nombre }}</td>
+                                    <td>{{ item.detalleobs }}</td>
+                                    <td>X</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -120,14 +123,15 @@
             detalle_movilidad: "",
             NewAntec: [],
             ArraySaveConsulta: [],
+            tipoAnt:"",
         }),
     
         methods: {
-            AddAntec(tipo, enf, detalle) {
+            AddOb(tipo, obs, detalle) {
                 let item = {
                     tipo: tipo,
-                    enfermedad: enf,
-                    detalleenf: detalle
+                    observacion: obs,
+                    detalleobs: detalle
                 }
                 this.NewAntec = [...this.NewAntec, item]
             },
