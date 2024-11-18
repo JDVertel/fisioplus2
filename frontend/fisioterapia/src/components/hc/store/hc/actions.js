@@ -18,6 +18,7 @@ export const SaveDatos1 = async({commit}, Data) =>{
     frespiratoria,
     tarterial,
     bd,
+    ant,
   } = Data;
   //preparar datos de almacenamiento y parametros
   const DatatoSave = {
@@ -34,6 +35,7 @@ export const SaveDatos1 = async({commit}, Data) =>{
     fcardiaca,
     frespiratoria,
     tarterial,
+    ant,
   };
 
   const Ruta = `/${bd}.json`;
