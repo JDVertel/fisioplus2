@@ -275,6 +275,7 @@ export default {
       /*   this.ArraySaveConsulta = []; */
       this.ArrayDatosConsulta = [
         {
+          iduser:this.iduser,
           bd: "hc1_datosconsulta",
           idhc: this.idhc,
           motivoConsulta: this.motivoConsulta,

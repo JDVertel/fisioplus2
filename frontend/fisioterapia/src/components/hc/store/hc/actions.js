@@ -49,8 +49,8 @@ export const SaveDatos1 = async ({ commit }, Data) => {
 /* hc2 observacion */
 
 export const SaveDatos2 = async ({ commit }, Data) => {
-  const {} = Data;
-  const DatatoSave = {};
+  const { iduser, idhc, dataobserv, bd } = Data;
+  const DatatoSave = { iduser, idhc, dataobserv };
   const Ruta = `/${bd}.json`;
   const { data } = await firebase_api.post(Ruta, DatatoSave);
   DatatoSave.id = data.name;
@@ -60,8 +60,8 @@ export const SaveDatos2 = async ({ commit }, Data) => {
 /* hc3 inspeccion estatica */
 
 export const SaveDatos3 = async ({ commit }, Data) => {
-  const {} = Data;
-  const DatatoSave = {};
+  const { iduser, idhc, bd, dataeval } = Data;
+  const DatatoSave = { iduser, idhc, dataeval };
   const Ruta = `/${bd}.json`;
   const { data } = await firebase_api.post(Ruta, DatatoSave);
   DatatoSave.id = data.name;

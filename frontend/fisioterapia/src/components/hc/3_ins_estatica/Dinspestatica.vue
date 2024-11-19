@@ -37,14 +37,14 @@
           tabindex="0">
           <div class="container">
 
-              <select v-model="i_est_piel" class="form-select form-select-sm textarea"
-                aria-label="Default select example">
-                <option value="0">--Seleccione evaluacion de piel--</option>
-                <option v-for="item in this.data_ie_piel.nombres" :key="item" :value="item">
-                  {{ item }}
-                </option>
-              </select>
-          
+            <select v-model="i_est_piel" class="form-select form-select-sm textarea"
+              aria-label="Default select example">
+              <option value="0">--Seleccione evaluacion de piel--</option>
+              <option v-for="item in this.data_ie_piel.nombres" :key="item" :value="item">
+                {{ item }}
+              </option>
+            </select>
+
             <div class="mb-1">
               <textarea class="form-control form-control-sm textarea" id="exampleFormControlTextarea1"
                 placeholder="Detalle" v-model="detalle_piel" rows="2"></textarea>
@@ -57,15 +57,15 @@
 
         <div class="tab-pane fade m-3" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
           <div class="container">
-      
-              <select v-model="i_est_lesiones" class="form-select form-select-sm textarea"
-                aria-label="Default select example">
-                <option value="0">--Seleccione evaluacion de lesiones--</option>
-                <option v-for="item in this.data_ie_lesiones.nombres" :key="item" :value="item">
-                  {{ item }}
-                </option>
-              </select>
-          
+
+            <select v-model="i_est_lesiones" class="form-select form-select-sm textarea"
+              aria-label="Default select example">
+              <option value="0">--Seleccione evaluacion de lesiones--</option>
+              <option v-for="item in this.data_ie_lesiones.nombres" :key="item" :value="item">
+                {{ item }}
+              </option>
+            </select>
+
             <div class="mb-1">
               <textarea class="form-control form-control-sm textarea" id="exampleFormControlTextarea1"
                 placeholder="Detalle" v-model="detalle_lesiones" rows="2"></textarea>
@@ -87,15 +87,15 @@
                 </div>
               </div>
               <div class="col-12 col-md-6">
-            
-                  <select v-model="i_e_biotipo" class="form-select form-select-sm textarea"
-                    aria-label="Default select example">
-                    <option value="0">--Seleccione biotipo--</option>
-                    <option v-for="item in this.data_ie_biotipo.nombres" :key="item" :value="item">
-                      {{ item }}
-                    </option>
-                  </select>
-             
+
+                <select v-model="i_e_biotipo" class="form-select form-select-sm textarea"
+                  aria-label="Default select example">
+                  <option value="0">--Seleccione biotipo--</option>
+                  <option v-for="item in this.data_ie_biotipo.nombres" :key="item" :value="item">
+                    {{ item }}
+                  </option>
+                </select>
+
                 <div class="mb-1">
                   <textarea class="form-control form-control-sm textarea" id="exampleFormControlTextarea1"
                     placeholder="Detalle" v-model="detalle_biotipo" rows="2"></textarea>
@@ -120,15 +120,15 @@
                 </div>
               </div>
               <div class="col-12 col-md-6">
-          
-                  <select v-model="i_e_postura" class="form-select form-select-sm textarea"
-                    aria-label="Default select example">
-                    <option value="0">--Seleccione postura--</option>
-                    <option v-for="item in this.data_ie_postura.nombres" :key="item" :value="item">
-                      {{ item }}
-                    </option>
-                  </select>
-               
+
+                <select v-model="i_e_postura" class="form-select form-select-sm textarea"
+                  aria-label="Default select example">
+                  <option value="0">--Seleccione postura--</option>
+                  <option v-for="item in this.data_ie_postura.nombres" :key="item" :value="item">
+                    {{ item }}
+                  </option>
+                </select>
+
                 <div class="mb-1">
                   <textarea class="form-control form-control-sm textarea" id="exampleFormControlTextarea1"
                     placeholder="Detalle" v-model="detalle_postura" rows="2"></textarea>
@@ -141,18 +141,14 @@
             </div>
           </div>
         </div>
-      </div>
-
-      <hr />
-
-      <div class="card">
+        <div class="card">
         <div class="card-header">Registro</div>
         <table class="table table-sm">
           <thead>
             <tr>
               <th scope="col">Tipo</th>
-              <th scope="col">Hallazgo</th>
-              <th scope="col">Especificacion</th>
+              <th scope="col">Evaluacion</th>
+              <th scope="col">Detalle</th>
             </tr>
           </thead>
           <tbody>
@@ -164,7 +160,7 @@
           </tbody>
         </table>
       </div>
-
+      </div>
       <button class="btn btn-warning mt-3" @click="guardarInfo">
         + Guardar
       </button>
@@ -174,7 +170,7 @@
 
 <script>
 import { insp_estatica } from "./../../../firebase/bd.js";
-
+import { mapActions, mapGetters, mapState } from "vuex";
 export default {
   data: () => ({
     data_ie_piel: insp_estatica.filter((el) => el.clas === "piel")[0],
@@ -195,29 +191,31 @@ export default {
   }),
 
   methods: {
+
+    ...mapActions("Hc", ["SaveDatos3"]),
+
     AddAntec(tipo, enf, detalle) {
       let item = {
+ 
         tipo: tipo,
         enfermedad: enf,
         detalleenf: detalle,
+        
       };
       this.NewAntec = [...this.NewAntec, item];
     },
 
-    guardarInfo() {
-      this.ArraySaveConsulta = [];
-      let datosObservacion = {
-        i_est_piel: this.i_est_piel,
-        detalle_piel: this.detalle_piel,
-        i_est_lesiones: this.i_est_lesiones,
-        detalle_lesiones: this.detalle_lesiones,
-        i_e_biotipo: this.i_e_biotipo,
-        detalle_biotipo: this.detalle_biotipo,
-        i_e_postura: this.i_e_postura,
-        detalle_postura: this.detalle_postura,
-      };
+  async guardarInfo() {
+      /* this.ArraySaveConsulta = []; */
+      this.datosObservacion = [{
+        iduser:this.iduser,
+        idhc:1,
+        bd:"hc3_inspestatica",
+        dataeval:this.NewAntec
+      },];
+      this.SaveDatos3(this.datosObservacion[0]);
 
-      for (let propiedad in datosObservacion) {
+ /*      for (let propiedad in datosObservacion) {
         if (datosObservacion[propiedad] !== "") {
           let element = {
             [propiedad]: datosObservacion[propiedad],
@@ -227,12 +225,13 @@ export default {
             ...element,
           };
         }
-      }
+      } */
 
-      console.log("Datos de Inspección Estática:", this.ArraySaveConsulta);
-      console.log("Array de Antecedentes:", this.NewAntec);
+
     },
   },
+  computed: {},
+  created() { },
 };
 </script>
 

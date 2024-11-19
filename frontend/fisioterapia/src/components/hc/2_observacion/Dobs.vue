@@ -2,7 +2,9 @@
 <template>
     <div class="accordion-item">
         <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse2" aria-expanded="false" aria-controls="panelsStayOpen-collapse2">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapse2" aria-expanded="false"
+                aria-controls="panelsStayOpen-collapse2">
                 Observacion
             </button>
         </h2>
@@ -15,59 +17,71 @@
                 <br />
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-homeB" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-homeB" type="button" role="tab" aria-controls="nav-home"
+                            aria-selected="true">
                             Marcha/Deambulacion
                         </button>
-                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profileB" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
+                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-profileB" type="button" role="tab" aria-controls="nav-profile"
+                            aria-selected="false">
                             Movilidad/Traslados
                         </button>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-homeB" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+                    <div class="tab-pane fade show active" id="nav-homeB" role="tabpanel" aria-labelledby="nav-home-tab"
+                        tabindex="0">
                         <div class="container">
                             <br />
-                        
-                                <select v-model="obs_marcha" class="form-select form-select-sm textarea" aria-label="Default select example">
-                                    <option value="0">--Seleccione marcha--</option>
-                                    <option v-for="(item) in this.data_marcha" :key="item.id" :value="item">
-                                        {{ item.nombre }}
-                                    </option>
-                                </select>
-                          
-    
+
+                            <select v-model="obs_marcha" class="form-select form-select-sm textarea"
+                                aria-label="Default select example">
+                                <option value="0">--Seleccione marcha--</option>
+                                <option v-for="(item) in this.data_marcha" :key="item.id" :value="item">
+                                    {{ item.nombre }}
+                                </option>
+                            </select>
+
+
                             <div class="mb-1">
-                                <textarea class="form-control form-control-sm textarea" id="exampleFormControlTextarea1" placeholder="Detalle" v-model="detalle_marcha" rows="2"></textarea>
+                                <textarea class="form-control form-control-sm textarea" id="exampleFormControlTextarea1"
+                                    placeholder="Detalle" v-model="detalle_marcha" rows="2"></textarea>
                             </div>
-    
-                            <button type="button" class="btn btn-primary" @click="AddOb('marcha', obs_marcha, detalle_marcha)">
+
+                            <button type="button" class="btn btn-primary"
+                                @click="AddOb('marcha', obs_marcha, detalle_marcha)">
                                 + Adicionar
                             </button>
-    
+
                         </div>
                         <br>
                     </div>
-                    <div class="tab-pane fade" id="nav-profileB" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+                    <div class="tab-pane fade" id="nav-profileB" role="tabpanel" aria-labelledby="nav-profile-tab"
+                        tabindex="0">
                         <div class="container">
                             <br />
-    
-                     
-                                <select v-model="obs_tipo" class="form-select form-select-sm textarea" aria-label="Default select example">
-                                    <option value="0">--Seleccione tipo--</option>
-                                    <option v-for="(item) in this.data_movilidad" :key="item.id" :value="item">
-                                        {{ item.nombre }}
-                                    </option>
-                                </select>
-                        
-    
+
+
+                            <select v-model="obs_tipo" class="form-select form-select-sm textarea"
+                                aria-label="Default select example">
+                                <option value="0">--Seleccione tipo--</option>
+                                <option v-for="(item) in this.data_movilidad" :key="item.id" :value="item">
+                                    {{ item.nombre }}
+                                </option>
+                            </select>
+
+
                             <div class="mb-1">
-                                <textarea class="form-control form-control-sm textarea" id="exampleFormControlTextarea1" placeholder="Detalle" v-model="detalle_movilidad" rows="2"></textarea>
+                                <textarea class="form-control form-control-sm textarea" id="exampleFormControlTextarea1"
+                                    placeholder="Detalle" v-model="detalle_movilidad" rows="2"></textarea>
                             </div>
-    
-                            <button type="button" class="btn btn-primary" @click="AddOb('movilidad', obs_tipo, detalle_movilidad)">
+
+                            <button type="button" class="btn btn-primary"
+                                @click="AddOb('movilidad', obs_tipo, detalle_movilidad)">
                                 + Adicionar
                             </button>
-    
+
                         </div>
                         <br>
                     </div>
@@ -77,10 +91,11 @@
                         <div class="card-header">
                             Registro
                         </div>
-    
+
                         <table class="table table-sm">
                             <thead>
-                                <tr><th>item</th>
+                                <tr>
+                                    <th>item</th>
                                     <th scope="col">movilidad/traslados</th>
                                     <th>Marcha</th>
                                     <th>observacion</th>
@@ -97,69 +112,73 @@
                                 </tr>
                             </tbody>
                         </table>
-    
+
                     </div>
                 </div>
                 <button class="btn btn-warning" @click="guardarInfo">+ Guardar</button>
-    
+
             </div>
         </div>
     </div>
-    </template>
-    
-    <script>
-    import {
-        observacion_marcha,
-        observacion_movilidad
-    } from "./../../../firebase/bd.js";
-    
-    export default {
-        data: () => ({
-            data_marcha: observacion_marcha,
-            data_movilidad: observacion_movilidad,
-            obs_marcha: "0",
-            obs_tipo: "0",
-            detalle_marcha: "",
-            detalle_movilidad: "",
-            NewAntec: [],
-            ArraySaveConsulta: [],
-            tipoAnt:"",
-        }),
-    
-        methods: {
-            AddOb(tipo, obs, detalle) {
-                let item = {
-                    tipo: tipo,
-                    observacion: obs,
-                    detalleobs: detalle
-                }
-                this.NewAntec = [...this.NewAntec, item]
-            },
-    
-            guardarInfo() {
-                this.ArraySaveConsulta = [];
-                let datosObservacion = {
-                    obs_marcha: this.obs_marcha,
-                    detalle_marcha: this.detalle_marcha,
-                    obs_tipo: this.obs_tipo,
-                    detalle_movilidad: this.detalle_movilidad,
-                };
-    
-                for (let propiedad in datosObservacion) {
-                    if (datosObservacion[propiedad] !== '') {
-                        let element = {
-                            [propiedad]: datosObservacion[propiedad]
-                        };
-                        this.ArraySaveConsulta = {
-                            ...this.ArraySaveConsulta,
-                            ...element
-                        };
-                    }
-                }
-    
-                console.log("Datos de Observación:", this.ArraySaveConsulta);
-                console.log("Array de Antecedentes:", this.NewAntec);
-            },
-        }
+</template>
+
+<script>
+import { mapActions, mapGetters, mapState } from "vuex";
+import {
+    observacion_marcha,
+    observacion_movilidad
+} from "./../../../firebase/bd.js";
+
+export default {
+    data: () => ({
+        data_marcha: observacion_marcha,
+        data_movilidad: observacion_movilidad,
+        obs_marcha: "0",
+        obs_tipo: "0",
+        detalle_marcha: "",
+        detalle_movilidad: "",
+        NewAntec: [],
+        ArraySaveConsulta: [],
+        tipoAnt: "",
+    }),
+
+    methods: {
+        ...mapActions("Hc", ["SaveDatos2"]),
+        AddOb(tipo, obs, detalle) {
+            let item = {
+                tipo: tipo,
+                observacion: obs,
+                detalleobs: detalle
+            }
+            this.NewAntec = [...this.NewAntec, item]
+        },
+
+        async guardarInfo() {
+
+            this.datosObservacion = [{
+                bd: "hc2_observacion",
+                idhc: 1,
+                iduser: this.iduser,
+                dataobserv: this.NewAntec,
+            },];
+
+            this.SaveDatos2(this.datosObservacion[0]);
+
+            /*          for (let propiedad in datosObservacion) {
+                         if (datosObservacion[propiedad] !== '') {
+                             let element = {
+                                 [propiedad]: datosObservacion[propiedad]
+                             };
+                             this.ArraySaveConsulta = {
+                                 ...this.ArraySaveConsulta,
+                                 ...element
+                             };
+                         }
+                     } */
+            /* 
+                        console.log("Datos de Observación:", this.ArraySaveConsulta);
+                        console.log("Array de Antecedentes:", this.NewAntec); */
+        },
     }
-    </script>
+}
+</script>
