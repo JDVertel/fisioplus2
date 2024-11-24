@@ -49,6 +49,7 @@
                     </button>
 
                 </div>
+                 <!-- detalle-->
                 <div class="tab-pane fade" id="vlateral" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
                     <p>Seleccione y agregue hallazgos</p>
                     <!-- 1 -->
@@ -72,18 +73,19 @@
                     </button>
 
                 </div>
+                    <!-- --------------------------------------------------------------------------------------------------------------->
                 <div class="tab-pane fade" id="vposterior" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-                    <p>Seleccione y agregue hallazgos</p>
+                    <p>Seleccione y agregue hallazgos  eval posturl</p>
 
                     <!-- 1 -->
                     <select class="form-select form-select-sm" aria-label="Small select example" v-on:change="buscar_detalle(v_posterior, this.data_v_posterior)" v-model="v_posterior">
                         <option value="0" selected>-- Seleccione clasificacion--</option>
-                        <option v-for="(item, index) in this.data_v_posterior" :key="index" :value="item.id">{{ item.organo}}</option>
+                        <option v-for="item in this.data_v_posterior" :key="item" :value="item">{{ item.organo}}</option>
                     </select>
                     <!-- 2 -->
                     <select class="form-select form-select-sm" aria-label="Small select example" v-model="v_posterior_org">
                         <option value="0" selected>--Seleccione la especificacion--</option>
-                        <option v-for="(it, index) in this.detalle_rta" :key="index" :value="it">{{ it}}</option>
+                        <option v-for="(item, index) in this.detalle_rta" :key="index" :value="it">{{item}}</option>
                     </select>
 
                     <div class="mb-3">
@@ -91,7 +93,7 @@
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" v-model="detalle_posterior"></textarea>
                     </div>
 
-                    <button type="button" class="btn btn-primary btn-sm" @click="AddAntec('posterior', v_posterior, detalle_posterior)">
+                    <button type="button" class="btn btn-primary btn-sm" @click="AddAntec('posterior', v_posterior, v_posterior_org, detalle_posterior)">
                         + Agregar
                     </button>
 
@@ -115,6 +117,7 @@
                         <tbody>
                             <tr v-for="(item, index) in NewAntec" :key="index">
                                 <td>{{ item.tipo }}</td>
+                                <td>{{ item.clase }}</td>
                                 <td>{{ item.enfermedad }}</td>
                                 <td>{{ item.detalleenf }}</td>
                             </tr>
@@ -160,9 +163,11 @@ export default {
         buscar_detalle(id, bd) {
             this.detalle_rta = BuscarDetalles(id, bd, "detalle");
         },
-        AddAntec(tipo, enf, detalle) {
+
+        AddAntec(tipo, clas, enf, detalle) {
             let item = {
                 tipo: tipo,
+                clase:clas,
                 enfermedad: enf,
                 detalleenf: detalle
             }

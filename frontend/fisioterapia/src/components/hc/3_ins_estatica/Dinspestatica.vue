@@ -4,7 +4,7 @@
     <h2 class="accordion-header">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
         data-bs-target="#panelsStayOpen-collapse3" aria-expanded="false" aria-controls="panelsStayOpen-collapse3">
-        Inspeccion Estatica
+        Inspeccion Estatica-ok
       </button>
     </h2>
     <div id="panelsStayOpen-collapse3" class="accordion-collapse collapse">
@@ -36,7 +36,6 @@
         <div class="tab-pane fade show active m-3" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
           tabindex="0">
           <div class="container">
-
             <select v-model="i_est_piel" class="form-select form-select-sm textarea"
               aria-label="Default select example">
               <option value="0">--Seleccione evaluacion de piel--</option>
@@ -44,7 +43,6 @@
                 {{ item }}
               </option>
             </select>
-
             <div class="mb-1">
               <textarea class="form-control form-control-sm textarea" id="exampleFormControlTextarea1"
                 placeholder="Detalle" v-model="detalle_piel" rows="2"></textarea>
