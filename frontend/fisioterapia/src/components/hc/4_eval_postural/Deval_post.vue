@@ -27,16 +27,16 @@
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="vanterior" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-                    <p>Seleccione y agregue hallazgos</p>
+                    <p>Seleccione y agregue hallazgos anterior</p>
                     <!-- 1 -->
-                    <select v-on:change="buscar_detalle(v_anterior, this.data_v_anterior)" v-model="v_anterior" class="form-select form-select-sm" aria-label="Small select example">
+                    <select v-on:change="buscar_detalleN(v_anterior, this.data_v_anterior)" v-model="v_anterior" class="form-select form-select-sm" aria-label="Small select example">
                         <option value="0" selected>--Seleccione clasificacion--</option>
-                        <option v-for="(item, index) in this.data_v_anterior" :key="index" :value="item.id">{{ item.organo}}</option>
+                        <option v-for="item in this.data_v_anterior" :key="item" :value="item.organo">{{ item.organo}}</option>
                     </select>
                     <!-- 2 -->
                     <select class="form-select form-select-sm" aria-label="Small select example" v-model="v_anterior_org">
                         <option value="0" selected>--Seleccione especificacion--</option>
-                        <option v-for="(item, index) in this.detalle_rta" :key="index" :value="item">{{ item}}</option>
+                        <option v-for="(item, index) in this.detalle_rta" :key="index" :value="item">{{item}}</option>
                     </select>
 
                     <div class="mb-3">
@@ -44,14 +44,14 @@
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" v-model="detalle_anterior"></textarea>
                     </div>
 
-                    <button type="button" class="btn btn-primary btn-sm" @click="AddAntec('anterior', v_anterior, detalle_anterior)">
+                    <button type="button" class="btn btn-primary btn-sm" @click="AddAntec('anterior', v_anterior, v_anterior_org, detalle_anterior)">
                         + Agregar
                     </button>
 
                 </div>
                  <!-- detalle-->
                 <div class="tab-pane fade" id="vlateral" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-                    <p>Seleccione y agregue hallazgos</p>
+                    <p>Seleccione y agregue hallazgos lateral</p>
                     <!-- 1 -->
                     <select class="form-select form-select-sm" aria-label="Small select example" v-on:change="buscar_detalle(v_lateral, this.data_v_lateral)" v-model="v_lateral">
                         <option value="0" selected>-- Seleccione clasificacion--</option>
@@ -68,24 +68,24 @@
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" v-model="detalle_lateral"></textarea>
                     </div>
 
-                    <button type="button" class="btn btn-primary btn-sm" @click="AddAntec('lateral', v_lateral, detalle_lateral)">
+                    <button type="button" class="btn btn-primary btn-sm" @click="AddAntec('lateral', v_lateral,v_lateral_org, detalle_lateral)">
                         + Agregar
                     </button>
 
                 </div>
                     <!-- --------------------------------------------------------------------------------------------------------------->
                 <div class="tab-pane fade" id="vposterior" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-                    <p>Seleccione y agregue hallazgos  eval posturl</p>
+                    <p>Seleccione y agregue hallazgos  posterior</p>
 
                     <!-- 1 -->
                     <select class="form-select form-select-sm" aria-label="Small select example" v-on:change="buscar_detalle(v_posterior, this.data_v_posterior)" v-model="v_posterior">
                         <option value="0" selected>-- Seleccione clasificacion--</option>
-                        <option v-for="item in this.data_v_posterior" :key="item" :value="item">{{ item.organo}}</option>
+                        <option v-for="item in this.data_v_posterior" :key="item" :value="item.id">{{ item.organo}}</option>
                     </select>
                     <!-- 2 -->
                     <select class="form-select form-select-sm" aria-label="Small select example" v-model="v_posterior_org">
                         <option value="0" selected>--Seleccione la especificacion--</option>
-                        <option v-for="(item, index) in this.detalle_rta" :key="index" :value="it">{{item}}</option>
+                        <option v-for="(it, index) in this.detalle_rta" :key="index" :value="it">{{it}}</option>
                     </select>
 
                     <div class="mb-3">
@@ -138,7 +138,7 @@ import {
     eval_postural
 } from "./../../../firebase/bd.js";
 import {
-    BuscarDetalles
+    BuscarDetalles, BuscarDetallesNombre
 } from "./../../backend/rutinas.js";
 export default {
 
@@ -163,7 +163,9 @@ export default {
         buscar_detalle(id, bd) {
             this.detalle_rta = BuscarDetalles(id, bd, "detalle");
         },
-
+        buscar_detalleN(id, bd) {
+            this.detalle_rta = BuscarDetallesNombre(id, bd, "detalle");
+        },
         AddAntec(tipo, clas, enf, detalle) {
             let item = {
                 tipo: tipo,
