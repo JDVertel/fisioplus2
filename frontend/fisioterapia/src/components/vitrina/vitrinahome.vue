@@ -263,7 +263,7 @@ import {
     mapActions,
     mapState
 } from "vuex";
-import { productos } from '../../firebase/bd';
+
 
 export default {
     data: () => ({

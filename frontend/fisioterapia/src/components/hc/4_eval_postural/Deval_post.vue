@@ -53,9 +53,9 @@
                 <div class="tab-pane fade" id="vlateral" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
                     <p>Seleccione y agregue hallazgos lateral</p>
                     <!-- 1 -->
-                    <select class="form-select form-select-sm" aria-label="Small select example" v-on:change="buscar_detalle(v_lateral, this.data_v_lateral)" v-model="v_lateral">
+                    <select class="form-select form-select-sm" aria-label="Small select example" v-on:change="buscar_detalleN(v_lateral, this.data_v_lateral)" v-model="v_lateral">
                         <option value="0" selected>-- Seleccione clasificacion--</option>
-                        <option v-for="(item, index) in this.data_v_lateral" :key="index" :value="item.id">{{ item.organo}}</option>
+                        <option v-for="(item, index) in this.data_v_lateral" :key="index" :value="item.organo">{{ item.organo}}</option>
                     </select>
                     <!-- 2 -->
                     <select class="form-select form-select-sm" aria-label="Small select example" v-model="v_lateral_org">
@@ -78,9 +78,9 @@
                     <p>Seleccione y agregue hallazgos  posterior</p>
 
                     <!-- 1 -->
-                    <select class="form-select form-select-sm" aria-label="Small select example" v-on:change="buscar_detalle(v_posterior, this.data_v_posterior)" v-model="v_posterior">
+                    <select class="form-select form-select-sm" aria-label="Small select example" v-on:change="buscar_detalleN(v_posterior, this.data_v_posterior)" v-model="v_posterior">
                         <option value="0" selected>-- Seleccione clasificacion--</option>
-                        <option v-for="item in this.data_v_posterior" :key="item" :value="item.id">{{ item.organo}}</option>
+                        <option v-for="item in this.data_v_posterior" :key="item" :value="item.organo">{{ item.organo}}</option>
                     </select>
                     <!-- 2 -->
                     <select class="form-select form-select-sm" aria-label="Small select example" v-model="v_posterior_org">
@@ -163,9 +163,10 @@ export default {
         buscar_detalle(id, bd) {
             this.detalle_rta = BuscarDetalles(id, bd, "detalle");
         },
-        buscar_detalleN(id, bd) {
-            this.detalle_rta = BuscarDetallesNombre(id, bd, "detalle");
+        buscar_detalleN(name, bd) {
+            this.detalle_rta = BuscarDetallesNombre(name, bd, "detalle");
         },
+
         AddAntec(tipo, clas, enf, detalle) {
             let item = {
                 tipo: tipo,
