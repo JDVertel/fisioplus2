@@ -55,15 +55,15 @@
                                 <p>Seleccione y agregue hallazgos</p>
                                 <!-- Fase de Apoyo -->
                                 <select class="form-select form-select-sm" aria-label="Small select example"
-                                    v-model="detalle_apoyo">
-                                    <option selected value="0">clasificacion</option>
-                                    <option v-for="item in this.data_apoyo.nombre" :key="item.id" :value="item.id">
+                                    v-model="clase_apoyo">
+                                    <option selected value="">---clasificacion---</option>
+                                    <option v-for="item in this.data_apoyo.nombre" :key="item.id" :value="item">
                                         {{ item }}</option>
                                 </select>
                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                                     v-model="detalle_apoyo"></textarea>
                                 <button type="button" class="btn btn-primary btn-sm"
-                                    @click="AddAntec('apoyo', detalle_apoyo, detalle_apoyo)">+ Agregar</button>
+                                    @click="AddAntec('apoyo', clase_apoyo, detalle_apoyo)">+ Agregar</button>
                             </div>
                             <div class="tab-pane fade" id="nav-profileE" role="tabpanel"
                                 aria-labelledby="nav-profile-tab" tabindex="0">
@@ -77,15 +77,15 @@
                                 <p>Seleccione y agregue hallazgos</p>
                                 <!-- Fase de Balanceo -->
                                 <select class="form-select form-select-sm" aria-label="Small select example"
-                                    v-model="detalle_balanceo">
-                                    <option value="0" selected>clasificacion</option>
-                                    <option v-for="item in this.data_balanceo.nombre" :key="item.id" :value="item.id">
+                                    v-model="clase_balanceo">
+                                    <option value="0" selected>---clasificacion---</option>
+                                    <option v-for="item in this.data_balanceo.nombre" :key="item.id" :value="item">
                                         {{ item }}</option>
                                 </select>
                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                                     v-model="detalle_balanceo"></textarea>
                                 <button type="button" class="btn btn-primary btn-sm"
-                                    @click="AddAntec('balanceo', detalle_balanceo, detalle_balanceo)">+ Agregar</button>
+                                    @click="AddAntec('balanceo', clase_balanceo, detalle_balanceo)">+ Agregar</button>
                             </div>
                             <div class="tab-pane fade" id="nav-Evaluacion" role="tabpanel"
                                 aria-labelledby="nav-profile-tab" tabindex="0">
@@ -95,14 +95,14 @@
                                             <select class="form-select form-select-sm" aria-label="Small select example"
                                                 v-model="eval_select"
                                                 v-on:change="b_evaluacion(this.eval_select, this.data_marcha, 'nombre')">
-                                                <option value="0" selected>clasificacion</option>
+                                                <option value="0" selected>---clasificacion---</option>
                                                 <option v-for="item in this.data_marcha" :key="item.id"
                                                     :value="item.id">{{ item.fase }}</option>
                                             </select>
                                             <select class="form-select form-select-sm" aria-label="Small select example"
                                                 v-model="detalle_eval">
-                                                <option value="0" selected>clasificacion</option>
-                                                <option v-for="item in this.data_evaluacion" :value="item.nombre"
+                                                <option value="0" selected>---clasificacion---</option>
+                                                <option v-for="item in this.data_evaluacion" :value="item"
                                                     :key="item.id">{{ item }}</option>
                                             </select>
                                             <button type="button" class="btn btn-primary btn-sm"
@@ -110,7 +110,7 @@
                                                 Agregar</button>
                                         </div>
                                         <div class="col-12 col-md-6">
-                                            <div class="table-responsive">
+                                       <!--      <div class="table-responsive">
                                                 <table class="table table-sm">
                                                     <thead>
                                                         <tr>
@@ -126,7 +126,7 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -135,7 +135,7 @@
                                 aria-labelledby="nav-profile-tab" tabindex="0">
                                 <p>Seleccione y agregue hallazgos</p>
                                 <select class="form-select form-select-sm" aria-label="Small select example"
-                                    v-model="detalle_adaptaciones">
+                                    v-model="clase_adaptaciones">
                                     <option value="0">--Seleccione clasificacion--</option>
                                     <option v-for="item in this.data_adaptaciones.nombre" :key="item.id" :value="item">
                                         {{ item }}</option>
@@ -143,7 +143,7 @@
                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                                     v-model="detalle_adaptaciones"></textarea>
                                 <button type="button" class="btn btn-primary btn-sm"
-                                    @click="AddAntec('adaptaciones', detalle_adaptaciones, detalle_adaptaciones)">+
+                                    @click="AddAntec('adaptaciones', clase_adaptaciones, detalle_adaptaciones)">+
                                     Agregar</button>
                             </div>
                             <div class="tab-pane fade" id="adaptaciones" role="tabpanel"
@@ -253,8 +253,11 @@ export default {
         data_balanceo: insp_dinamica.filter((el) => el.class === "balanceo")[0],
         data_marcha: insp_dinamica.filter((el) => el.class === "marcha"),
         data_adaptaciones: insp_dinamica.filter((el) => el.class === "adaptaciones")[0],
+        clase_apoyo:"",
         detalle_apoyo: "",
+        clase_balanceo:"",
         detalle_balanceo: "",
+        clase_adaptaciones:"",
         detalle_adaptaciones: "",
         NewAntec: [],
         ArraySaveConsulta: [],

@@ -105,11 +105,12 @@
             <br />
 
             <div class="row">
-              <div class="col-12">
+<!-- combo select antecedentes -->
+              <div class="col-12 col-md-6">
                 <!-- ----------------------------------------------------------------------------- -->
                 <div>
                   <div class="mb-1">
-                    <select v-model="tipoAnt" class="form-select form-select-sm textarea" v-on:change="
+                    <select v-model="tipoAnt" class="form-select form-select-sm textarea" @change ="
                       buscar_enfermedad(
                         this.tipoAnt,
                         this.dataBD,
@@ -147,8 +148,8 @@
                 </div>
                 <!-- ----------------------------------------------------------------------------- -->
               </div>
-
-              <div class="col-12 mt-3">
+ <!-- tabla antecedentes  -->
+              <div class="col-12 col-md-6 mt-3">
                 <div v-if="this.NewAntec">
                   <div class="card-header">Nuevos Antecedentes</div>
                   <div class="table-responsive">
@@ -173,35 +174,36 @@
                   </div>
                 </div>
 
-                <div class="card-header">Historial de antecedentes</div>
-                <div class="table-responsive">
-                  <table class="table table-sm">
-                    <thead class="table-info">
-                      <tr>
-                        <th scope="col">Tipo</th>
-                        <th scope="col">Enfermedad</th>
-                        <th scope="col">Detalle</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr>
-                      <tr>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+
               </div>
+            </div>
+            <div class="card-header">Historial de antecedentes</div>
+            <div class="table-responsive">
+              <table class="table table-sm">
+                <thead class="table-info">
+                  <tr>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Enfermedad</th>
+                    <th scope="col">Detalle</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                  <tr>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Larry the Bird</td>
+                    <td>@twitter</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -275,7 +277,7 @@ export default {
       /*   this.ArraySaveConsulta = []; */
       this.ArrayDatosConsulta = [
         {
-          iduser:this.iduser,
+          iduser: this.iduser,
           bd: "hc1_datosconsulta",
           idhc: this.idhc,
           motivoConsulta: this.motivoConsulta,
