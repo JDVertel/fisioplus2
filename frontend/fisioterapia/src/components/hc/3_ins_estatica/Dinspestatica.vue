@@ -11,157 +11,169 @@
       <div class="accordion-body">
         <p>Evaluacion de la postura:(Comparando con el lado colateral)</p>
       </div>
-
-      <nav>
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-          <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
-            type="button" role="tab" aria-controls="nav-home" aria-selected="true">
-            Piel
-          </button>
-          <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button"
-            role="tab" aria-controls="nav-profile" aria-selected="false">
-            Lesiones
-          </button>
-          <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button"
-            role="tab" aria-controls="nav-contact" aria-selected="false">
-            Biotipo
-          </button>
-          <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-disabled"
-            type="button" role="tab" aria-controls="nav-disabled" aria-selected="false">
-            Postura
-          </button>
-        </div>
-      </nav>
-      <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active m-3" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
-          tabindex="0">
-          <div class="container">
-            <select v-model="i_est_piel" class="form-select form-select-sm textarea"
-              aria-label="Default select example">
-              <option value="0">--Seleccione evaluacion de piel--</option>
-              <option v-for="item in this.data_ie_piel.nombres" :key="item" :value="item">
-                {{ item }}
-              </option>
-            </select>
-            <div class="mb-1">
-              <textarea class="form-control form-control-sm textarea" id="exampleFormControlTextarea1"
-                placeholder="Detalle" v-model="detalle_piel" rows="2"></textarea>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+                type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+                Piel
+              </button>
+              <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
+                Lesiones
+              </button>
+              <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
+                type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
+                Biotipo
+              </button>
+              <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-disabled"
+                type="button" role="tab" aria-controls="nav-disabled" aria-selected="false">
+                Postura
+              </button>
             </div>
-            <button type="button" class="btn btn-primary btn-sm" @click="AddAntec('piel', i_est_piel, detalle_piel)">
-              + Adicionar
-            </button>
-          </div>
-        </div>
-
-        <div class="tab-pane fade m-3" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-          <div class="container">
-
-            <select v-model="i_est_lesiones" class="form-select form-select-sm textarea"
-              aria-label="Default select example">
-              <option value="0">--Seleccione evaluacion de lesiones--</option>
-              <option v-for="item in this.data_ie_lesiones.nombres" :key="item" :value="item">
-                {{ item }}
-              </option>
-            </select>
-
-            <div class="mb-1">
-              <textarea class="form-control form-control-sm textarea" id="exampleFormControlTextarea1"
-                placeholder="Detalle" v-model="detalle_lesiones" rows="2"></textarea>
-            </div>
-            <button type="button" class="btn btn-primary btn-sm"
-              @click="AddAntec('lesiones', i_est_lesiones, detalle_lesiones)">
-              + Adicionar
-            </button>
-          </div>
-        </div>
-
-        <div class="tab-pane fade m-3" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
-          <div class="container">
-            <div class="row g-3 align-items-center">
-              <div class="col-12 col-md-6">
-                <div class="img-container">
-                  <img id="imagen_postura" src="./../../../assets/images/insp_estatica/imagen_biotipo.png"
-                    alt="Imagen biotipo" class="img-fluid rounded" />
-                </div>
-              </div>
-              <div class="col-12 col-md-6">
-
-                <select v-model="i_e_biotipo" class="form-select form-select-sm textarea"
+          </nav>
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active m-3" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
+              tabindex="0">
+              <div class="container">
+                <select v-model="i_est_piel" class="form-select form-select-sm textarea"
                   aria-label="Default select example">
-                  <option value="0">--Seleccione biotipo--</option>
-                  <option v-for="item in this.data_ie_biotipo.nombres" :key="item" :value="item">
+                  <option value="0">--Seleccione evaluacion de piel--</option>
+                  <option v-for="item in this.data_ie_piel.nombres" :key="item" :value="item">
+                    {{ item }}
+                  </option>
+                </select>
+                <div class="mb-1">
+                  <textarea class="form-control form-control-sm textarea" id="exampleFormControlTextarea1"
+                    placeholder="Detalle" v-model="detalle_piel" rows="2"></textarea>
+                </div>
+                <button type="button" class="btn btn-primary btn-sm"
+                  @click="AddAntec('piel', i_est_piel, detalle_piel)">
+                  + Adicionar
+                </button>
+              </div>
+            </div>
+
+            <div class="tab-pane fade m-3" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"
+              tabindex="0">
+              <div class="container">
+
+                <select v-model="i_est_lesiones" class="form-select form-select-sm textarea"
+                  aria-label="Default select example">
+                  <option value="0">--Seleccione evaluacion de lesiones--</option>
+                  <option v-for="item in this.data_ie_lesiones.nombres" :key="item" :value="item">
                     {{ item }}
                   </option>
                 </select>
 
                 <div class="mb-1">
                   <textarea class="form-control form-control-sm textarea" id="exampleFormControlTextarea1"
-                    placeholder="Detalle" v-model="detalle_biotipo" rows="2"></textarea>
+                    placeholder="Detalle" v-model="detalle_lesiones" rows="2"></textarea>
                 </div>
                 <button type="button" class="btn btn-primary btn-sm"
-                  @click="AddAntec('biotipo', i_e_biotipo, detalle_biotipo)">
+                  @click="AddAntec('lesiones', i_est_lesiones, detalle_lesiones)">
                   + Adicionar
                 </button>
               </div>
             </div>
+
+            <div class="tab-pane fade m-3" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"
+              tabindex="0">
+              <div class="container">
+                <div class="row g-3 align-items-center">
+                  <div class="col-12 col-md-6">
+                    <div class="img-container">
+                      <img id="imagen_postura" src="./../../../assets/images/insp_estatica/imagen_biotipo.png"
+                        alt="Imagen biotipo" class="img-fluid rounded" />
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+
+                    <select v-model="i_e_biotipo" class="form-select form-select-sm textarea"
+                      aria-label="Default select example">
+                      <option value="0">--Seleccione biotipo--</option>
+                      <option v-for="item in this.data_ie_biotipo.nombres" :key="item" :value="item">
+                        {{ item }}
+                      </option>
+                    </select>
+
+                    <div class="mb-1">
+                      <textarea class="form-control form-control-sm textarea" id="exampleFormControlTextarea1"
+                        placeholder="Detalle" v-model="detalle_biotipo" rows="2"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-sm"
+                      @click="AddAntec('biotipo', i_e_biotipo, detalle_biotipo)">
+                      + Adicionar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade m-3" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab"
+              tabindex="0">
+              <div class="container">
+                <div class="row g-3 align-items-center">
+                  <div class="col-12 col-md-6">
+                    <div class="img-container">
+                      <img id="imagen_postura" src="./../../../assets/images/insp_estatica/imagen_postura.png"
+                        alt="Imagen postura" class="img-fluid rounded" />
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+
+                    <select v-model="i_e_postura" class="form-select form-select-sm textarea"
+                      aria-label="Default select example">
+                      <option value="0">--Seleccione postura--</option>
+                      <option v-for="item in this.data_ie_postura.nombres" :key="item" :value="item">
+                        {{ item }}
+                      </option>
+                    </select>
+
+                    <div class="mb-1">
+                      <textarea class="form-control form-control-sm textarea" id="exampleFormControlTextarea1"
+                        placeholder="Detalle" v-model="detalle_postura" rows="2"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-sm"
+                      @click="AddAntec('postura', i_e_postura, detalle_postura)">
+                      + Adicionar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
+
         </div>
-
-        <div class="tab-pane fade m-3" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab"
-          tabindex="0">
-          <div class="container">
-            <div class="row g-3 align-items-center">
-              <div class="col-12 col-md-6">
-                <div class="img-container">
-                  <img id="imagen_postura" src="./../../../assets/images/insp_estatica/imagen_postura.png"
-                    alt="Imagen postura" class="img-fluid rounded" />
-                </div>
-              </div>
-              <div class="col-12 col-md-6">
-
-                <select v-model="i_e_postura" class="form-select form-select-sm textarea"
-                  aria-label="Default select example">
-                  <option value="0">--Seleccione postura--</option>
-                  <option v-for="item in this.data_ie_postura.nombres" :key="item" :value="item">
-                    {{ item }}
-                  </option>
-                </select>
-
-                <div class="mb-1">
-                  <textarea class="form-control form-control-sm textarea" id="exampleFormControlTextarea1"
-                    placeholder="Detalle" v-model="detalle_postura" rows="2"></textarea>
-                </div>
-                <button type="button" class="btn btn-primary btn-sm"
-                  @click="AddAntec('postura', i_e_postura, detalle_postura)">
-                  + Adicionar
-                </button>
-              </div>
+        <div class="col-12 col-md-6">
+          <div class="card">
+            <div class="card-header">Registro</div>
+            <div class="table-responsive">
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Evaluacion</th>
+                    <th scope="col">Detalle</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(item, index) in NewAntec" :key="index">
+                    <td>{{ item.tipo }}</td>
+                    <td>{{ item.enfermedad }}</td>
+                    <td>{{ item.detalleenf }}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
-        <div class="card">
-        <div class="card-header">Registro</div>
-        <table class="table table-sm">
-          <thead>
-            <tr>
-              <th scope="col">Tipo</th>
-              <th scope="col">Evaluacion</th>
-              <th scope="col">Detalle</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, index) in NewAntec" :key="index">
-              <td>{{ item.tipo }}</td>
-              <td>{{ item.enfermedad }}</td>
-              <td>{{ item.detalleenf }}</td>
-            </tr>
-          </tbody>
-        </table>
+        <button class="btn btn-warning mt-3" @click="guardarInfo">
+          + Guardar
+        </button>
       </div>
-      </div>
-      <button class="btn btn-warning mt-3" @click="guardarInfo">
-        + Guardar
-      </button>
     </div>
   </div>
 </template>
@@ -194,36 +206,36 @@ export default {
 
     AddAntec(tipo, enf, detalle) {
       let item = {
- 
+
         tipo: tipo,
         enfermedad: enf,
         detalleenf: detalle,
-        
+
       };
       this.NewAntec = [...this.NewAntec, item];
     },
 
-  async guardarInfo() {
+    async guardarInfo() {
       /* this.ArraySaveConsulta = []; */
       this.datosObservacion = [{
-        iduser:this.iduser,
-        idhc:1,
-        bd:"hc3_inspestatica",
-        dataeval:this.NewAntec
+        iduser: this.iduser,
+        idhc: 1,
+        bd: "hc3_inspestatica",
+        dataeval: this.NewAntec
       },];
       this.SaveDatos3(this.datosObservacion[0]);
 
- /*      for (let propiedad in datosObservacion) {
-        if (datosObservacion[propiedad] !== "") {
-          let element = {
-            [propiedad]: datosObservacion[propiedad],
-          };
-          this.ArraySaveConsulta = {
-            ...this.ArraySaveConsulta,
-            ...element,
-          };
-        }
-      } */
+      /*      for (let propiedad in datosObservacion) {
+             if (datosObservacion[propiedad] !== "") {
+               let element = {
+                 [propiedad]: datosObservacion[propiedad],
+               };
+               this.ArraySaveConsulta = {
+                 ...this.ArraySaveConsulta,
+                 ...element,
+               };
+             }
+           } */
 
 
     },
