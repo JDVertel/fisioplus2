@@ -87,6 +87,33 @@ export const Antecedentes = [
   },
 ];
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const observacion_marcha = [
   {
     id: "1",

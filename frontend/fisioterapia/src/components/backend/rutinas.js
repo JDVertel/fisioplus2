@@ -13,10 +13,11 @@ export function BuscarDetalles(ide, array, resultado) {
   return response;
 }
 
-/* RUTINA PARA CONSULTAR DATOS DE UN SEGUNDO COMBO DEPENDENTE DE UN PRIMERO POR NOMBRER  */
+/* RUTINA PARA CONSULTAR DATOS DE UN SEGUNDO COMBO DEPENDENTE DE UN PRIMERO POR NOMBRE  */
 // (nombre  - array de la data - propiedad resultado)
 
 export function BuscarDetallesNombre(name, array, resultado) {
+  console.log("ejecutando!!");
   let response = null;
   for (let i = 0; i < array.length; i++) {
     if (array[i].organo === name) {
@@ -28,9 +29,28 @@ export function BuscarDetallesNombre(name, array, resultado) {
   return response;
 }
 
+/* ---------------------------------------------------------- */
+
+export function BuscarAntDetallesNombreEnf(name, array, resultado) {
+  console.log("ejecutando!!");
+  let response = null;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].nombre === name) {
+      let newarray = array[i];
+      response = newarray[resultado];
+      console.log(response);
+    }
+  }
+  return response;
+}
+
+
 /* -----------otra funcion que tambien sirve--------------------------------------------------------- */
 /* export function buscar_detalle(id, bd) {
   (this.detalle_rta = bd.filter((el) => el.id == id)[0]),
     console.log(this.detalle_rta.detalle);
 }
      */
+export function consola(){
+  console.log("tomando funcion");
+}

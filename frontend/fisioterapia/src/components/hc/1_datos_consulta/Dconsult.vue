@@ -4,7 +4,7 @@
     <h2 class="accordion-header">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
         data-bs-target="#panelsStayOpen-collapse1" aria-expanded="false" aria-controls="panelsStayOpen-collapse1">
-        Datos de Consulta
+        Datos de Consulta_ok
       </button>
     </h2>
     <div id="panelsStayOpen-collapse1" class="accordion-collapse collapse">
@@ -113,10 +113,10 @@
                     <select v-model="tipoAnt" class="form-select form-select-sm textarea" @change ="
                       buscar_enfermedad(
                         this.tipoAnt,
-                        this.dataBD,
-                        'enfermedades'
+                        this.dataBD
+                    
                       )
-                      " aria-label="Default select example" id="tipoAnt">
+                      " aria-label="Default select example">
                       <option value="0">--Seleccione--</option>
                       <option v-for="ant in this.dataBD" :key="ant.id" :value="ant.nombre">
                         {{ ant.nombre }}
@@ -222,8 +222,7 @@ import firebase_api from "@/api/firebaseApi";
 import { Antecedentes } from "./../../../firebase/bd.js";
 
 import {
-  BuscarDetalles,
-  BuscarDetallesNombre,
+  BuscarAntDetallesNombreEnf,
 } from "./../../backend/rutinas.js";
 
 export default {
@@ -258,9 +257,11 @@ export default {
   }),
 
   methods: {
-    buscar_enfermedad(ide, array, resultado) {
-      this.enf = BuscarDetallesNombre(ide, array, resultado);
+    buscar_enfermedad(nombre, array) {
+      this.enf = BuscarAntDetallesNombreEnf(nombre, array, "enfermedades");
     },
+
+
 
     AddAntec(tipo, enf, detalle) {
       let item = {
