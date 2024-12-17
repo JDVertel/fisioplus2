@@ -5,7 +5,7 @@
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#panelsStayOpen-collapse5" aria-expanded="false"
                 aria-controls="panelsStayOpen-collapse5">
-                Inspeccion Dinamica
+                Inspeccion Dinamica ok
             </button>
         </h2>
         <div id="panelsStayOpen-collapse5" class="accordion-collapse collapse">
@@ -97,7 +97,7 @@
                                                 v-on:change="b_evaluacion(this.eval_select, this.data_marcha, 'nombre')">
                                                 <option value="0" selected>---clasificacion---</option>
                                                 <option v-for="item in this.data_marcha" :key="item.id"
-                                                    :value="item.id">{{ item.fase }}</option>
+                                                    :value="item.fase">{{ item.fase }}</option>
                                             </select>
                                             <select class="form-select form-select-sm" aria-label="Small select example"
                                                 v-model="detalle_eval">
@@ -242,7 +242,7 @@ import {
     insp_dinamica
 } from "./../../../firebase/bd.js";
 import {
-    BuscarDetalles
+    BuscarIsnpDinamicaDetalleNombre
 } from "./../../backend/rutinas.js";
 export default {
     data: () => ({
@@ -264,7 +264,7 @@ export default {
     }),
     methods: {
         b_evaluacion(x, y, z) {
-            this.data_evaluacion = BuscarDetalles(x, y, z)
+            this.data_evaluacion = BuscarIsnpDinamicaDetalleNombre(x, y, z)
         },
         AddAntec(tipo, enf, detalle) {
             let item = {

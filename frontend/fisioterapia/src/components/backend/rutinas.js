@@ -44,6 +44,18 @@ export function BuscarAntDetallesNombreEnf(name, array, resultado) {
   return response;
 }
 
+export function BuscarIsnpDinamicaDetalleNombre(name, array, resultado) {
+  console.log("ejecutando!!");
+  let response = null;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].fase === name) {
+      let newarray = array[i];
+      response = newarray[resultado];
+      console.log(response);
+    }
+  }
+  return response;
+}
 
 /* -----------otra funcion que tambien sirve--------------------------------------------------------- */
 /* export function buscar_detalle(id, bd) {
@@ -51,6 +63,6 @@ export function BuscarAntDetallesNombreEnf(name, array, resultado) {
     console.log(this.detalle_rta.detalle);
 }
      */
-export function consola(){
+export function consola() {
   console.log("tomando funcion");
 }
