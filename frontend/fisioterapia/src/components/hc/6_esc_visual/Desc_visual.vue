@@ -11,7 +11,7 @@
         aria-controls="panelsStayOpen-collapse6"
       >
     
-        Escala Visual Analógica del Dolor
+        Escala Visual Analógica del Dolor ok
       </button>
     </h2>
     <div id="panelsStayOpen-collapse6" class="accordion-collapse collapse">

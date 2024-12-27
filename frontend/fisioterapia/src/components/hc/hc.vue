@@ -118,6 +118,7 @@ export default {
   components: {
     C_Hc: HCdetallada,
   },
+ 
   created() {
     // Recuperar el parámetro 'id' de la ruta
     this.iduser = this.$route.params.idpaciente || 'cc13862306';

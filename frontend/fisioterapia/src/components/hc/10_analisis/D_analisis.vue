@@ -4,7 +4,7 @@
     <h2 class="accordion-header">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
         data-bs-target="#panelsStayOpen-collapse10" aria-expanded="false" aria-controls="panelsStayOpen-collapse10">
-        Analisis
+        Analisis ok
       </button>
     </h2>
     <div id="panelsStayOpen-collapse10" class="accordion-collapse collapse">

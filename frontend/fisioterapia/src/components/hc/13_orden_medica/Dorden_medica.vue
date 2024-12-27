@@ -9,7 +9,7 @@
         data-bs-target="#panelsStayOpen-collapse13"
         aria-expanded="false"
       >
-    Orden medica
+    Orden medica  ok
       </button>
     </h2>
     <div id="panelsStayOpen-collapse13" class="accordion-collapse collapse">

@@ -9,7 +9,7 @@
         data-bs-target="#panelsStayOpen-collapse11"
         aria-expanded="false"
       >
- Diagnostico
+ Diagnostico ok falta cie-10
       </button>
     </h2>
     <div id="panelsStayOpen-collapse11" class="accordion-collapse collapse">
