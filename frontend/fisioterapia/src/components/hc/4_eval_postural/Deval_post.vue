@@ -145,7 +145,7 @@
                             <div class="card-header">
                                 Registro
                             </div>
-                            <div class="card-body">
+                         
                                 <div class="table-responsive">
                                     <table class="table table-sm">
                                         <thead>
@@ -166,7 +166,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>
+                            
                         </div>
                         <button class="btn btn-warning mt-3" @click="guardarInfo">
                             + Guardar

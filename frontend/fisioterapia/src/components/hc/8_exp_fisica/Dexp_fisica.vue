@@ -128,6 +128,10 @@
                 </div>
               </div>
               <div class="col-12 col-md-6">
+                <div class="card">
+                            <div class="card-header">
+                                Registro
+                            </div>
                 <table class="table table-sm">
                   <thead>
                     <tr>
@@ -159,6 +163,7 @@
                   </tbody>
                 </table>
               </div>
+            </div>
             </div>
           </div>
           <div

@@ -16,26 +16,21 @@
 }
 
 .cmenu {
-
   margin: 5px;
   border-radius: 5px;
   border-style: solid;
   border-width: 1px;
   border-color: #000;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-
 }
 
 .cmenu:hover {
-
   margin: 5px;
   border-radius: 5px;
   border-style: solid;
   border-width: 1px;
   border-color: #2113e8;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-
-
 }
 
 .btnwsp {
@@ -54,8 +49,7 @@ a {
 }
 
 .rurinatitlecolor {
-  color: #42A3FC !important;
-
+  color: #42a3fc !important;
 }
 
 .producttitlecolor {
@@ -63,7 +57,6 @@ a {
 }
 
 .imagenhc {
-
   max-width: 40%;
   height: auto;
   border-radius: 10px;
@@ -73,7 +66,6 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .card {
@@ -84,27 +76,21 @@ a {
   box-shadow: 0 9px 9px 0 rgba(0, 0, 0, 0.2);
 }
 
-
-
-nav.navbar  a {
- /*  background-color: transparent !important; */
-color: #ffffff;
+nav.navbar a {
+  /*  background-color: transparent !important; */
+  color: #ffffff;
 }
 
-nav.navbar a :hover{
+nav.navbar a :hover {
+  color: #afef00;
+}
 
- color: #afef00;
- }
-
-
-
-.navbar-text{
+.navbar-text {
   color: #ffffff !important;
 }
 
-a img.icono{
-filter: invert(100%);
-
+a img.icono {
+  filter: invert(100%);
 }
 
 .logobar {
@@ -112,15 +98,14 @@ filter: invert(100%);
   width: 40px;
 }
 
-li button{
-color: #060606!important;
+li button {
+  color: #060606 !important;
 }
 
-.logototal a{
-background-color: #2113e8;
+.logototal a {
+  background-color: #2113e8;
 }
 /* HC */
-
 
 button.accordion-button.collapsed {
   padding: 3px;
@@ -149,7 +134,14 @@ nav-link.active {
   background-color: #198754;
 }
 
+/* personalizacion de tablas */
+th {
+  font-size: 0.8rem;
+}
 
+td {
+  font-size: 0.7rem;
+}
 /* 
 .home {
   position: relative;
@@ -380,10 +372,7 @@ footer {
 }
 
 .degradado {
-  background-image: linear-gradient(to right,
-      rgb(0, 128, 126),
-      yellow,
-      red);
+  background-image: linear-gradient(to right, rgb(0, 128, 126), yellow, red);
 }
 
 input[type="radio"] {
@@ -396,7 +385,6 @@ input[type="radio"] {
   margin: 0 0 0 5px;
   cursor: pointer;
 }
-
 
 .default {
   width: 100%;

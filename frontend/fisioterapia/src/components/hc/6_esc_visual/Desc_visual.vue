@@ -2,15 +2,9 @@
 <template>
   <div class="accordion-item">
     <h2 class="accordion-header">
-      <button
-        class="accordion-button collapsed"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#panelsStayOpen-collapse6"
-        aria-expanded="false"
-        aria-controls="panelsStayOpen-collapse6"
-      >
-    
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#panelsStayOpen-collapse6" aria-expanded="false" aria-controls="panelsStayOpen-collapse6">
+
         Escala Visual Analógica del Dolor ok
       </button>
     </h2>
@@ -18,64 +12,29 @@
       <div class="accordion-body">
         <nav>
           <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <button
-              class="nav-link active"
-              id="nav-home-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#nav-escala"
-              type="button"
-              role="tab"
-              aria-controls="nav-home"
-              aria-selected="true"
-            >
+            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-escala"
+              type="button" role="tab" aria-controls="nav-home" aria-selected="true">
               Escala
             </button>
-            <button
-              class="nav-link"
-              id="nav-profile-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#nav-ubicacion"
-              type="button"
-              role="tab"
-              aria-controls="nav-profile"
-              aria-selected="false"
-            >
+            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-ubicacion"
+              type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
               Ubicación
             </button>
-            <button
-              class="nav-link"
-              id="nav-contact-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#nav-semiologia"
-              type="button"
-              role="tab"
-              aria-controls="nav-contact"
-              aria-selected="false"
-            >
+            <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-semiologia"
+              type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
               Semiología
             </button>
           </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
           <!-- Tab Escala -->
-          <div
-            class="tab-pane fade show active"
-            id="nav-escala"
-            role="tabpanel"
-            aria-labelledby="nav-home-tab"
-            tabindex="0"
-          >
+          <div class="tab-pane fade show active" id="nav-escala" role="tabpanel" aria-labelledby="nav-home-tab"
+            tabindex="0">
             <div class="container">
               <div class="radio-container">
                 <div class="form-check" v-for="n in 11" :key="n">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    :id="'esc_' + (n - 1)"
-                    :value="n - 1"
-                    v-model="escala"
-                  />
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" :id="'esc_' + (n - 1)"
+                    :value="n - 1" v-model="escala" />
                   {{ n - 1 }}
                 </div>
               </div>
@@ -100,125 +59,72 @@
           </div>
 
           <!-- Tab Ubicación -->
-          <div
-            class="tab-pane fade"
-            id="nav-ubicacion"
-            role="tabpanel"
-            aria-labelledby="nav-profile-tab"
-            tabindex="0"
-          >
+          <div class="tab-pane fade" id="nav-ubicacion" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
             <div class="container">
               <div class="row">
                 <div class="col-12 col-md-6 position-relative">
                   <div class="image-container" ref="imageContainer1">
-                    <img
-                      id="imagen1"
-                      src="./../../../assets//images/HC_mapa_calor/cuerpohumano_1.jpeg"
-                      alt="Vista frontal"
-                      class="logo-img"
-                      @click="colocarMarcador($event, 'imagen1')"
-                    />
+                    <img id="imagen1" src="./../../../assets//images/HC_mapa_calor/cuerpohumano_1.jpeg"
+                      alt="Vista frontal" class="logo-img" @click="colocarMarcador($event, 'imagen1')" />
                     <!-- Marcadores dinámicos -->
-                    <div
-                      v-for="(mark, index) in getMarcadoresPorImagen('imagen1')"
-                      :key="index"
-                      class="pain-marker"
-                      :style="getMarkerStyle(mark)"
-                      @click.stop="seleccionarMarcador(mark)"
-                      :class="{ selected: marcadorSeleccionado === mark }"
-                    >
+                    <div v-for="(mark, index) in getMarcadoresPorImagen('imagen1')" :key="index" class="pain-marker"
+                      :style="getMarkerStyle(mark)" @click.stop="seleccionarMarcador(mark)"
+                      :class="{ selected: marcadorSeleccionado === mark }">
                       X
                     </div>
                   </div>
                   <div class="controls mt-2">
-                    <button
-                      class="btn btn-danger btn-sm"
-                      @click="borrarMarcadores('imagen1')"
-                      :disabled="!tieneMarcadores('imagen1')"
-                    >
+                    <button class="btn btn-danger btn-sm" @click="borrarMarcadores('imagen1')"
+                      :disabled="!tieneMarcadores('imagen1')">
                       Borrar marcadores
                     </button>
-                    <span class="ms-2"
-                      >{{
-                        getMarcadoresPorImagen("imagen1").length
-                      }}
-                      marcador(es)</span
-                    >
+                    <span class="ms-2">{{
+                      getMarcadoresPorImagen("imagen1").length
+                    }}
+                      marcador(es)</span>
                   </div>
                 </div>
                 <div class="col-12 col-md-6 position-relative">
                   <div class="image-container" ref="imageContainer2">
-                    <img
-                      id="imagen2"
-                      src="./../../../assets//images/HC_mapa_calor/cuerpohumano_2.jpeg"
-                      alt="Vista posterior"
-                      class="logo-img"
-                      @click="colocarMarcador($event, 'imagen2')"
-                    />
+                    <img id="imagen2" src="./../../../assets//images/HC_mapa_calor/cuerpohumano_2.jpeg"
+                      alt="Vista posterior" class="logo-img" @click="colocarMarcador($event, 'imagen2')" />
                     <!-- Marcadores dinámicos -->
-                    <div
-                      v-for="(mark, index) in getMarcadoresPorImagen('imagen2')"
-                      :key="index"
-                      class="pain-marker"
-                      :style="getMarkerStyle(mark)"
-                      @click.stop="seleccionarMarcador(mark)"
-                      :class="{ selected: marcadorSeleccionado === mark }"
-                    >
+                    <div v-for="(mark, index) in getMarcadoresPorImagen('imagen2')" :key="index" class="pain-marker"
+                      :style="getMarkerStyle(mark)" @click.stop="seleccionarMarcador(mark)"
+                      :class="{ selected: marcadorSeleccionado === mark }">
                       X
                     </div>
                   </div>
                   <div class="controls mt-2">
-                    <button
-                      class="btn btn-danger btn-sm"
-                      @click="borrarMarcadores('imagen2')"
-                      :disabled="!tieneMarcadores('imagen2')"
-                    >
+                    <button class="btn btn-danger btn-sm" @click="borrarMarcadores('imagen2')"
+                      :disabled="!tieneMarcadores('imagen2')">
                       Borrar marcadores
                     </button>
-                    <span class="ms-2"
-                      >{{
-                        getMarcadoresPorImagen("imagen2").length
-                      }}
-                      marcador(es)</span
-                    >
+                    <span class="ms-2">{{
+                      getMarcadoresPorImagen("imagen2").length
+                    }}
+                      marcador(es)</span>
                   </div>
                 </div>
               </div>
               <!-- Panel de información del marcador seleccionado -->
-              <div
-                v-if="marcadorSeleccionado"
-                class="marker-info mt-3 p-3 border rounded"
-              >
+              <div v-if="marcadorSeleccionado" class="marker-info mt-3 p-3 border rounded">
                 <h5>Información del marcador</h5>
                 <div class="mb-3">
                   <label class="form-label">Intensidad del dolor</label>
-                  <input
-                    type="range"
-                    class="form-range"
-                    min="1"
-                    max="10"
-                    v-model="marcadorSeleccionado.intensidad"
-                  />
-                  <span class="ms-2"
-                    >{{ marcadorSeleccionado.intensidad }}/10</span
-                  >
+                  <input type="range" class="form-range" min="1" max="10" v-model="marcadorSeleccionado.intensidad" />
+                  <span class="ms-2">{{ marcadorSeleccionado.intensidad }}/10</span>
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Tipo de dolor</label>
-                  <select
-                    class="form-select"
-                    v-model="marcadorSeleccionado.tipoDolor"
-                  >
+                  <select class="form-select" v-model="marcadorSeleccionado.tipoDolor">
                     <option value="agudo">Agudo</option>
                     <option value="cronico">Crónico</option>
                     <option value="punzante">Punzante</option>
                     <option value="quemante">Quemante</option>
                   </select>
                 </div>
-                <button
-                  class="btn btn-danger btn-sm"
-                  @click="eliminarMarcador(marcadorSeleccionado)"
-                >
+                <button class="btn btn-danger btn-sm" @click="eliminarMarcador(marcadorSeleccionado)">
                   Eliminar marcador
                 </button>
               </div>
@@ -226,29 +132,16 @@
           </div>
 
           <!-- Tab Semiología -->
-          <div
-            class="tab-pane fade"
-            id="nav-semiologia"
-            role="tabpanel"
-            aria-labelledby="nav-contact-tab"
-            tabindex="0"
-          >
+          <div class="tab-pane fade" id="nav-semiologia" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
             <br />
             <p>Detalle el dolor descrito por el Paciente</p>
             <br />
             <div class="container">
-              <div
-                class="row mb-3"
-                v-for="(placeholder, index) in semiologiaPlaceholders"
-                :key="index"
-              >
-                <textarea
-                  class="form-control"
-                  :id="'exampleFormControlTextarea' + (index + 1)"
-                  rows="2"
-                  :placeholder="placeholder"
-                  v-model="semiologia[index]"
-                ></textarea>
+              <div class="row ">
+                <div class="col-md-6" v-for="(placeholder, index) in semiologiaPlaceholders" :key="index">
+                  <textarea class="form-control mb-3" :id="'exampleFormControlTextarea' + (index + 1)" rows="2"
+                    :placeholder="placeholder" v-model="semiologia[index]"></textarea>
+                </div>
               </div>
             </div>
           </div>

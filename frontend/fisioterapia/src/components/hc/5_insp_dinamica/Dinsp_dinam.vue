@@ -188,7 +188,8 @@
               >
                 <div class="container">
                   <div class="row">
-                    <div class="col-6">
+                    <div class="col-12">
+                    
                       <select
                         class="form-select form-select-sm"
                         aria-label="Small select example"
@@ -234,25 +235,7 @@
                         + Agregar
                       </button>
                     </div>
-                    <div class="col-12 col-md-6">
-                      <!--      <div class="table-responsive">
-                                                <table class="table table-sm">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">Clasificacion</th>
-                                                            <th scope="col">Detalle</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="table-group-divider">
-                                                        <tr v-for="(item, index) in NewAntec" :key="index">
-                                                            <td>{{ item.tipo }}</td>
-                                                            <td>{{ item.enfermedad }}</td>
-                                                            <td>{{ item.detalleenf }}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div> -->
-                    </div>
+        
                   </div>
                 </div>
               </div>
@@ -305,12 +288,12 @@
                 aria-labelledby="nav-contact-tab"
                 tabindex="0"
               >
-                <table class="table tabler-sm">
+                <table class="table table-sm">
                   <thead>
                     <tr>
                       <th scope="col">Datos a Evaluar</th>
-                      <th scope="col">Hombres</th>
-                      <th scope="col">Mujeres</th>
+                      <th scope="col">H</th>
+                      <th scope="col">M</th>
                       <th scope="col">Derecha</th>
                       <th scope="col">Izquierda</th>
                     </tr>
@@ -406,10 +389,10 @@
               </div>
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-12 col-md-6">
             <div class="card">
               <div class="card-header">Registro</div>
-              <div class="card-body">
+          
                 <div class="table-responsive">
                   <table class="table table-sm">
                     <thead>
@@ -428,7 +411,7 @@
                     </tbody>
                   </table>
                 </div>
-              </div>
+              
             </div>
             <button class="btn btn-warning mt-3" @click="guardarInfo">
               + Guardar

@@ -73,7 +73,7 @@
               <div class="container">
                 <br />
                 <div class="row">
-                  <div class="col-6">
+                  <div class="col-12 col-md-6">
                     <div class="mb-1">
                       <!--  -->
                       <select
@@ -99,7 +99,7 @@
                     </div>
                   </div>
 
-                  <div class="col-6">
+                  <div class="col-12 col-md-6">
                     <div class="mb-1">
                       <!--  -->
                       <select
@@ -166,7 +166,7 @@
               <div class="container">
                 <br />
                 <div class="row">
-                  <div class="col-5">
+                  <div class="col-12 col-md-5">
                     <div class="mb-1">
                       <select
                         class="form-select form-select-sm textarea"
@@ -188,7 +188,7 @@
                       </select>
                     </div>
                   </div>
-                  <div class="col-5">
+                  <div class="col-12 col-md-5">
                     <div class="mb-1">
                       <select
                         class="form-select form-select-sm textarea"
@@ -203,7 +203,7 @@
                       </select>
                     </div>
                   </div>
-                  <div class="col-2">
+                  <div class="col-12 col-md-2">
                     <div class="mb-1">
                       <select
                         v-model="eval_grado"
