@@ -57,6 +57,19 @@ export function BuscarIsnpDinamicaDetalleNombre(name, array, resultado) {
   return response;
 }
 
+export function BuscarExpFisicaDetalleNombre(name, array, resultado) {
+  console.log("ejecutando!!");
+  let response = null;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].clase === name) {
+      let newarray = array[i];
+      response = newarray[resultado];
+      console.log(response);
+    }
+  }
+  return response;
+}
+
 /* -----------otra funcion que tambien sirve--------------------------------------------------------- */
 /* export function buscar_detalle(id, bd) {
   (this.detalle_rta = bd.filter((el) => el.id == id)[0]),

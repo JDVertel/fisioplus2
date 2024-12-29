@@ -10,7 +10,7 @@
         aria-expanded="false"
         aria-controls="panelsStayOpen-collapse8"
       >
-        Exploracion Fisica
+        Exploracion Fisica ok
       </button>
       <!--  -->
       <!--         <button class="btn btn-outline-primary btn-sm">save</button> -->
@@ -76,21 +76,25 @@
 
             <div class="row">
               <div class="col-12 col-md-6">
+
+
                 <select
                   class="form-select form-select-sm"
                   aria-label="Small select example"
-                  v-model="tipoevaluacion"
-                  @change="buscardata(tipoevaluacion, data_exp, 'detalle')"
+                  v-model="tipoclase"
+                  @change="buscardata(tipoclase, data_exp, 'detalle')"
                 >
                   <option selected value="0">--seleccione Clase--</option>
                   <option
-                    v-for="item in data_exp"
-                    :key="item.id"
-                    :value="item.id"
+                    v-for="(item, index) in data_exp"
+                    :key="index"
+                    :value="item.clase"
                   >
                     {{ item.clase }}
                   </option>
                 </select>
+
+
 
                 <select
                   class="form-select form-select-sm"
@@ -121,7 +125,9 @@
                   <button
                     type="button"
                     class="btn btn-primary btn-sm"
-                    @click="AddAntec('sistema_oseo', tipoevaluacion, detalle)"
+                    @click="
+                      AddAntec('sistema oseo', tipoclase, tipomusculo, detalle)
+                    "
                   >
                     agregar
                   </button>
@@ -129,41 +135,27 @@
               </div>
               <div class="col-12 col-md-6">
                 <div class="card">
-                            <div class="card-header">
-                                Registro
-                            </div>
-                <table class="table table-sm">
-                  <thead>
-                    <tr>
-                      <th>Sitema</th>
-                      <th>Clase</th>
-                      <th>Musculo</th>
-                      <th>Detalle</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>xxx</td>
-                      <td>xxx</td>
-                      <td>xxx</td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>xxx</td>
-                      <td>xxx</td>
-                      <td>xxx</td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>xxx</td>
-                      <td>xxx</td>
-                      <td>xxx</td>
-                    </tr>
-                  </tbody>
-                </table>
+                  <div class="card-header">Registro</div>
+                  <table class="table table-sm">
+                    <thead>
+                      <tr>
+                        <th>Sistema</th>
+                        <th>Clase</th>
+                        <th>Musculo</th>
+                        <th>Detalle</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="(item, index) in NewAntec" :key="index">
+                        <td>{{ item.diag_sistema }}</td>
+                        <td>{{ item.diag_clase }}</td>
+                        <td>{{ item.diag_musculo }}</td>
+                        <td>{{ item.diag_detalle }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </div>
             </div>
           </div>
           <div
@@ -1029,11 +1021,15 @@
 
 <script>
 import { exp_fisica } from "./../../../firebase/bd.js";
-import { BuscarDetalles } from "./../../backend/rutinas.js";
+import {
+  BuscarDetalles,
+  BuscarExpFisicaDetalleNombre,
+} from "./../../backend/rutinas.js";
 
 export default {
   data: () => ({
     data_exp: exp_fisica,
+    tipoclase: "0",
     tipoevaluacion: "0",
     tipomusculo: "0",
     datosC: "",
@@ -1132,16 +1128,18 @@ export default {
   }),
   methods: {
     buscardata(x, y, z) {
-      this.datosC = BuscarDetalles(x, y, z);
+      this.datosC = BuscarExpFisicaDetalleNombre(x, y, z);
     },
-    AddAntec(tipo, enf, detalle) {
+
+    AddAntec(sistema, clase, musculo, detalle) {
       let item = {
-        tipo: tipo,
-        enfermedad: enf,
-        musculo: this.tipomusculo,
-        detalleenf: detalle,
+        diag_sistema: sistema,
+        diag_clase: clase,
+        diag_musculo: musculo,
+        diag_detalle: detalle,
       };
       this.NewAntec = [...this.NewAntec, item];
+      console.log(this.NewAntec);
     },
     guardarInfo() {
       this.ArraySaveConsulta = [];
@@ -1153,19 +1151,6 @@ export default {
         rangosMovimientos: this.rangosMovimientos,
       };
 
-      for (let propiedad in datos) {
-        if (datos[propiedad]) {
-          let element = {
-            [propiedad]: datos[propiedad],
-          };
-          this.ArraySaveConsulta = {
-            ...this.ArraySaveConsulta,
-            ...element,
-          };
-        }
-      }
-
-      console.log("Datos guardados:", this.ArraySaveConsulta);
       console.log("Array de Antecedentes:", this.NewAntec);
     },
   },
