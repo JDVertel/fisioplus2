@@ -49,6 +49,8 @@
                     placeholder="Detalle" v-model="detalle_piel" rows="2"></textarea>
                 </div>
                 <button type="button" class="btn btn-primary btn-sm"
+v-if="i_est_piel!='0' && detalle_piel !=''" 
+                
                   @click="AddAntec('piel', i_est_piel, detalle_piel)">
                   + Adicionar
                 </button>
@@ -72,7 +74,9 @@
                     placeholder="Detalle" v-model="detalle_lesiones" rows="2"></textarea>
                 </div>
                 <button type="button" class="btn btn-primary btn-sm"
-                  @click="AddAntec('lesiones', i_est_lesiones, detalle_lesiones)">
+                  @click="AddAntec('lesiones', i_est_lesiones, detalle_lesiones)"
+                  v-if="i_est_lesiones !='0' && detalle_lesiones !=''"
+                  >
                   + Adicionar
                 </button>
               </div>
@@ -103,7 +107,9 @@
                         placeholder="Detalle" v-model="detalle_biotipo" rows="2"></textarea>
                     </div>
                     <button type="button" class="btn btn-primary btn-sm"
-                      @click="AddAntec('biotipo', i_e_biotipo, detalle_biotipo)">
+                      @click="AddAntec('biotipo', i_e_biotipo, detalle_biotipo)"
+                      v-if="i_e_biotipo !='0' && detalle_biotipo !=''"
+                      >
                       + Adicionar
                     </button>
                   </div>
@@ -136,7 +142,9 @@
                         placeholder="Detalle" v-model="detalle_postura" rows="2"></textarea>
                     </div>
                     <button type="button" class="btn btn-primary btn-sm"
-                      @click="AddAntec('postura', i_e_postura, detalle_postura)">
+                      @click="AddAntec('postura', i_e_postura, detalle_postura)"
+                      v-if="i_e_postura !='0' && detalle_postura !=''"
+                      >
                       + Adicionar
                     </button>
                   </div>
@@ -168,11 +176,12 @@
                 </tbody>
               </table>
             </div>
-          </div>
-        </div>
-        <button class="btn btn-warning mt-3" @click="guardarInfo">
+            <button class="btn btn-warning mt-3" @click="guardarInfo">
           + Guardar
         </button>
+          </div>
+        </div>
+     
       </div>
     </div>
   </div>

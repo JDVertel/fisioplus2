@@ -54,7 +54,9 @@
                                     </div>
 
                                     <button type="button" class="btn btn-primary"
-                                        @click="AddOb('marcha', obs_marcha, detalle_marcha)">
+                                        @click="AddOb('marcha', obs_marcha, detalle_marcha)"
+                                        v-if= "obs_marcha !=='0'&& detalle_marcha !==''"
+                                        >
                                         + Adicionar
                                     </button>
 
@@ -83,7 +85,9 @@
                                     </div>
 
                                     <button type="button" class="btn btn-primary"
-                                        @click="AddOb('movilidad', obs_tipo, detalle_movilidad)">
+                                        @click="AddOb('movilidad', obs_tipo, detalle_movilidad)"
+                                        v-if= "obs_tipo !=='0'&& detalle_movilidad !==''"
+                                        >
                                         + Adicionar
                                     </button>
 

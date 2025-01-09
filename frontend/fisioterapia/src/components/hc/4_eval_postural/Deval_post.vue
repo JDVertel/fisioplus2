@@ -127,6 +127,8 @@
                 <button
                   type="button"
                   class="btn btn-primary btn-sm"
+
+                  v-if="v_anterior !='0' && v_anterior_org !='0' && detalle_anterior !=''"
                   @click="
                     AddAntec(
                       'anterior',
@@ -199,6 +201,7 @@
                 <button
                   type="button"
                   class="btn btn-primary btn-sm"
+                  v-if="v_lateral !='0' && v_lateral_org !='0' && detalle_lateral !=''"
                   @click="
                     AddAntec(
                       'lateral',
@@ -274,6 +277,7 @@
                 <button
                   type="button"
                   class="btn btn-primary btn-sm"
+                  v-if="v_posterior !='0' && v_posterior_org !='0' && detalle_posterior !=''"
                   @click="
                     AddAntec(
                       'posterior',

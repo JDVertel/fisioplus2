@@ -105,16 +105,16 @@
             <br />
 
             <div class="row">
-<!-- combo select antecedentes -->
+              <!-- combo select antecedentes -->
               <div class="col-12 col-md-6">
                 <!-- ----------------------------------------------------------------------------- -->
                 <div>
                   <div class="mb-1">
-                    <select v-model="tipoAnt" class="form-select form-select-sm textarea" @change ="
+                    <select v-model="tipoAnt" class="form-select form-select-sm textarea" @change="
                       buscar_enfermedad(
                         this.tipoAnt,
                         this.dataBD
-                    
+
                       )
                       " aria-label="Default select example">
                       <option value="0">--Seleccione--</option>
@@ -136,7 +136,10 @@
                     <textarea class="form-control form-control-sm textarea" id="DetalleEnf" placeholder="Detalle"
                       v-model="DetalleEnf" rows="2"></textarea>
                   </div>
-                  <button class="btn btn-primary btn-sm textarea" @click="
+                  <button class="btn btn-primary btn-sm textarea" 
+                  v-if= "selectenfermedad !=='0' && DetalleEnf !==''
+                  && tipoAnt !=='0'"
+                  @click="
                     AddAntec(
                       this.tipoAnt,
                       this.selectenfermedad,
@@ -148,7 +151,7 @@
                 </div>
                 <!-- ----------------------------------------------------------------------------- -->
               </div>
- <!-- tabla antecedentes  -->
+              <!-- tabla antecedentes  -->
               <div class="col-12 col-md-6 mt-3">
                 <div v-if="this.NewAntec">
                   <div class="card-header">Nuevos Antecedentes</div>

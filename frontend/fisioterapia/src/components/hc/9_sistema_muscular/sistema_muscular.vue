@@ -129,10 +129,12 @@
             <button
               type="button"
               class="btn btn-primary btn-sm"
+              v-if="tipoevaluacionM !='0' && caracteristicaM !='0' && detalleM !=''"
               @click="AddAntec('sistema_muscular', seval, caract, detalle)"
             >
-              Adicionar
+             + Agregar
             </button>
+          
             <div class="card">
               <div class="card-header">Registro</div>
               <table class="table table-sm">
@@ -163,7 +165,7 @@
             aria-labelledby="nav-sist-muscular-general"
             tabindex="0"
           >
-            <div class="container">
+          
               <br />
               <div class="row">
                 <div class="col-12 col-md-5">
@@ -216,7 +218,7 @@
                       id="Ggmuscular"
                       aria-label="Small select example"
                     >
-                      <option value="0">Grado</option>
+                      <option value="0">--Grado--</option>
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
@@ -224,10 +226,10 @@
                       <option value="5">5</option>
                     </select>
                   </div>
-                </div>
-              </div>
-              <button
-                class="btn btn-success btn-sm mt-2 mb-2"
+                  <button 
+              type="button"
+                class="btn btn-primary btn-sm"
+                v-if="emuscular !='0' && musculo !='0' && eval_grado !='0'"
                 @click="
                   Addevalcuacion(
                     'eval_musc_general',
@@ -237,8 +239,11 @@
                   )
                 "
               >
-                + Agregar al registro
+                + Agregar
               </button>
+                </div>
+              
+       
               <div class="row">
                 <div class="col-12 col-md-6">
                   <div class="card">
@@ -348,7 +353,7 @@
             aria-labelledby="nav-sist-muscular-detalle"
             tabindex="0"
           >
-            <div class="container">
+            
               <div class="accordion" id="accordionExpMuscular">
                 <div class="accordion-item">
                   <h2 class="accordion-header">
@@ -2051,7 +2056,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            
           </div>
         </div>
 

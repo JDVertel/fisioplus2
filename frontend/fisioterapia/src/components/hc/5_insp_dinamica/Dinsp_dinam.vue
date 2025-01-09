@@ -125,6 +125,7 @@
                 <button
                   type="button"
                   class="btn btn-primary btn-sm"
+                  v-if="clase_apoyo !='0'&& detalle_apoyo !=''"
                   @click="AddAntec('apoyo', clase_apoyo, detalle_apoyo)"
                 >
                   + Agregar
@@ -172,6 +173,7 @@
                 <button
                   type="button"
                   class="btn btn-primary btn-sm"
+                  v-if="clase_balanceo !='0' && detalle_balanceo !=''"
                   @click="
                     AddAntec('balanceo', clase_balanceo, detalle_balanceo)
                   "
@@ -228,6 +230,7 @@
                       <button
                         type="button"
                         class="btn btn-primary btn-sm"
+                        v-if="eval_select !='0' && detalle_eval !='0'"
                         @click="
                           AddAntec('evaluacion', eval_select, detalle_eval)
                         "
@@ -270,6 +273,7 @@
                 <button
                   type="button"
                   class="btn btn-primary btn-sm"
+                  v-if="clase_adaptaciones !='0' && detalle_adaptaciones !=''"
                   @click="
                     AddAntec(
                       'adaptaciones',
@@ -441,7 +445,7 @@ export default {
     detalle_apoyo: "",
     clase_balanceo: "",
     detalle_balanceo: "",
-    clase_adaptaciones: "",
+    clase_adaptaciones: "0",
     detalle_adaptaciones: "",
     NewAntec: [],
     ArraySaveConsulta: [],

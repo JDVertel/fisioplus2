@@ -125,6 +125,7 @@
                   <button
                     type="button"
                     class="btn btn-primary btn-sm"
+                    v-if="tipoclase !='0' && tipomusculo !='0' && detalle !=''"
                     @click="
                       AddAntec('sistema oseo', tipoclase, tipomusculo, detalle)
                     "
