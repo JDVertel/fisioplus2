@@ -166,11 +166,16 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr v-for="item in this.NewAntec" :key="item.id">
+                        <tr v-for="(item, index) in this.NewAntec" :key="index">
                           <td>{{ item.tipo }}</td>
                           <td>{{ item.enfermedad }}</td>
                           <td>{{ item.detalleenf }}</td>
-                          <td>X</td>
+                          <td> <button
+                            class="btn btn-sm btn-danger"
+                            @click="eliminarAnt(index)"
+                          >
+                            <i class="bi bi-trash-fill"></i>
+                          </button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -273,6 +278,18 @@ export default {
         detalleenf: detalle,
       };
       this.NewAntec = [...this.NewAntec, item];
+      this.limpiarcampos();
+    },
+
+    eliminarAnt(index) {
+      console.log(index); 
+     this.NewAntec.splice(index, 1);
+    },
+
+    limpiarcampos(){
+ this.tipoAnt="0";
+ this.selectenfermedad="0";
+ this.DetalleEnf="";
     },
 
     ...mapActions("Hc", ["SaveDatos1"]),
