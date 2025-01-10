@@ -127,8 +127,11 @@
                 <button
                   type="button"
                   class="btn btn-primary btn-sm"
-
-                  v-if="v_anterior !='0' && v_anterior_org !='0' && detalle_anterior !=''"
+                  v-if="
+                    v_anterior != '0' &&
+                    v_anterior_org != '0' &&
+                    detalle_anterior != ''
+                  "
                   @click="
                     AddAntec(
                       'anterior',
@@ -201,7 +204,11 @@
                 <button
                   type="button"
                   class="btn btn-primary btn-sm"
-                  v-if="v_lateral !='0' && v_lateral_org !='0' && detalle_lateral !=''"
+                  v-if="
+                    v_lateral != '0' &&
+                    v_lateral_org != '0' &&
+                    detalle_lateral != ''
+                  "
                   @click="
                     AddAntec(
                       'lateral',
@@ -277,7 +284,11 @@
                 <button
                   type="button"
                   class="btn btn-primary btn-sm"
-                  v-if="v_posterior !='0' && v_posterior_org !='0' && detalle_posterior !=''"
+                  v-if="
+                    v_posterior != '0' &&
+                    v_posterior_org != '0' &&
+                    detalle_posterior != ''
+                  "
                   @click="
                     AddAntec(
                       'posterior',
@@ -300,10 +311,11 @@
                 <table class="table table-sm">
                   <thead>
                     <tr>
-                      <th scope="col">Vista</th>
-                      <th scope="col">Clase</th>
-                      <th scope="col">Especificacion</th>
-                      <th scope="col">Detalle</th>
+                      <th>Vista</th>
+                      <th>Clase</th>
+                      <th>Especificacion</th>
+                      <th>Detalle</th>
+                      <th>Opc</th>
                     </tr>
                   </thead>
                   <tbody class="table-group-divider">
@@ -312,6 +324,14 @@
                       <td>{{ item.clase }}</td>
                       <td>{{ item.enfermedad }}</td>
                       <td>{{ item.detalleenf }}</td>
+                      <td>
+                        <button
+                          class="btn btn-sm btn-danger"
+                          @click="eliminaritem(index)"
+                        >
+                          <i class="bi bi-trash-fill"></i>
+                        </button>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -370,7 +390,27 @@ export default {
         detalleenf: detalle,
       };
       this.NewAntec = [...this.NewAntec, item];
+      this.limpiarcampos();
     },
+
+    eliminaritem(index) {
+      console.log(index);
+      this.NewAntec.splice(index, 1);
+    },
+    limpiarcampos() {
+      this.v_anterior = "0";
+      this.v_anterior_org = "0";
+      this.detalle_anterior = "";
+
+      this.v_lateral = "0";
+      this.v_lateral_org = "0";
+      this.detalle_lateral = "";
+
+      this.v_posterior = "0";
+      this.v_posterior_org = "0";
+      this.detalle_posterior = "";
+    },
+
     guardarInfo() {
       this.ArraySaveConsulta = [];
       let datosObservacion = {
