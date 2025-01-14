@@ -100,6 +100,20 @@
                     v-model="radiografia"
                   ></textarea>
                 </div>
+                <div class="container">
+                  <div class="mb-3">
+                    <label for="formFileMultiple" class="form-label"
+                      >Seleccione radiografia para adjuntar</label
+                    >
+                    <input
+                      class="form-control"
+                      type="file"
+                      id="formFileMultiple_radiografia"
+                      multiple
+                      @change="handleFileUpload"
+                    />
+                  </div>
+                </div>
               </div>
               <div
                 class="tab-pane fade"
@@ -118,6 +132,20 @@
                     rows="3"
                     v-model="ecografia"
                   ></textarea>
+                </div>
+                <div class="container">
+                  <div class="mb-3">
+                    <label for="formFileMultiple" class="form-label"
+                      >Seleccione Ecografia para adjuntar</label
+                    >
+                    <input
+                      class="form-control"
+                      type="file"
+                      id="formFileMultiple_ecografia"
+                      multiple
+                      @change="handleFileUpload"
+                    />
+                  </div>
                 </div>
               </div>
               <div
@@ -138,6 +166,20 @@
                     v-model="resonancia"
                   ></textarea>
                 </div>
+                <div class="container">
+                  <div class="mb-3">
+                    <label for="formFileMultiple" class="form-label"
+                      >Seleccione Resonancia para adjuntar</label
+                    >
+                    <input
+                      class="form-control"
+                      type="file"
+                      id="formFileMultiple_resonancia"
+                      multiple
+                      @change="handleFileUpload"
+                    />
+                  </div>
+                </div>
               </div>
               <div
                 class="tab-pane fade"
@@ -156,6 +198,20 @@
                     rows="3"
                     v-model="tag"
                   ></textarea>
+                </div>
+                <div class="container">
+                  <div class="mb-3">
+                    <label for="formFileMultiple" class="form-label"
+                      >Seleccione TAG para adjuntar</label
+                    >
+                    <input
+                      class="form-control"
+                      type="file"
+                      id="formFileMultiple_tag"
+                      multiple
+                      @change="handleFileUpload"
+                    />
+                  </div>
                 </div>
               </div>
               <div
@@ -176,24 +232,25 @@
                     v-model="otros"
                   ></textarea>
                 </div>
+                <div class="container">
+                  <div class="mb-3">
+                    <label for="formFileMultiple_otrostipos" class="form-label"
+                      >Seleccione Otros archivos para adjuntar</label
+                    >
+                    <input
+                      class="form-control"
+                      type="file"
+                      id="formFileMultiple"
+                      multiple
+                      @change="handleFileUpload"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           <div class="col-md-12 col-12">
-            <div class="container">
-              <div class="mb-3">
-                <label for="formFileMultiple" class="form-label"
-                  >Seleccione archivos para adjuntar</label
-                >
-                <input
-                  class="form-control"
-                  type="file"
-                  id="formFileMultiple"
-                  multiple
-                  @change="handleFileUpload"
-                />
-              </div>
-            </div>
+
           </div>
         </div>
         <button class="btn btn-warning mt-3" @click="guardarInfo">

@@ -120,6 +120,7 @@
                   class="form-control"
                   id="exampleFormControlTextarea1"
                   rows="3"
+                     placeholder="Descripcion fase de apoyo"
                   v-model="detalle_apoyo"
                 ></textarea>
                 <button
@@ -168,6 +169,7 @@
                   class="form-control"
                   id="exampleFormControlTextarea1"
                   rows="3"
+                  placeholder="Descripcion fase de balanceo"
                   v-model="detalle_balanceo"
                 ></textarea>
                 <button
@@ -268,6 +270,7 @@
                   class="form-control"
                   id="exampleFormControlTextarea1"
                   rows="3"
+                  placeholder="Descripcion adaptaciones"
                   v-model="detalle_adaptaciones"
                 ></textarea>
                 <button
@@ -401,9 +404,10 @@
                   <table class="table table-sm">
                     <thead>
                       <tr>
-                        <th scope="col">Fase</th>
-                        <th scope="col">Clasificacion</th>
-                        <th scope="col">Detalle</th>
+                        <th>Fase</th>
+                        <th>Clasificacion</th>
+                        <th>Detalle</th>
+                        <th>Opc</th>
                       </tr>
                     </thead>
                     <tbody class="table-group-divider">
@@ -411,6 +415,12 @@
                         <td>{{ item.tipo }}</td>
                         <td>{{ item.enfermedad }}</td>
                         <td>{{ item.detalleenf }}</td>
+                        <td> <button
+                          class="btn btn-sm btn-danger"
+                          @click="eliminaritem(index)"
+                        >
+                          <i class="bi bi-trash-fill"></i>
+                        </button></td>
                       </tr>
                     </tbody>
                   </table>
@@ -461,7 +471,28 @@ export default {
         detalleenf: detalle,
       };
       this.NewAntec = [...this.NewAntec, item];
+      this.limpiarcampos()
     },
+
+    eliminaritem(index) {
+      console.log(index);
+      this.NewAntec.splice(index, 1);
+    },
+    limpiarcampos() {
+      this.clase_apoyo = "0";
+      this.detalle_apoyo = "";
+
+      this.clase_balanceo = "0";
+      this.detalle_balanceo = "";
+
+      this.eval_select = "0";
+      this.detalle_eval = "0";
+
+      this.clase_adaptaciones = "0";
+      this.detalle_adaptaciones = "";
+
+    },
+
     guardarInfo() {
       this.ArraySaveConsulta = [];
       let datosObservacion = {

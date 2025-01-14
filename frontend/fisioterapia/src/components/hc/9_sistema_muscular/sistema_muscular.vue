@@ -15,10 +15,15 @@
     </h2>
     <div id="panelsStayOpen-collapse9" class="accordion-collapse collapse">
       <div class="accordion-body">
-        procedimiento actual diagnostico(funcional)fisioterapéutico pronóstico
-        de enfermedad objetivos del tratamiento (generales y específicos) plan
-        de atención y tratamientos observaciones
+        
+          <small>
+            procedimiento actual diagnostico(funcional)fisioterapéutico pronóstico
+            de enfermedad objetivos del tratamiento (generales y específicos) plan
+            de atención y tratamientos observaciones.
 
+          </small>
+        
+ 
         <!--  -->
 
         <nav>
@@ -144,6 +149,7 @@
                     <th>Evaluacion</th>
                     <th>Caracteristica</th>
                     <th>Detalle</th>
+                    <th>Opc</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -152,6 +158,12 @@
                     <td>{{ item.tipoEvaluacion }}</td>
                     <td>{{ item.caracteristica }}</td>
                     <td>{{ item.detalleenf }}</td>
+                    <td>  <button
+                          class="btn btn-sm btn-danger"
+                          @click="eliminaritem(index)"
+                        >
+                          <i class="bi bi-trash-fill"></i>
+                        </button></td>
                   </tr>
                 </tbody>
               </table>
@@ -256,6 +268,7 @@
                           <th>Clase</th>
                           <th>Musculo</th>
                           <th>Grado</th>
+                          <th>Opc</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -264,6 +277,12 @@
                           <td>{{ ite.clase }}</td>
                           <td>{{ ite.musculo }}</td>
                           <td>{{ ite.grado }}</td>
+                          <td><button
+                            class="btn btn-sm btn-danger"
+                            @click="eliminaritemeval(index)"
+                          >
+                            <i class="bi bi-trash-fill"></i>
+                          </button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -2113,6 +2132,19 @@ export default {
       };
       this.NewAntec = [...this.NewAntec, item];
       console.log(this.NewAntec);
+      this.limpiarcampos();
+    },
+
+    eliminaritem(index) {
+      console.log(index);
+      this.NewAntec.splice(index, 1);
+    },
+    limpiarcampos() {
+      this.tipoevaluacionM = "0";
+      this.caracteristicaM = "0";
+      this.detalleM = "";
+
+
     },
 
     //Addevalcuacion('eval_musc_general', musculo, eval_grado)
@@ -2126,6 +2158,21 @@ export default {
       };
       this.NewAntec2 = [...this.NewAntec2, item];
       console.log(this.NewAntec2);
+      this.limpiarcamposeval();
+    },
+
+
+    
+    eliminaritemeval(index) {
+      console.log(index);
+      this.NewAntec2.splice(index, 1);
+    },
+    limpiarcamposeval() {
+      this.emuscular = "0";
+      this.musculo = "0";
+      this.eval_grado = "0";
+
+
     },
 
     guardarInfo() {

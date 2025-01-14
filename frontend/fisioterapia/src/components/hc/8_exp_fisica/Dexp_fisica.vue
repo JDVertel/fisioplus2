@@ -127,7 +127,7 @@
                     class="btn btn-primary btn-sm"
                     v-if="tipoclase !='0' && tipomusculo !='0' && detalle !=''"
                     @click="
-                      AddAntec('sistema oseo', tipoclase, tipomusculo, detalle)
+                      AddAntec('Oseo', tipoclase, tipomusculo, detalle)
                     "
                   >
                     agregar
@@ -144,6 +144,7 @@
                         <th>Clase</th>
                         <th>Musculo</th>
                         <th>Detalle</th>
+                        <th>Opc</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -152,6 +153,14 @@
                         <td>{{ item.diag_clase }}</td>
                         <td>{{ item.diag_musculo }}</td>
                         <td>{{ item.diag_detalle }}</td>
+                        <td>
+                          <button
+                            class="btn btn-sm btn-danger"
+                            @click="eliminaritem(index)"
+                          >
+                            <i class="bi bi-trash-fill"></i>
+                          </button>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -1141,7 +1150,22 @@ export default {
       };
       this.NewAntec = [...this.NewAntec, item];
       console.log(this.NewAntec);
+      this.limpiarcampos();
     },
+
+    
+    eliminaritem(index) {
+      console.log(index);
+      this.NewAntec.splice(index, 1);
+    },
+    limpiarcampos() {
+      this.tipoclase = "0";
+      this.detalle= "";
+      this.tipomusculo = "0";
+
+     
+    },
+
     guardarInfo() {
       this.ArraySaveConsulta = [];
       const datos = {
