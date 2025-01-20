@@ -87,32 +87,139 @@ export const Antecedentes = [
   },
 ];
 
+export const evalmuscular = [
+  {
+    organo: "cuello",
+    movimiento: [
+      "Extensión de la cabeza",
+      "Extensión cervical",
+      "Extensión combinada (cabeza y cervical)",
+      "Flexión de la cabeza",
+      "Flexión cervical",
+      "Flexion combinada (cabeza y cervical)",
+      "Flexion y rotacion combinada (esternocleidomastoideo)",
+      "Rotacion cervical",
+    ],
+  },
 
+  {
+    organo: "tronco",
+    movimiento: [
+      "Extensión lumbar",
+      "Extensión toráxica",
+      "Extensión pélvica",
+      "Flexión",
+      "Rotacion",
+      "Fuerza del diafragma",
+      "Inspiracion maxima menos espiracion completa (prueba intercostal indirecta)",
+      "Tos espiración forzada indirecta",
+    ],
+  },
 
+  {
+    organo: "hombro",
+    movimiento: [
+      "Abdución y rotacion superior escapular",
+      "Elevacion escapular",
+      "Aduccion escapular",
+      "Aduccion y rotacion inferior escapulares",
+      "Flexión de hombro",
+      "Extencion de hombro",
+      "Elevacion parcial de hombro",
+      "Abducción de hombro",
+      "Abduccion horizontal de hombro",
+      "Aduccion horizontal de hombro",
+      "Rotacion externa de hombro",
+      "Rotacion interna de hombro",
+    ],
+  },
 
+  {
+    organo: "codo",
+    movimiento: ["Flexión", "Extensión", "Pronación", "Supinación"],
+  },
 
+  {
+    organo: "muñeca",
+    movimiento: [
+      "Flexión",
+      "Extención",
+      "Desviacion radial",
+      "Desviación cubital",
+    ],
+  },
 
+  {
+    organo: "dedos de la mano",
+    movimiento: [
+      "Flexión metacarpofalángica de dedo",
+      "Flexión interfalángica proximal de dedo",
+      "Flexión interfalángica distal de dedo",
+      "Extensión metacarpofalángica de dedo",
+      "Abducción de dedo",
+      "aducción de dedo",
+      "Flexión metacarpofalángica de pulgar",
+      "Flexión interfalángica de pulgar",
+      "Extensión interfalángica de pulgar",
+      "Extensión interfalángica de pulgar",
+      "Abducción carpometacarpiana del pulgar",
+      "Aducción carpometarpiana del pulgar",
+      "Aducción de pulgar",
+      "Oposición de pulgar",
+      "Oposición de meñique",
+    ],
+  },
 
+  {
+    organo: "cadera",
+    movimiento: [
+      "Flexión",
+      "adbuccion y rotacion externa de cadera con flexión de Rodilla (sartorio)",
+      "Extensión de cadera",
+      "Extención de cadera (gluteo mayor)",
+      "Abducción de cadera",
+      "Abducción y flexión de cadera",
+      "Aducción de cadera",
+      "Rotación externa de cadera",
+      "Rotación interna de cadera",
+    ],
+  },
 
+  {
+    organo: "rodilla",
+    movimiento: [
+      "Flexión de la rodilla",
+      "Flexion de rodilla con rotacion externa de la pierna",
+      "Flexón de rodilla con rotacion interna de la pierna",
+      "Extensión de la rodilla",
+    ],
+  },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  {
+    organo: "tobillo",
+    movimiento: [
+      "Flexión plantar de tobillo",
+      "Flexión plantar de tobillo (Sóleo)",
+      "Flexión dorsal e inversión de pie",
+      "Inversion de pie",
+      "Eversión con flexión plantar",
+      "Eversión con flexión dorsal",
+    ],
+  },
+  {
+    organo: "dedos de los pies",
+    movimiento: [
+      "Flexión metatarsofalángica de dedo gordo",
+      "Flexion metatarsofalángica de los dedos",
+      "Flexión interfalángica de dedo gordo",
+      "Flexión interfalángica de los dedos",
+      "Extension metatarsofalángica de dedo gordo",
+      "Extención metatarsofalángica de los dedos",
+      "Extensión interfalángica de dedo gordo",
+      "Extensión interfalángica de los dedos",
+    ],
+  },
+];
 
 export const observacion_marcha = [
   {

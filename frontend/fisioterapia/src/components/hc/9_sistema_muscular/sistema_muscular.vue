@@ -373,7 +373,7 @@
             tabindex="0"
           >
             
-              <div class="accordion" id="accordionExpMuscular">
+             <!--  <div class="accordion" id="accordionExpMuscular">
                 <div class="accordion-item">
                   <h2 class="accordion-header">
                     <button
@@ -2074,11 +2074,107 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
             
+<br>
+              <div class="row">
+                <div class="col-6 col-md-3">
+                  <div class="mb-1">
+                    <select
+                      class="form-select form-select-sm textarea"
+                      id="emusc_organo"
+                      aria-label="Small select example"
+                      v-model="emusc_organo"
+                      @change="
+                        evalmuscularD(emusc_organo, data_emuscular, 'musculo')
+                      "
+                    >
+                      <option value="0">--Organo--</option>
+                      <option
+                        v-for="item in data_evalmuscular"
+                        :key="item.id"
+                        :value="item.organo"
+                      >
+                        {{ item.organo }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-6 col-md-3">
+                  <div class="mb-1">
+                    <select
+                      class="form-select form-select-sm textarea"
+                      id="emuscular_musc"
+                      aria-label="Small select example"
+                      v-model="movimiento"
+                    >
+                      <option value="0">--Movimiento--</option>
+                      <option
+                        v-for="ite in evalmuscD"
+                        :key="ite.id"
+                        :value="ite"
+                      >
+                        {{ ite }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-6 col-md-2">
+                  <input
+                  type="number"
+                  placeholder="Izquierdo"
+                  class="form-control"
+                />
+                </div>
+                <div class="col-6 col-md-2">
+                  <input
+                  type="number"
+                  placeholder="Derecho"
+                  class="form-control"
+                />
+                </div>
+                <div class="col-6 col-md-2">
+                  <button 
+                  type="button"
+                    class="btn btn-primary btn-sm"
+                    v-if="emuscular !='0' && musculo !='0' && eval_grado !='0'"
+                    @click="
+                      Addevalcuacion(
+                        'eval_musc_general',
+                        musculo,
+                        eval_grado,
+                        emuscular
+                      )
+                    "
+                  >
+                    + Agregar
+                  </button>
+                </div>
+              </div>
+              <br>
+              <div class="card">
+                <div class="card-header">Registro</div>
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th>Musculo</th>
+                    <th>Movimiento</th>
+                    <th>Izquierda</th>
+                    <th>Derecha</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Jacob</td>
+                    <td>Jacob</td>
+                    <td>Jacob</td>
+                    <td>Jacob</td>
+                  </tr>
+                </tbody>
+              </table>
           </div>
         </div>
-
+      </div>
         <!-- Botón Guardar -->
         <button class="btn btn-warning mt-3" @click="guardarInfo">
           + Guardar
@@ -2092,26 +2188,32 @@
 import {
   evaluacion_muscular,
   sistema_muscular,
+  evalmuscular
 } from "./../../../firebase/bd.js";
 import {
   BuscarExpMuscularDetalleNombre,
   BuscarExpFisicaDetalleNombre,
+  BuscarEvalMuscularDetalleNombre,
 } from "./../../backend/rutinas.js";
 
 export default {
   data: () => ({
     data_smuscular: sistema_muscular,
     data_emuscular: evaluacion_muscular,
+    data_evalmuscular: evalmuscular,
     emuscular: "0",
     tipoevaluacionM: "0",
     caracteristicaM: "0",
     musculo: "0",
+    movimiento:"0",
     consultamusc: [],
-    evalmusc: [],
+    emusc_organo: [],
+    evalmusc:[],
     eval_grado: "0",
     detalleM: "",
     NewAntec: [],
     NewAntec2: [],
+    NewAntec3: [],
     ArraySaveConsulta: [],
   }),
   methods: {
@@ -2121,6 +2223,10 @@ export default {
 
     evalmuscular(x, y, z) {
       this.evalmusc = BuscarExpMuscularDetalleNombre(x, y, z);
+    },
+
+    evalmuscularD(x, y, z) {
+      this.evalmuscD = BuscarEvalMuscularDetalleNombre(x, y, z);
     },
 
     AddAntec(tipo, enf, detalle) {
