@@ -89,6 +89,7 @@ export const Antecedentes = [
 
 export const evalmuscular = [
   {
+    id: "1",
     organo: "cuello",
     movimiento: [
       "Extensión de la cabeza",
@@ -103,6 +104,7 @@ export const evalmuscular = [
   },
 
   {
+    id: "2",
     organo: "tronco",
     movimiento: [
       "Extensión lumbar",
@@ -117,6 +119,7 @@ export const evalmuscular = [
   },
 
   {
+    id: "3",
     organo: "hombro",
     movimiento: [
       "Abdución y rotacion superior escapular",
@@ -135,11 +138,13 @@ export const evalmuscular = [
   },
 
   {
+    id: "4",
     organo: "codo",
     movimiento: ["Flexión", "Extensión", "Pronación", "Supinación"],
   },
 
   {
+    id: "5",
     organo: "muñeca",
     movimiento: [
       "Flexión",
@@ -150,6 +155,7 @@ export const evalmuscular = [
   },
 
   {
+    id: "6",
     organo: "dedos de la mano",
     movimiento: [
       "Flexión metacarpofalángica de dedo",
@@ -171,6 +177,7 @@ export const evalmuscular = [
   },
 
   {
+    id: "7",
     organo: "cadera",
     movimiento: [
       "Flexión",
@@ -186,6 +193,7 @@ export const evalmuscular = [
   },
 
   {
+    id: "8",
     organo: "rodilla",
     movimiento: [
       "Flexión de la rodilla",
@@ -196,6 +204,7 @@ export const evalmuscular = [
   },
 
   {
+    id: "9",
     organo: "tobillo",
     movimiento: [
       "Flexión plantar de tobillo",
@@ -207,6 +216,7 @@ export const evalmuscular = [
     ],
   },
   {
+    id: "10",
     organo: "dedos de los pies",
     movimiento: [
       "Flexión metatarsofalángica de dedo gordo",

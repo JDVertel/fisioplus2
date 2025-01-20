@@ -15,15 +15,12 @@
     </h2>
     <div id="panelsStayOpen-collapse9" class="accordion-collapse collapse">
       <div class="accordion-body">
-        
-          <small>
-            procedimiento actual diagnostico(funcional)fisioterapéutico pronóstico
-            de enfermedad objetivos del tratamiento (generales y específicos) plan
-            de atención y tratamientos observaciones.
+        <small>
+          procedimiento actual diagnostico(funcional)fisioterapéutico pronóstico
+          de enfermedad objetivos del tratamiento (generales y específicos) plan
+          de atención y tratamientos observaciones.
+        </small>
 
-          </small>
-        
- 
         <!--  -->
 
         <nav>
@@ -134,12 +131,16 @@
             <button
               type="button"
               class="btn btn-primary btn-sm"
-              v-if="tipoevaluacionM !='0' && caracteristicaM !='0' && detalleM !=''"
-              @click="AddAntec('sistema_muscular', seval, caract, detalle)"
+              v-if="
+                tipoevaluacionM != '0' &&
+                caracteristicaM != '0' &&
+                detalleM != ''
+              "
+              @click="AddAntec()"
             >
-             + Agregar
+              + Agregar
             </button>
-          
+
             <div class="card">
               <div class="card-header">Registro</div>
               <table class="table table-sm">
@@ -158,12 +159,14 @@
                     <td>{{ item.tipoEvaluacion }}</td>
                     <td>{{ item.caracteristica }}</td>
                     <td>{{ item.detalleenf }}</td>
-                    <td>  <button
-                          class="btn btn-sm btn-danger"
-                          @click="eliminaritem(index)"
-                        >
-                          <i class="bi bi-trash-fill"></i>
-                        </button></td>
+                    <td>
+                      <button
+                        class="btn btn-sm btn-danger"
+                        @click="eliminaritem(index)"
+                      >
+                        <i class="bi bi-trash-fill"></i>
+                      </button>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -177,85 +180,72 @@
             aria-labelledby="nav-sist-muscular-general"
             tabindex="0"
           >
-          
-              <br />
-              <div class="row">
-                <div class="col-12 col-md-5">
-                  <div class="mb-1">
-                    <select
-                      class="form-select form-select-sm textarea"
-                      id="emuscular"
-                      aria-label="Small select example"
-                      v-model="emuscular"
-                      @change="
-                        evalmuscular(emuscular, data_emuscular, 'musculo')
-                      "
+            <br />
+            <div class="row">
+              <div class="col-12 col-md-4">
+                <div class="mb-1">
+                  <select
+                    class="form-select form-select-sm textarea"
+                    id="emuscular"
+                    aria-label="Small select example"
+                    v-model="emuscular"
+                    @change="evalmuscular(emuscular, data_emuscular, 'musculo')"
+                  >
+                    <option value="0">--Seleccione clase--</option>
+                    <option
+                      v-for="item in data_emuscular"
+                      :key="item.id"
+                      :value="item.clase"
                     >
-                      <option value="0">--Seleccione clase--</option>
-                      <option
-                        v-for="item in data_emuscular"
-                        :key="item.id"
-                        :value="item.clase"
-                      >
-                        {{ item.clase }}
-                      </option>
-                    </select>
-                  </div>
+                      {{ item.clase }}
+                    </option>
+                  </select>
                 </div>
-                <div class="col-12 col-md-5">
-                  <div class="mb-1">
-                    <select
-                      class="form-select form-select-sm textarea"
-                      id="emuscular_musc"
-                      aria-label="Small select example"
-                      v-model="musculo"
-                    >
-                      <option value="0">--Seleccione musculo--</option>
-                      <option
-                        v-for="ite in evalmusc"
-                        :key="ite.id"
-                        :value="ite"
-                      >
-                        {{ ite }}
-                      </option>
-                    </select>
-                  </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="mb-1">
+                  <select
+                    class="form-select form-select-sm textarea"
+                    id="emuscular_musc"
+                    aria-label="Small select example"
+                    v-model="musculo"
+                  >
+                    <option value="0">--Seleccione musculo--</option>
+                    <option v-for="ite in evalmusc" :key="ite.id" :value="ite">
+                      {{ ite }}
+                    </option>
+                  </select>
                 </div>
+              </div>
 
-                <div class="col-12 col-md-2">
-                  <div class="mb-1">
-                    <select
-                      v-model="eval_grado"
-                      class="form-select form-select-sm textarea"
-                      id="Ggmuscular"
-                      aria-label="Small select example"
-                    >
-                      <option value="0">--Grado--</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                    </select>
-                  </div>
-                  <button 
-              type="button"
-                class="btn btn-primary btn-sm"
-                v-if="emuscular !='0' && musculo !='0' && eval_grado !='0'"
-                @click="
-                  Addevalcuacion(
-                    'eval_musc_general',
-                    musculo,
-                    eval_grado,
-                    emuscular
-                  )
-                "
-              >
-                + Agregar
-              </button>
+              <div class="col-6 col-md-2">
+                <div class="mb-1">
+                  <select
+                    v-model="eval_grado"
+                    class="form-select form-select-sm textarea"
+                    id="Ggmuscular"
+                    aria-label="Small select example"
+                  >
+                    <option value="0">--Grado--</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
                 </div>
-              
-       
+              </div>
+              <div class="col-6 col-md-2">
+                <button
+                  type="button"
+                  class="btn btn-primary btn-sm"
+                  v-if="emuscular != '0' && musculo != '0' && eval_grado != '0'"
+                  @click="Addevalcuacion()"
+                >
+                  + Agregar
+                </button>
+              </div>
+
               <div class="row">
                 <div class="col-12 col-md-6">
                   <div class="card">
@@ -277,12 +267,14 @@
                           <td>{{ ite.clase }}</td>
                           <td>{{ ite.musculo }}</td>
                           <td>{{ ite.grado }}</td>
-                          <td><button
-                            class="btn btn-sm btn-danger"
-                            @click="eliminaritemeval(index)"
-                          >
-                            <i class="bi bi-trash-fill"></i>
-                          </button></td>
+                          <td>
+                            <button
+                              class="btn btn-sm btn-danger"
+                              @click="eliminaritemeval(index)"
+                            >
+                              <i class="bi bi-trash-fill"></i>
+                            </button>
+                          </td>
                         </tr>
                       </tbody>
                     </table>
@@ -372,1809 +364,116 @@
             aria-labelledby="nav-sist-muscular-detalle"
             tabindex="0"
           >
-            
-             <!--  <div class="accordion" id="accordionExpMuscular">
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button
-                      class="accordion-button"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapseCuello"
-                      aria-expanded="true"
-                      aria-controls="collapsCuello"
-                    >
-                      Cuello
-                    </button>
-                  </h2>
-                  <div
-                    id="collapseCuello"
-                    class="accordion-collapse collapse"
-                    data-bs-parent="#accordionExpMuscular"
+            <br />
+            <div class="row">
+              <div class="col-6 col-md-3">
+                <div class="mb-1">
+                  <select
+                    class="form-select form-select-sm textarea"
+                    id="emusc_organo"
+                    aria-label="Small select example"
+                    v-model="emusc_organo"
+                    @change="
+                      evalmuscularD(
+                        emusc_organo,
+                        data_evalmuscular,
+                        'movimiento'
+                      )
+                    "
                   >
-                    <div class="accordion-body">
-                      <div class="card">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th>movimiento</th>
-                              <th>Izquierda</th>
-                              <th>Derecha</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>Extensión de la cabeza</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Extensión cervical</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Extensión combinada (cabeza y cervical)</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Flexión de la cabeza</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Flexión cervical</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Flexion combinada (cabeza y cervical)</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Flexion y rotacion combinada
-                                (esternocleidomastoideo)
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Rotacion cervical</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button
-                      class="accordion-button collapsed"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapseTronco"
-                      aria-expanded="false"
-                      aria-controls="collapseTronco"
+                    <option value="0">--Organo--</option>
+                    <option
+                      v-for="item in data_evalmuscular"
+                      :key="item.id"
+                      :value="item.organo"
                     >
-                      Tronco
-                    </button>
-                  </h2>
-                  <div
-                    id="collapseTronco"
-                    class="accordion-collapse collapse"
-                    data-bs-parent="#accordionExpMuscular"
+                      {{ item.organo }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="mb-1">
+                  <select
+                    class="form-select form-select-sm textarea"
+                    id="emuscular_musc"
+                    aria-label="Small select example"
+                    v-model="movimiento"
                   >
-                    <div class="accordion-body">
-                      <div class="card">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th>movimiento</th>
-                              <th>Izquierda</th>
-                              <th>Derecha</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>Extensión lumbar</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Extensión toráxica</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Extensión pélvica</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Flexión</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Rotacion</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Fuerza del diafragma</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Inspiracion maxima menos espiracion completa
-                                (prueba intercostal indirecta)
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Tos espiración forzada indirecta</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
+                    <option value="0">--Movimiento--</option>
+                    <option v-for="ite in evalmuscD" :key="ite.id" :value="ite">
+                      {{ ite }}
+                    </option>
+                  </select>
                 </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button
-                      class="accordion-button collapsed"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapseHombro"
-                      aria-expanded="false"
-                      aria-controls="collapseHombro"
-                    >
-                      Hombro
-                    </button>
-                  </h2>
-                  <div
-                    id="collapseHombro"
-                    class="accordion-collapse collapse"
-                    data-bs-parent="#accordionExpMuscular"
-                  >
-                    <div class="accordion-body">
-                      <div class="card">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th>movimiento</th>
-                              <th>Izquierda</th>
-                              <th>Derecha</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>Abdución y rotacion superior escapular</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Elevacion escapular</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Aduccion escapular</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Aduccion y rotacion inferior escapulares</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Flexión de hombro</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Extencion de hombro</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Elevacion parcial de hombro</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Abducción de hombro</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Abduccion horizontal de hombro</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Aduccion horizontal de hombro</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Rotacion externa de hombro</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Rotacion interna de hombro</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button
-                      class="accordion-button collapsed"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapseCodo"
-                      aria-expanded="false"
-                      aria-controls="collapseCodo"
-                    >
-                      Codo
-                    </button>
-                  </h2>
-                  <div
-                    id="collapseCodo"
-                    class="accordion-collapse collapse"
-                    data-bs-parent="#accordionExpMuscular"
-                  >
-                    <div class="accordion-body">
-                      <div class="card">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th>movimiento</th>
-                              <th>Izquierda</th>
-                              <th>Derecha</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>Flexión</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Extensión</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Pronación</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Supinación</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button
-                      class="accordion-button collapsed"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapseMuneca"
-                      aria-expanded="false"
-                      aria-controls="collapseMuneca"
-                    >
-                      Muñeca
-                    </button>
-                  </h2>
-                  <div
-                    id="collapseMuneca"
-                    class="accordion-collapse collapse"
-                    data-bs-parent="#accordionExpMuscular"
-                  >
-                    <div class="accordion-body">
-                      <div class="card">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th>movimiento</th>
-                              <th>Izquierda</th>
-                              <th>Derecha</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>Flexión</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Extención</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Desviacion radial</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Desviación cubital</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button
-                      class="accordion-button collapsed"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapseDedos"
-                      aria-expanded="false"
-                      aria-controls="collapseDedos"
-                    >
-                      Dedos de la mano
-                    </button>
-                  </h2>
-                  <div
-                    id="collapseDedos"
-                    class="accordion-collapse collapse"
-                    data-bs-parent="#accordionExpMuscular"
-                  >
-                    <div class="accordion-body">
-                      <div class="card">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th>movimiento</th>
-                              <th>Izquierda</th>
-                              <th>Derecha</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>Flexión metacarpofalángica de dedo</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Flexión interfalángica proximal de dedo</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Flexión interfalángica distal de dedo</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Extensión metacarpofalángica de dedo</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Abducción de dedo</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>aducción de dedo</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Flexión metacarpofalángica de pulgar</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Flexión interfalángica de pulgar</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-
-                            <tr>
-                              <td>Extensión interfalángica de pulgar</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Extensión interfalángica de pulgar</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Abducción carpometacarpiana del pulgar</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Aducción carpometarpiana del pulgar</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Aducción de pulgar</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Oposición de pulgar</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Oposición de meñique</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button
-                      class="accordion-button collapsed"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapseCadera"
-                      aria-expanded="false"
-                      aria-controls="collapseCadera"
-                    >
-                      Cadera
-                    </button>
-                  </h2>
-                  <div
-                    id="collapseCadera"
-                    class="accordion-collapse collapse"
-                    data-bs-parent="#accordionExpMuscular"
-                  >
-                    <div class="accordion-body">
-                      <div class="card">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th>movimiento</th>
-                              <th>Izquierda</th>
-                              <th>Derecha</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>Flexión</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Flexión, adbuccion y rotacion externa de cadera
-                                con flexión de Rodilla (sartorio)
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Extensión de cadera</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Extención de cadera (gluteo mayor)</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Abducción de cadera</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Abducción y flexión de cadera</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Aducción de cadera</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Rotación externa de cadera</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Rotación interna de cadera</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button
-                      class="accordion-button collapsed"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapseRodilla"
-                      aria-expanded="false"
-                      aria-controls="collapseRodilla"
-                    >
-                      Rodilla
-                    </button>
-                  </h2>
-                  <div
-                    id="collapseRodilla"
-                    class="accordion-collapse collapse"
-                    data-bs-parent="#accordionExpMuscular"
-                  >
-                    <div class="accordion-body">
-                      <div class="card">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th>movimiento</th>
-                              <th>Izquierda</th>
-                              <th>Derecha</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>Flexión de la rodilla</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Flexion de rodilla con rotacion externa de la
-                                pierna
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Flexón de rodilla con rotacion interna de la
-                                pierna
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Extensión de la rodilla</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button
-                      class="accordion-button collapsed"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapseTobillo"
-                      aria-expanded="false"
-                      aria-controls="collapseTobillo"
-                    >
-                      Tobillo
-                    </button>
-                  </h2>
-                  <div
-                    id="collapseTobillo"
-                    class="accordion-collapse collapse"
-                    data-bs-parent="#accordionExpMuscular"
-                  >
-                    <div class="accordion-body">
-                      <div class="card">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th>movimiento</th>
-                              <th>Izquierda</th>
-                              <th>Derecha</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>Flexión plantar de tobillo</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Flexión plantar de tobillo (Sóleo)</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Flexión dorsal e inversión de pie</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Inversion de pie</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Eversión con flexión plantar</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Eversión con flexión dorsal</td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  placeholder="Grado"
-                                  class="form-control"
-                                />
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="accordion-item">
-                    <h2 class="accordion-header">
-                      <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapsededospies"
-                        aria-expanded="false"
-                        aria-controls="collapsededospies"
-                      >
-                        Dedos de los Pies
-                      </button>
-                    </h2>
-                    <div
-                      id="collapsededospies"
-                      class="accordion-collapse collapse"
-                      data-bs-parent="#accordionExpMuscular"
-                    >
-                      <div class="accordion-body">
-                        <div class="card">
-                          <table class="table">
-                            <thead>
-                              <tr>
-                                <th>movimiento</th>
-                                <th>Izquierda</th>
-                                <th>Derecha</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>
-                                  Flexión metatarsofalángica de dedo gordo
-                                </td>
-                                <td>
-                                  <input
-                                    type="number"
-                                    placeholder="Grado"
-                                    class="form-control"
-                                  />
-                                </td>
-                                <td>
-                                  <input
-                                    type="number"
-                                    placeholder="Grado"
-                                    class="form-control"
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>Flexion metatarsofalángica de los dedos</td>
-                                <td>
-                                  <input
-                                    type="number"
-                                    placeholder="Grado"
-                                    class="form-control"
-                                  />
-                                </td>
-                                <td>
-                                  <input
-                                    type="number"
-                                    placeholder="Grado"
-                                    class="form-control"
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>Flexión interfalángica de dedo gordo</td>
-                                <td>
-                                  <input
-                                    type="number"
-                                    placeholder="Grado"
-                                    class="form-control"
-                                  />
-                                </td>
-                                <td>
-                                  <input
-                                    type="number"
-                                    placeholder="Grado"
-                                    class="form-control"
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>Flexión interfalángica de los dedos</td>
-                                <td>
-                                  <input
-                                    type="number"
-                                    placeholder="Grado"
-                                    class="form-control"
-                                  />
-                                </td>
-                                <td>
-                                  <input
-                                    type="number"
-                                    placeholder="Grado"
-                                    class="form-control"
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  Extension metatarsofalángica de dedo gordo
-                                </td>
-                                <td>
-                                  <input
-                                    type="number"
-                                    placeholder="Grado"
-                                    class="form-control"
-                                  />
-                                </td>
-                                <td>
-                                  <input
-                                    type="number"
-                                    placeholder="Grado"
-                                    class="form-control"
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  Extención metatarsofalángica de los dedos
-                                </td>
-                                <td>
-                                  <input
-                                    type="number"
-                                    placeholder="Grado"
-                                    class="form-control"
-                                  />
-                                </td>
-                                <td>
-                                  <input
-                                    type="number"
-                                    placeholder="Grado"
-                                    class="form-control"
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>Extensión interfalángica de dedo gordo</td>
-                                <td>
-                                  <input
-                                    type="number"
-                                    placeholder="Grado"
-                                    class="form-control"
-                                  />
-                                </td>
-                                <td>
-                                  <input
-                                    type="number"
-                                    placeholder="Grado"
-                                    class="form-control"
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>Extensión interfalángica de los dedos</td>
-                                <td>
-                                  <input
-                                    type="number"
-                                    placeholder="Grado"
-                                    class="form-control"
-                                  />
-                                </td>
-                                <td>
-                                  <input
-                                    type="number"
-                                    placeholder="Grado"
-                                    class="form-control"
-                                  />
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-            
-<br>
-              <div class="row">
-                <div class="col-6 col-md-3">
-                  <div class="mb-1">
-                    <select
-                      class="form-select form-select-sm textarea"
-                      id="emusc_organo"
-                      aria-label="Small select example"
-                      v-model="emusc_organo"
-                      @change="
-                        evalmuscularD(emusc_organo, data_emuscular, 'musculo')
-                      "
-                    >
-                      <option value="0">--Organo--</option>
-                      <option
-                        v-for="item in data_evalmuscular"
-                        :key="item.id"
-                        :value="item.organo"
-                      >
-                        {{ item.organo }}
-                      </option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-6 col-md-3">
-                  <div class="mb-1">
-                    <select
-                      class="form-select form-select-sm textarea"
-                      id="emuscular_musc"
-                      aria-label="Small select example"
-                      v-model="movimiento"
-                    >
-                      <option value="0">--Movimiento--</option>
-                      <option
-                        v-for="ite in evalmuscD"
-                        :key="ite.id"
-                        :value="ite"
-                      >
-                        {{ ite }}
-                      </option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-6 col-md-2">
-                  <input
+              </div>
+              <div class="col-6 col-md-2">
+                <input
+                  v-model="eIzquierdo"
                   type="number"
                   placeholder="Izquierdo"
                   class="form-control"
                 />
-                </div>
-                <div class="col-6 col-md-2">
-                  <input
+              </div>
+              <div class="col-6 col-md-2">
+                <input
+                  v-model="eDerecho"
                   type="number"
                   placeholder="Derecho"
                   class="form-control"
                 />
-                </div>
-                <div class="col-6 col-md-2">
-                  <button 
-                  type="button"
-                    class="btn btn-primary btn-sm"
-                    v-if="emuscular !='0' && musculo !='0' && eval_grado !='0'"
-                    @click="
-                      Addevalcuacion(
-                        'eval_musc_general',
-                        musculo,
-                        eval_grado,
-                        emuscular
-                      )
-                    "
-                  >
-                    + Agregar
-                  </button>
-                </div>
               </div>
-              <br>
-              <div class="card">
-                <div class="card-header">Registro</div>
+              <div class="col-6 col-md-2">
+                <button
+                  type="button"
+                  class="btn btn-primary btn-sm"
+                  v-if="
+                    emusc_organo != '0' &&
+                    movimiento != '0' &&
+                    eIzquierdo != '0' &&
+                    eDerecho != '0'
+                  "
+                  @click="AddevalcuacionDetallada()"
+                >
+                  + Agregar
+                </button>
+              </div>
+            </div>
+            <br />
+            <div class="card">
+              <div class="card-header">Registro</div>
               <table class="table table-sm">
                 <thead>
                   <tr>
+                    <th>Sistema</th>
                     <th>Musculo</th>
                     <th>Movimiento</th>
                     <th>Izquierda</th>
                     <th>Derecha</th>
+                    <th>Opc</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Jacob</td>
-                    <td>Jacob</td>
-                    <td>Jacob</td>
-                    <td>Jacob</td>
+                  <tr v-for="(itee, index) in NewAntec3" :key="index">
+                    <td>{{ itee.sistema }}</td>
+                    <td>{{ itee.organo }}</td>
+                    <td>{{ itee.movimiento }}</td>
+                    <td>{{ itee.derecho }}</td>
+                    <td>{{ itee.izquierdo }}</td>
+                    <td>
+                      <button
+                        class="btn btn-sm btn-danger"
+                        @click="eliminaritemevaldeta(index)"
+                      >
+                        <i class="bi bi-trash-fill"></i>
+                      </button>
+                    </td>
                   </tr>
                 </tbody>
               </table>
+            </div>
           </div>
         </div>
-      </div>
         <!-- Botón Guardar -->
         <button class="btn btn-warning mt-3" @click="guardarInfo">
           + Guardar
@@ -2188,7 +487,7 @@
 import {
   evaluacion_muscular,
   sistema_muscular,
-  evalmuscular
+  evalmuscular,
 } from "./../../../firebase/bd.js";
 import {
   BuscarExpMuscularDetalleNombre,
@@ -2202,13 +501,16 @@ export default {
     data_emuscular: evaluacion_muscular,
     data_evalmuscular: evalmuscular,
     emuscular: "0",
+    emusc_organo: "0",
     tipoevaluacionM: "0",
     caracteristicaM: "0",
     musculo: "0",
-    movimiento:"0",
+    movimiento: "0",
+    eDerecho: "0",
+    eIzquierdo: "0",
     consultamusc: [],
-    emusc_organo: [],
-    evalmusc:[],
+    evalmusc: [],
+    evalmuscD: [],
     eval_grado: "0",
     detalleM: "",
     NewAntec: [],
@@ -2228,8 +530,8 @@ export default {
     evalmuscularD(x, y, z) {
       this.evalmuscD = BuscarEvalMuscularDetalleNombre(x, y, z);
     },
-
-    AddAntec(tipo, enf, detalle) {
+    /* -------------- */
+    AddAntec() {
       let item = {
         sistema: "sistema muscular",
         tipoEvaluacion: this.tipoevaluacionM,
@@ -2249,15 +551,11 @@ export default {
       this.tipoevaluacionM = "0";
       this.caracteristicaM = "0";
       this.detalleM = "";
-
-
     },
-
-    //Addevalcuacion('eval_musc_general', musculo, eval_grado)
-
-    Addevalcuacion(tipo, enf, detalle) {
+    /* ------------------------------ */
+    Addevalcuacion() {
       let item = {
-        sistema: "Evaluacion Muscular G",
+        sistema: "Evaluacion Muscular General",
         clase: this.emuscular,
         musculo: this.musculo,
         grado: this.eval_grado,
@@ -2267,8 +565,6 @@ export default {
       this.limpiarcamposeval();
     },
 
-
-    
     eliminaritemeval(index) {
       console.log(index);
       this.NewAntec2.splice(index, 1);
@@ -2277,10 +573,33 @@ export default {
       this.emuscular = "0";
       this.musculo = "0";
       this.eval_grado = "0";
-
-
     },
 
+    /* -------------------- */
+
+    AddevalcuacionDetallada() {
+      let item = {
+        sistema: "Evaluacion Muscular Detallada",
+        organo: this.emusc_organo,
+        movimiento: this.movimiento,
+        derecho: this.eDerecho,
+        izquierdo: this.eIzquierdo,
+      };
+      this.NewAntec3 = [...this.NewAntec3, item];
+      console.log(this.NewAntec3);
+      this.limpiarcamposeval3();
+    },
+
+    eliminaritemevaldeta(index) {
+      console.log(index);
+      this.NewAntec3.splice(index, 1);
+    },
+    limpiarcamposeval3() {
+      this.movimiento = "0";
+      this.eIzquierdo = "0";
+      this.eDerecho = "0";
+    },
+    /*----------------------------  */
     guardarInfo() {
       this.ArraySaveConsulta = [];
       const datos = {

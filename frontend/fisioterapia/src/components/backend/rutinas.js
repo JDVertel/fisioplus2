@@ -70,7 +70,6 @@ export function BuscarExpFisicaDetalleNombre(name, array, resultado) {
   return response;
 }
 
-
 export function BuscarExpMuscularDetalleNombre(name, array, resultado) {
   console.log("ejecutando lista real!!");
   let response = null;
@@ -84,10 +83,8 @@ export function BuscarExpMuscularDetalleNombre(name, array, resultado) {
   return response;
 }
 
-
-
 export function BuscarEvalMuscularDetalleNombre(name, array, resultado) {
-  console.log("ejecutando lista real!!");
+  console.log("ejecutando lista real!!", name, array, resultado);
   let response = null;
   for (let i = 0; i < array.length; i++) {
     if (array[i].organo === name) {
@@ -98,7 +95,6 @@ export function BuscarEvalMuscularDetalleNombre(name, array, resultado) {
   }
   return response;
 }
-
 
 /* -----------otra funcion que tambien sirve--------------------------------------------------------- */
 /* export function buscar_detalle(id, bd) {
