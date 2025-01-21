@@ -10,6 +10,7 @@ import Agendas from "./../components/agendas/agendas/index.vue";
 import HomeVitrina from "./../components/vitrina/vitrinahome.vue";
 //hc
 import hc from "./../components/hc/hc.vue";
+import buscar_hc from "./../components/hc/buscar_hc.vue";
 //dashboard
 import login from "./../views/login.vue";
 //dashboard
@@ -36,6 +37,7 @@ const routes = [
     name: "vitrina",
   },
   //hc
+  { path: "/buscar_hc/:idpaciente?", component: buscar_hc, name: "buscar_hc" },
   { path: "/hc/:idpaciente?", component: hc, name: "hc" },
   //dashboard
   { path: "/dashboard", component: dashboard, name: "dashboard" },
