@@ -54,18 +54,32 @@
     </div>
 
     <!-- **************************************************************************************************** -->
-    <div id="register">
+    <div id="register" v-if="registrado == '0'" >
       <h6 class="display-6 text-center">Paciente no Encontrado !!!</h6>
       <Registro />
     </div>
 
-    <div class="container">
-      <h6 class="display-6">Registro de Historias clinicas</h6>
+    <div class="container" v-if="registrado == '1'">
+      <div class="row">
+        <div class="col-10"><h6 class="display-6">Historias clinicas</h6></div>
+        <div class="col-2"><router-link to="/hc" tag="button" class="mi-boton"><button type="button btn-sm" class="btn btn-warning">+ Nuevo</button></router-link></div>
+  
+      </div>
+           <!--   <router-link to="/vitrina"
+                  ><a class="nav-link-menu" aria-current="page">
+                    <h3 style="color: black">Vitrina</h3>
+                    <p style="color: black">Gestión de productos y servicios</p>
+                  </a></router-link -->
+
+
+         <hr>
+      <h6>Registro</h6>
+      <hr>
       <div class="table-responsive">
         <table class="table table-sm">
           <thead>
             <tr>
-              <th>Fecha</th>
+              <th>Fecha consulta</th>
               <th>Diagostico</th>
               <th>Tipo consulta</th>
               <th>Profesional</th>
@@ -79,9 +93,7 @@
               <td>vv</td>
               <td>ramon vertel</td>
               <td>
-                <button class="btn btn-sm btn-danger">
-                  <i class="bi bi-trash-fill"></i>
-                </button>
+                <button class="btn btn-sm btn-danger">ver</button>
               </td>
             </tr>
           </tbody>
@@ -97,14 +109,27 @@ import HCdetallada from "./h_clinica.vue";
 import Registro from "./registroForm.vue";
 export default {
   data: () => ({
-    registrado: 1,
+    registrado: "",
   }),
+  methods: {
+    newreghc(){
+      console.log("abriendo hc");
+
+
+     
+    },
+    selectRegHcPac(){
+      console.log("consutando historial del paciente");
+    }
+    
+  },
 
   created() {
     // Recuperar el parámetro 'id' de la ruta
     this.iduser = this.$route.params.idpaciente || "13862306";
     this.idips = this.$route.params.idips || "1";
     this.idprof = this.$route.params.idprof || "2";
+     this.selectRegHcPac();
   },
 };
 </script>
