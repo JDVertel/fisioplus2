@@ -39,8 +39,7 @@
                 <div class="col-2">
                   <button
                     class="btn btn-success btn-sm"
-                    @click="BTN_Buscar_paciente()"
-                    :disabled="BuscarP_isButtonDisabled"
+                    @click="BTN_Buscar_paciente(B_tipodoc, B_numdoc)"
                   >
                     Buscar
                   </button>
@@ -54,7 +53,7 @@
     </div>
 
     <!-- **************************************************************************************************** -->
-    <div id="register" v-if="registrado == '0'" >
+    <div id="register" v-if="registrado == '0'">
       <h6 class="display-6 text-center">Paciente no Encontrado !!!</h6>
       <Registro />
     </div>
@@ -62,19 +61,23 @@
     <div class="container" v-if="registrado == '1'">
       <div class="row">
         <div class="col-10"><h6 class="display-6">Historias clinicas</h6></div>
-        <div class="col-2"><router-link to="/hc" tag="button" class="mi-boton"><button type="button btn-sm" class="btn btn-warning">+ Nuevo</button></router-link></div>
-  
+        <div class="col-2">
+          <router-link to="/hc" tag="button" class="mi-boton"
+            ><button type="button btn-sm" class="btn btn-warning">
+              + Nuevo
+            </button></router-link
+          >
+        </div>
       </div>
-           <!--   <router-link to="/vitrina"
+      <!--   <router-link to="/vitrina"
                   ><a class="nav-link-menu" aria-current="page">
                     <h3 style="color: black">Vitrina</h3>
                     <p style="color: black">Gestión de productos y servicios</p>
                   </a></router-link -->
 
-
-         <hr>
+      <hr />
       <h6>Registro</h6>
-      <hr>
+      <hr />
       <div class="table-responsive">
         <table class="table table-sm">
           <thead>
@@ -110,18 +113,41 @@ import Registro from "./registroForm.vue";
 export default {
   data: () => ({
     registrado: "",
+    B_tipodoc: "0",
+    B_numdoc: "",
+    iduser: "",
+    response: "",
+    responsetable: "",
   }),
   methods: {
-    newreghc(){
-      console.log("abriendo hc");
+    BTN_Buscar_paciente(tipodoc, numdoc) {
+      this.iduser = tipodoc + numdoc;
+      console.log(this.iduser);
+      /* consultar si existe el paciente */
+      /* CONSULTA */
 
+      if (this.response) {
+        console.log("paciente encontrado");
+        /* trae los datos del paciente y consulta el registro de hc */
+        /* CONSULTAS */
+        /* consulta los registros de hc del paciente */
+        this.selectRegHcPac();
 
-     
+        if (this.responsetable) {
+          /* renderiza el contenido en la tabla */
+        } else {
+          /* muestra en pantalla el mensaje sin registros del hc del paciente */
+        }
+      } else {
+        console.log("el paciente no existe");
+        /* muestra en pantalla el container son la informacion sin registros  */
+      }
     },
-    selectRegHcPac(){
+
+    selectRegHcPac() {
+      /* si la respuesta es positiva bucar el historial del paciente */
       console.log("consutando historial del paciente");
-    }
-    
+    },
   },
 
   created() {
@@ -129,7 +155,6 @@ export default {
     this.iduser = this.$route.params.idpaciente || "13862306";
     this.idips = this.$route.params.idips || "1";
     this.idprof = this.$route.params.idprof || "2";
-     this.selectRegHcPac();
   },
 };
 </script>
