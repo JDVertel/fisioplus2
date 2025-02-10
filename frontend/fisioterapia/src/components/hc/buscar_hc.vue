@@ -58,7 +58,7 @@
       <Registro />
     </div>
 
-    <div class="container" v-if="registrado == '1'">
+    <div class="container">
       <div class="row">
         <div class="col-10"><h6 class="display-6">Historias clinicas</h6></div>
         <div class="col-2">
