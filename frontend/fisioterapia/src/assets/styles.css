@@ -5,8 +5,7 @@
   min-height: 100vh;
   position: absolute;
   padding-bottom: 3rem;
-  font-size: 0.75rem;
-  font-family: "Montserrat", sans-serif;
+  /*   font-size: 0.75rem; */
   text-decoration: none;
 }
 
@@ -110,7 +109,7 @@ li button {
 button.accordion-button.collapsed {
   padding: 3px;
   background-color: rgb(120, 195, 157);
-  font-size: 0.8rem;
+  /*   font-size: 0.8rem; */
   color: rgb(254, 255, 255);
   text-shadow: 1px 1px 2px black;
 }
@@ -118,7 +117,7 @@ button.accordion-button.collapsed {
 button.accordion-button:not(.collapsed) {
   padding: 3px;
   background-color: rgb(240, 204, 105);
-  font-size: 0.8rem;
+  /*   font-size: 0.8rem; */
   color: rgb(245, 245, 245);
   text-shadow: 1px 1px 2px black;
 }
@@ -127,7 +126,7 @@ button,
 textarea,
 select,
 input {
-  font-size: 0.75rem !important;
+  /*   font-size: 0.75rem !important; */
 }
 
 nav-link.active {
@@ -136,220 +135,13 @@ nav-link.active {
 
 /* personalizacion de tablas */
 th {
-  font-size: 0.8rem;
+  /*   font-size: 0.8rem; */
 }
 
 td {
-  font-size: 0.7rem;
-}
-/* 
-.home {
-  position: relative;
-  bottom: 20px;
+  /*   font-size: 0.7rem; */
 }
 
-
-.imagenvitrina {
-
-  width: 15rem !important;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-}
-
-.imagenvitrina:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
-
-
-
-
-
-.imagenproducto {
-  height: 95px !important;
-}
-
-.imagenhc {
-  height: 99px !important;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  border: 1px solid #00913d;
-
-}
-
-
-.imgP {
-  padding: 5px;
-  max-width: 200px;
-}
-
-.Tantecedentes {
-  padding: 5px !important;
-}
-
-#imagen_postura {
-  width: 19em;
-}
-
-
-
-.jz {
-  text-align: justify;
-
-}
-
-.Cjz {
-
-  text-align: center;
-  color: #00913D;
-}
-
-
-
-.cardvitrina {
-  font-size: 0.7rem;
-  padding: 0.2rem !important;
-
-
-}
-
-
-
-
-.titleservice {
-  font-size: 1rem;
-
-}
-
-
-.fechas {
-  padding: 1px !important;
-}
-
-.newplantilla {
-  padding: 5px;
-  background-color: rgb(207, 232, 224);
-  padding: 20px !important;
-}
-
-p {
-  margin: 1px 1px 1px !important;
-}
-
-#agendas {
-  font-size: 1rem;
-  background: fixed;
-  margin-top: 50px !important;
-}
-
-
-.subtitulos {
-  text-shadow: 0px 0px 1px black;
-}
-
-
-
-.retrato {
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-
-
-}
-
-.menu {
-  margin-top: 2rem;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-direction: row !important;
-  flex-wrap: wrap !important;
-
-}
-
-
-.nav-link-menu {
-  color: black;
-
-  text-decoration: none !important;
-  display: inline-block !important;
-  font-size: 1rem !important;
-  margin: 10PX;
-}
-
-
-
-
-
-div.col-4 {
-  padding: 0px !important;
-}
-
-
-.cproductos {
-  border: 1px solid #00913D !important;
-
-}
-
-
-
-
-
-
-
-
-
-
-.btn-primary {
-  background-color: #00913d !important;
-  border: 1px;
-  border-color: white !important;
-}
-
-
-.white {
-  color: rgb(255, 255, 255) !important;
-  font-size: 1rem;
-}
-
-.btnwsp {
-
-  padding: 4px !important;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1) !important;
-}
-
-.derecha {
-  text-align: right;
-}
-
-
-.config {
-  font-size: 1rem;
-  background: fixed;
-}
-
-
-
-
-.display-6 {
-  font-size: 1.4rem !important;
-}
-
-.about {
-  padding: 30px;
-
-}
-
-footer {
-  text-align: center;
-  background-color: rgb(34, 93, 3);
-  color: rgb(237, 250, 237);
-  width: 100%;
-  bottom: 0;
-  position: absolute;
-  font-size: 0.7rem;
-}
- */
 /*---------------------------------------------------mañas*/
 .radio-container {
   display: flex;
@@ -368,7 +160,7 @@ footer {
 }
 
 .texttable {
-  font-size: 0.7em;
+  /*   font-size: 0.7em; */
 }
 
 .degradado {
