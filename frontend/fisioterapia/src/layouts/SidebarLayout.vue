@@ -1,20 +1,23 @@
 <template>
   <div class="layout-wrapper">
     <!-- Overlay -->
-    <div 
-      v-if="isNavbarOpen" 
+    <div
+      v-if="isNavbarOpen"
       class="sidebar-overlay"
       @click="toggleNavbar"
     ></div>
 
     <!-- Sidebar -->
-    <nav id="sidebar" :class="{ 'active': isNavbarOpen }">
+    <nav id="sidebar" :class="{ active: isNavbarOpen }">
       <div class="sidebar-header">
         <div class="d-flex justify-content-between align-items-center">
           <router-link to="/" @click="toggleNavbarCloset">
             <img src="./../assets/logo.png" class="logobar" />
           </router-link>
-          <button class="btn-close btn-close-white" @click="toggleNavbar"></button>
+          <button
+            class="btn-close btn-close-white"
+            @click="toggleNavbar"
+          ></button>
         </div>
         <h3>FisioApp</h3>
       </div>
@@ -22,31 +25,61 @@
       <ul class="list-unstyled components">
         <li>
           <router-link to="/login" @click="toggleNavbar" class="nav-link">
-            <img class="icono" width="20" height="20" src="https://img.icons8.com/ios-glyphs/30/key--v1.png" alt="key--v1" />
+            <img
+              class="icono"
+              width="20"
+              height="20"
+              src="https://img.icons8.com/ios-glyphs/30/key--v1.png"
+              alt="key--v1"
+            />
             <span>Login</span>
           </router-link>
         </li>
         <li>
           <router-link to="/" @click="toggleNavbar" class="nav-link">
-            <img class="icono" width="18" height="18" src="https://img.icons8.com/ios-filled/50/home.png" alt="home" />
+            <img
+              class="icono"
+              width="18"
+              height="18"
+              src="https://img.icons8.com/ios-filled/50/home.png"
+              alt="home"
+            />
             <span>Home</span>
           </router-link>
         </li>
         <li>
           <router-link to="/profesional" @click="toggleNavbar" class="nav-link">
-            <img class="icono" width="18" height="18" src="https://img.icons8.com/external-febrian-hidayat-glyph-febrian-hidayat/64/external-11-disaster-febrian-hidayat-glyph-febrian-hidayat.png" alt="profesional" />
+            <img
+              class="icono"
+              width="18"
+              height="18"
+              src="https://img.icons8.com/external-febrian-hidayat-glyph-febrian-hidayat/64/external-11-disaster-febrian-hidayat-glyph-febrian-hidayat.png"
+              alt="profesional"
+            />
             <span>Profesional</span>
           </router-link>
         </li>
         <li>
           <router-link to="/dashboard" @click="toggleNavbar" class="nav-link">
-            <img class="icono" width="18" height="18" src="https://img.icons8.com/ios/50/settings-3--v1.png" alt="settings" />
+            <img
+              class="icono"
+              width="18"
+              height="18"
+              src="https://img.icons8.com/ios/50/settings-3--v1.png"
+              alt="settings"
+            />
             <span>Admin</span>
           </router-link>
         </li>
         <li>
           <router-link to="/about" @click="toggleNavbar" class="nav-link">
-            <img class="icono" width="18" height="18" src="https://img.icons8.com/ios/50/info--v1.png" alt="info" />
+            <img
+              class="icono"
+              width="18"
+              height="18"
+              src="https://img.icons8.com/ios/50/info--v1.png"
+              alt="info"
+            />
             <span>About</span>
           </router-link>
         </li>
@@ -58,10 +91,17 @@
       <!-- Top Navigation -->
       <nav class="navbar navbar-expand-lg" style="background-color: #34836e">
         <div class="container-fluid">
-          <button type="button" id="sidebarCollapse" class="btn" @click="toggleNavbar">
+          <button
+            type="button"
+            id="sidebarCollapse"
+            class="btn"
+            @click="toggleNavbar"
+          >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <span class="navbar-text">Clinica de rehabilitacion Erika Jasmin Vertel</span>
+          <span class="navbar-text"
+            >Clinica de rehabilitacion Erika Jasmin Vertel</span
+          >
         </div>
       </nav>
 
@@ -207,7 +247,7 @@ export default {
   .layout-wrapper {
     overflow-x: hidden;
   }
-  
+
   #sidebar {
     width: 100%;
     /* max-width: 300px; */

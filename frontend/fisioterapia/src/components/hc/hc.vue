@@ -63,8 +63,11 @@
 
     <!-- **************************************************************************************************** -->
     <div class="container-fluid Cont_hc">
+      <div class="container">
+        <h6 class="display-6">Registro de consulta del paciente</h6>
+      </div>
       <div class="row">
-        <div class="col-12 col-md-2">
+        <div class="col-12 col-md-2 relleno1">
           <strong> Datos de la Atencion</strong>
         </div>
         <div class="col-6 col-md-2"><strong>Ips:</strong> Ips Erika Jasmin</div>
@@ -74,30 +77,31 @@
         </div>
         <div class="col-6 col-md-2"><strong>Tipo cita:</strong>Control</div>
       </div>
-      <hr />
       <div class="row">
-        <div class="row">
-          <div class="col-12 col-md-2">
-            <strong> Datos Personales</strong>
-          </div>
-          <div class="col-5 col-md-2"><strong>Nombres:</strong> juan david</div>
-          <div class="col-5 col-md-2">
-            <strong>Apellidos:</strong> vertel holguin
-          </div>
-
-          <div class="col-6 col-md-2"><strong>Documento :</strong>13862306</div>
-          <div class="col-3 col-md-1"><strong>Sexo:</strong> M</div>
-          <div class="col-3 col-md-1"><strong>Edad:</strong> 43</div>
+        <div class="col-12 col-md-2 relleno1">
+          <strong> Datos Personales</strong>
         </div>
-      </div>
 
+        <div class="col-6 col-md-2"><strong>Nombres:</strong> juan david</div>
+        <div class="col-6 col-md-2">
+          <strong>Apellidos:</strong> vertel holguin
+        </div>
+
+        <div class="col-6 col-md-2"><strong>Documento :</strong>13862306</div>
+        <div class="col-3 col-md-1"><strong>Sexo:</strong> M</div>
+        <div class="col-3 col-md-1"><strong>Edad:</strong> 43</div>
+      </div>
       <br />
+
       <C_Hc />
     </div>
 
     <router-link to="/dashboard">Home</router-link>
   </div>
 </template>
+
+<style scoped>
+</style>
 
 <script>
 import HCdetallada from "./h_clinica.vue";
