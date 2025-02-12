@@ -63,12 +63,13 @@
 
     <!-- **************************************************************************************************** -->
     <div class="container-fluid Cont_hc">
-      <div class="container">
+      <div class="container-fluid">
         <h6 class="display-6">Registro de consulta del paciente</h6>
-      </div>
+      
       <div class="row">
         <div class="col-12 col-md-2 relleno1">
-          <strong> Datos de la Atencion</strong>
+          <h4>
+          Datos de la Atencion</h4>
         </div>
         <div class="col-6 col-md-2"><strong>Ips:</strong> Ips Erika Jasmin</div>
         <div class="col-6 col-md-2"><strong>Nit:</strong>1234567</div>
@@ -79,7 +80,7 @@
       </div>
       <div class="row">
         <div class="col-12 col-md-2 relleno1">
-          <strong> Datos Personales</strong>
+          <h4> Datos Personales</h4>
         </div>
 
         <div class="col-6 col-md-2"><strong>Nombres:</strong> juan david</div>
@@ -91,6 +92,7 @@
         <div class="col-3 col-md-1"><strong>Sexo:</strong> M</div>
         <div class="col-3 col-md-1"><strong>Edad:</strong> 43</div>
       </div>
+    </div>
       <br />
 
       <C_Hc />

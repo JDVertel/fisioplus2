@@ -8,23 +8,33 @@
   text-decoration: none;
 }
 
-.relleno1 {
-  background-color: aquamarine;
+strong{
+  color:#34836E;
 }
+
 .Cont_hc {
-  background-color: #d7d8d8;
+
   margin-bottom: 15px;
 }
 
 button.accordion-button.collapsed {
   padding: 8px;
+  color:#ffffff ;
+  background-color: #34836E;
 }
+
 button.accordion-button {
-  padding: 15px;
+  padding: 15px; 
+}
+
+div.accordion-body{
+background-color:#DBF6EF;
+
 }
 
 div.content-body {
-  background-image: linear-gradient(to bottom right, #ffffff, rgb(37, 122, 99));
+  background-image: linear-gradient(to bottom right, #ffffff, rgb(150, 230, 209));
+  padding: 5px !important;
 }
 
 .btnwsp {
