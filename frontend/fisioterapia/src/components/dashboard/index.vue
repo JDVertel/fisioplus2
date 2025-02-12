@@ -1,9 +1,7 @@
 <template>
   <Menu />
-  <div class="container mt-5 centrado">
-    <h6 class="display-5">Menu FisioterapiApp</h6>
-  </div>
-  <hr />
+
+  <h6 class="display-5 text-center">Menu FisioterapiApp</h6>
 
   <!--  -->
 
@@ -186,7 +184,9 @@
       </div>
     </div>
   </div>
-
+  <br />
+  <br />
+  <br />
   <!-- <div class="container">
     <br>
     <h4>stores</h4> <br>
@@ -200,8 +200,6 @@
     <hr>
 
 </div> -->
-
-  <br />
 </template>
 
 <script>

@@ -7,18 +7,28 @@
       <div class="accordion" id="accordionExample">
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-              aria-expanded="true" aria-controls="collapseOne">
+            <button
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseOne"
+              aria-expanded="true"
+              aria-controls="collapseOne"
+            >
               Usuarios del Sistema ({{ existeusuarios }})
             </button>
           </h2>
-          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+          <div
+            id="collapseOne"
+            class="accordion-collapse collapse show"
+            data-bs-parent="#accordionExample"
+          >
             <div class="accordion-body">
               <div class="row">
-                <div class="col-10">
+                <div class="col-8">
                   <h6>Usuarios registrados en el sistema</h6>
                 </div>
-                <div class="col-2">
+                <div class="col-4">
                   <button class="btn btn-warning btn-sm" @click="btn_adduser">
                     + Nuevo
                   </button>
@@ -31,7 +41,11 @@
                 <div class="row">
                   <div class="col-4">
                     <div class="mb-3">
-                      <select class="form-select" aria-label="Default select example" v-model="user_tipodoc">
+                      <select
+                        class="form-select"
+                        aria-label="Default select example"
+                        v-model="user_tipodoc"
+                      >
                         <option value="" selected>Slecicone Tipo de Doc</option>
                         <option value="CC">Cedula</option>
                         <option value="TI">T Identidad</option>
@@ -41,17 +55,31 @@
                   </div>
                   <div class="col-4">
                     <div class="mb-3">
-                      <input type="number" class="form-control" placeholder="# Documento" v-model="user_numdoc" />
+                      <input
+                        type="number"
+                        class="form-control"
+                        placeholder="# Documento"
+                        v-model="user_numdoc"
+                      />
                     </div>
                   </div>
                   <div class="col-4">
                     <div class="mb-3">
-                      <input type="text" class="form-control" placeholder="Nombre" v-model="user_nombre" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Nombre"
+                        v-model="user_nombre"
+                      />
                     </div>
                   </div>
                   <div class="col-4">
                     <div class="mb-3">
-                      <select class="form-select" aria-label="Default select example" v-model="user_rol">
+                      <select
+                        class="form-select"
+                        aria-label="Default select example"
+                        v-model="user_rol"
+                      >
                         <option value="0" selected>Seleccione Rol</option>
                         <option value="admin">Administrador</option>
                         <option value="registro">Registro</option>
@@ -61,12 +89,22 @@
                   </div>
                   <div class="col-4">
                     <div class="mb-3">
-                      <input type="text" class="form-control" placeholder="Contraseña" v-model="user_pass1" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Contraseña"
+                        v-model="user_pass1"
+                      />
                     </div>
                   </div>
                   <div class="col-4">
                     <div class="mb-3">
-                      <input type="text" class="form-control" placeholder="Rep Contraseña" v-model="pass2" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Rep Contraseña"
+                        v-model="pass2"
+                      />
                     </div>
                   </div>
                 </div>
@@ -76,7 +114,7 @@
                   </button>
                 </div>
               </div>
-              <br>
+              <br />
               <table class="table table-sm">
                 <thead>
                   <tr>
@@ -94,7 +132,10 @@
                     <td>{{ user.doc }}</td>
                     <td>{{ user.estado }}</td>
                     <td>
-                      <button class="btn btn-danger m-1 btn-sm" @click="eliminaritemU(user.id)">
+                      <button
+                        class="btn btn-danger m-1 btn-sm"
+                        @click="eliminaritemU(user.id)"
+                      >
                         X
                       </button>
                     </td>
@@ -107,33 +148,47 @@
         <!-- ----------------------------------- -->
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo"
+              aria-expanded="false"
+              aria-controls="collapseTwo"
+            >
               Profesionales ( {{ existeprofesionales }} )
             </button>
           </h2>
-          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div
+            id="collapseTwo"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionExample"
+          >
             <div class="accordion-body">
               <div class="row">
-                <div class="col-10">
-                  <h6>Tabla de profesionales del sistema</h6>
+                <div class="col-8">
+                  <h6>Profesionales registrados en el sistema</h6>
                 </div>
-                <div class="col-2">
+                <div class="col-4">
                   <button class="btn btn-warning btn-sm" @click="btn_addprof">
                     + Nuevo
                   </button>
                 </div>
               </div>
               <div class="container" v-if="this.form_prof">
-                <div>
-                  Registro de profesionales
-                </div>
-                <br>
+                <div>Registro de profesionales</div>
+                <br />
                 <div class="row">
                   <div class="col-4">
                     <div class="mb-3">
-                      <select class="form-select" aria-label="Default select example" v-model="pro_tipodoc">
-                        <option value="" selected>Seleccione Tipo de Doc</option>
+                      <select
+                        class="form-select"
+                        aria-label="Default select example"
+                        v-model="pro_tipodoc"
+                      >
+                        <option value="" selected>
+                          Seleccione Tipo de Doc
+                        </option>
                         <option value="CC">Cedula</option>
                         <option value="TI">T Identidad</option>
                         <option value="PA">Pasaporte</option>
@@ -142,51 +197,95 @@
                   </div>
                   <div class="col-4">
                     <div class="mb-3">
-                      <input type="number" class="form-control" placeholder="# Documento" v-model="pro_numdoc" />
+                      <input
+                        type="number"
+                        class="form-control"
+                        placeholder="# Documento"
+                        v-model="pro_numdoc"
+                      />
                     </div>
                   </div>
                   <div class="col-4">
                     <div class="mb-3">
-                      <input type="text" class="form-control" placeholder=" 1er Nombre" v-model="pro_name1" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder=" 1er Nombre"
+                        v-model="pro_name1"
+                      />
                     </div>
                   </div>
                   <div class="col-4">
                     <div class="mb-3">
-                      <input type="text" class="form-control" placeholder="2do Nombre" v-model="pro_name2" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="2do Nombre"
+                        v-model="pro_name2"
+                      />
                     </div>
                   </div>
                   <div class="col-4">
                     <div class="mb-3">
-                      <input type="text" class="form-control" placeholder="1er Apellido" v-model="pro_apell1" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="1er Apellido"
+                        v-model="pro_apell1"
+                      />
                     </div>
                   </div>
                   <div class="col-4">
                     <div class="mb-3">
-                      <input type="text" class="form-control" placeholder="2do Apellido" v-model="pro_apell2" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="2do Apellido"
+                        v-model="pro_apell2"
+                      />
                     </div>
                   </div>
 
                   <div class="col-4">
                     <div class="mb-3">
-                      <input type="email" class="form-control" placeholder="Email" v-model="pro_correo" />
+                      <input
+                        type="email"
+                        class="form-control"
+                        placeholder="Email"
+                        v-model="pro_correo"
+                      />
                     </div>
                   </div>
 
                   <div class="col-4">
                     <div class="mb-3">
-                      <input type="number" class="form-control" placeholder="#Celular" v-model="pro_celular" />
+                      <input
+                        type="number"
+                        class="form-control"
+                        placeholder="#Celular"
+                        v-model="pro_celular"
+                      />
                     </div>
                   </div>
 
                   <div class="col-4">
                     <div class="mb-3">
-                      <input type="text" class="form-control" placeholder="Reg Medico" v-model="pro_reg_medico" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Reg Medico"
+                        v-model="pro_reg_medico"
+                      />
                     </div>
                   </div>
 
                   <div class="col-4">
                     <div class="mb-3">
-                      <select class="form-select" aria-label="Default select example" v-model="pro_tipo">
+                      <select
+                        class="form-select"
+                        aria-label="Default select example"
+                        v-model="pro_tipo"
+                      >
                         <option value="">Seleccicone Tipo Prof</option>
                         <option value="fisioterapia">Fisioterapia</option>
                         <option value="consulta">Consulta</option>
@@ -201,7 +300,7 @@
                   </div>
                 </div>
               </div>
-              <br>
+              <br />
               <table class="table">
                 <thead>
                   <tr>
@@ -217,7 +316,10 @@
                     <td>{{ prof.name1 }} {{ prof.apell1 }}</td>
                     <td>{{ prof.cel }}</td>
                     <td>
-                      <button class="btn btn-danger m-1 btn-sm" @click="eliminaritemP(prof.id)">
+                      <button
+                        class="btn btn-danger m-1 btn-sm"
+                        @click="eliminaritemP(prof.id)"
+                      >
                         X
                       </button>
                     </td>
@@ -230,60 +332,112 @@
         <!-- ----------------------------------- -->
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseThree"
+              aria-expanded="false"
+              aria-controls="collapseThree"
+            >
               Datos Empresa
             </button>
           </h2>
-          <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div
+            id="collapseThree"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionExample"
+          >
             <div class="accordion-body">
               <!--    <h1>telefono de consultas</h1>
               <h1>nombre-nit-direccion-</h1>
               <h1>info de mision vision etc</h1> -->
 
-              <h2 class="display-6">Parametros App</h2>
+              <h2 class="display-6">Parametros de la Aplicacion</h2>
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-12 col-md-6">
                     <div class="input-group mb-3">
-                      <span class="input-group-text" id="basic-addon1">Nombre</span>
-                      <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                        aria-describedby="basic-addon1">
+                      <span class="input-group-text" id="basic-addon1"
+                        >Nombre Ips</span
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Sin datos"
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
                     </div>
                   </div>
                   <div class="col-12 col-md-6">
                     <div class="input-group mb-3">
-                      <span class="input-group-text" id="basic-addon1">Nit</span>
-                      <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                        aria-describedby="basic-addon1">
+                      <span class="input-group-text" id="basic-addon1"
+                        >Nit</span
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Sin datos"
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
                     </div>
                   </div>
                   <div class="col-12 col-md-6">
                     <div class="input-group mb-3">
-                      <span class="input-group-text" id="basic-addon1">Direccion</span>
-                      <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                        aria-describedby="basic-addon1">
+                      <span class="input-group-text" id="basic-addon1"
+                        >Direccion</span
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Sin datos"
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
                     </div>
                   </div>
                   <div class="col-12 col-md-6">
                     <div class="input-group mb-3">
-                      <span class="input-group-text" id="basic-addon1">Logo</span>
-                      <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                        aria-describedby="basic-addon1">
+                      <span class="input-group-text" id="basic-addon1"
+                        >Logo</span
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Sin datos"
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
                     </div>
                   </div>
                   <div class="col-12 col-md-6">
                     <div class="input-group mb-3">
-                      <span class="input-group-text" id="basic-addon1"># Whatsap</span>
-                      <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                        aria-describedby="basic-addon1">
+                      <span class="input-group-text" id="basic-addon1"
+                        ># Whatsap</span
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Sin datos"
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
                     </div>
                   </div>
                   <div class="col-12 col-md-6">
                     <div class="input-group mb-3">
-                      <span class="input-group-text" id="basic-addon1">Tipos de cita</span>
-                      <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                        aria-describedby="basic-addon1">
+                      <span class="input-group-text" id="basic-addon1"
+                        >Tipos de cita</span
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Sin datos"
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
                     </div>
                   </div>
                 </div>
@@ -291,73 +445,121 @@
               <h2 class="display-6">Informacion Pagina</h2>
               <div class="container-fluid">
                 <div class="row">
-
                   <div class="col-12 col-md-6">
                     <div class="input-group">
                       <span class="input-group-text">Quienes somos</span>
-                      <textarea class="form-control" aria-label="With textarea"></textarea>
+                      <textarea
+                        class="form-control"
+                        aria-label="With textarea"
+                        placeholder="Sin datos"
+                      ></textarea>
                     </div>
                   </div>
                   <div class="col-12 col-md-6">
                     <div class="input-group">
                       <span class="input-group-text">Mision</span>
-                      <textarea class="form-control" aria-label="With textarea"></textarea>
+                      <textarea
+                        class="form-control"
+                        aria-label="With textarea"
+                        placeholder="Sin datos"
+                      ></textarea>
                     </div>
                   </div>
                   <div class="col-12 col-md-6">
                     <div class="input-group">
                       <span class="input-group-text">vision</span>
-                      <textarea class="form-control" aria-label="With textarea"></textarea>
+                      <textarea
+                        class="form-control"
+                        aria-label="With textarea"
+                        placeholder="Sin datos"
+                      ></textarea>
                     </div>
                   </div>
                   <div class="col-12 col-md-6">
                     <div class="input-group">
                       <span class="input-group-text">Nuestros Servicios </span>
-                      <textarea class="form-control" aria-label="With textarea"></textarea>
+                      <textarea
+                        class="form-control"
+                        aria-label="With textarea"
+                        placeholder="Sin datos"
+                      ></textarea>
                     </div>
                   </div>
                   <div class="col-12 col-md-6">
                     <div class="input-group">
-                      <span class="input-group-text">Nuestros Servicios Lm</span>
-                      <textarea class="form-control" aria-label="With textarea"></textarea>
+                      <span class="input-group-text"
+                        >Nuestros Servicios Lm</span
+                      >
+                      <textarea
+                        class="form-control"
+                        aria-label="With textarea"
+                        placeholder="Sin datos"
+                      ></textarea>
                     </div>
                   </div>
+                  <br />
                   <div class="col-12 col-md-6">
                     <div class="input-group">
                       <span class="input-group-text">Clases Rutinas </span>
-                      <textarea class="form-control" aria-label="With textarea"></textarea>
+                      <textarea
+                        class="form-control"
+                        aria-label="With textarea"
+                        placeholder="Sin datos"
+                      ></textarea>
                     </div>
                   </div>
                   <div class="col-12 col-md-6">
                     <div class="input-group">
                       <span class="input-group-text">Clases Rutinas Lm</span>
-                      <textarea class="form-control" aria-label="With textarea"></textarea>
+                      <textarea
+                        class="form-control"
+                        aria-label="With textarea"
+                        placeholder="Sin datos"
+                      ></textarea>
                     </div>
                   </div>
                   <div class="col-12 col-md-6">
                     <div class="input-group">
                       <span class="input-group-text">Tienda Online </span>
-                      <textarea class="form-control" aria-label="With textarea"></textarea>
+                      <textarea
+                        class="form-control"
+                        aria-label="With textarea"
+                        placeholder="Sin datos"
+                      ></textarea>
                     </div>
                   </div>
                   <div class="col-12 col-md-6">
                     <div class="input-group">
                       <span class="input-group-text">Tienda Online Lm</span>
-                      <textarea class="form-control" aria-label="With textarea"></textarea>
+                      <textarea
+                        class="form-control"
+                        aria-label="With textarea"
+                        placeholder="Sin datos"
+                      ></textarea>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="container mt-3">
+                      <button type="button" class="btn btn-primary btn-sm">
+                        Actualizar
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
-              <br>
-
+              <br />
             </div>
           </div>
         </div>
       </div>
     </div>
-    <router-link to="/dashboard">Home</router-link>
-  </div>
 
+    <br />
+    <router-link to="/dashboard">Home</router-link>
+    <br />
+    <br />
+    <br />
+  </div>
 </template>
 
 <script>
@@ -390,10 +592,6 @@ export default {
         rta: "setStateUsuarios",
       },
     ],
-
-    /* --------------------------------------- */
-
-    /* --------------------------------------- */
   }),
 
   /* --------------------------------------------------------------------------------------------------- */
@@ -418,11 +616,18 @@ export default {
         rol: this.user_rol,
         bd: "usuarios",
       });
-      await this.createEntradaUser(this.Datanewuser[0]);
-      await this.getDatabyParam(this.paramsUsuarios);
+      try {
+        await this.createEntradaUser(this.Datanewuser[0]);
+        await this.getDatabyParam(this.paramsUsuarios);
+        console.log("Usuario creado exitosamente.");
+      } catch (error) {
+        // Manejar errores (¡fundamental!)
+        console.error("Error al crear el usuario:", error);
+        // Aquí podrías mostrar un mensaje al usuario o tomar otras acciones
+      }
     },
 
-    addprof() {
+    async addprof() {
       this.Datanewprof.push({
         id_ips: "1",
         estado: true,
@@ -437,19 +642,32 @@ export default {
         correo: this.pro_correo,
         bd: "profesionales",
       });
-      this.createEntradaProf(this.Datanewprof[0]);
-      this.getDatabyParam(this.paramsProfesionales);
+      try {
+        await this.createEntradaProf(this.Datanewprof[0]);
+        await this.getDatabyParam(this.paramsProfesionales);
+      } catch (error) {
+        // Manejar errores (¡fundamental!)
+        console.error("Error al crear el profesional:", error);
+        // Aquí podrías mostrar un mensaje al usuario o tomar otras acciones
+      }
     },
 
     /* _---------------------------------------------------------------------------- */
 
-    eliminaritemP(id) {
+    async eliminaritemP(id) {
       console.log("eliminanfo prof" + id);
       this.DataDeleteP.push({
         id: id,
         bd: "profesionales",
       });
-      this.DeleteItem(this.DataDeleteP[0]);
+      try {
+        await this.DeleteItem(this.DataDeleteP[0]);
+        await this.getDatabyParam(this.paramsProfesionales);
+      } catch (error) {
+        // Manejar errores (¡fundamental!)
+        console.error("Error al eliminar el registro", error);
+        // Aquí podrías mostrar un mensaje al usuario o tomar otras acciones
+      }
     },
 
     async eliminaritemU(id) {
@@ -458,7 +676,14 @@ export default {
         bd: "usuarios",
       });
       this.DeleteItem(this.DataDeleteU[0]);
-      await this.getDatabyParam(this.paramsUsuarios);
+      try {
+        await this.getDatabyParam(this.paramsUsuarios);
+        await this.getDatabyParam(this.paramsUsuarios);
+      } catch (error) {
+        // Manejar errores (¡fundamental!)
+        console.error("Error al eliminar el registro", error);
+        // Aquí podrías mostrar un mensaje al usuario o tomar otras acciones
+      }
     },
 
     ...mapActions("Agendas", [
