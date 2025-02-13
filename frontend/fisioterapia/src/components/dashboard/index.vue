@@ -168,10 +168,8 @@
               <div>
                 <router-link to="/parametros"
                   ><a class="nav-link-menu" aria-current="page">
-                    <h3 style="color: black">Parametros</h3>
-                    <p style="color: black">
-                      Gestión de parametros del sistema
-                    </p>
+                    <h3 style="color: black">Configuracion</h3>
+                    <p style="color: black">Gestión del sistema</p>
                   </a></router-link
                 >
               </div>

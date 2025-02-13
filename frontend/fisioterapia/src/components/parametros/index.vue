@@ -36,7 +36,7 @@
               </div>
               <div class="container" v-if="this.form_user">
                 <div>
-                  <h6>Registro de nuevo usuario</h6>
+                  <h6><strong>Registro de nuevo usuario</strong></h6>
                 </div>
                 <div class="row">
                   <div class="col-4">
@@ -89,29 +89,20 @@
                   </div>
                   <div class="col-4">
                     <div class="mb-3">
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Contraseña"
-                        v-model="user_pass1"
-                      />
+                      <h6>
+                        <strong>Nota: </strong>Los nuevos usuarios se crean con
+                        la contraseña <strong>12345</strong> al ingresar deberan
+                        asignar una nueva
+                      </h6>
                     </div>
                   </div>
                   <div class="col-4">
                     <div class="mb-3">
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Rep Contraseña"
-                        v-model="pass2"
-                      />
+                      <button class="btn btn-success btn-sm" @click="adduser">
+                        Guardar
+                      </button>
                     </div>
                   </div>
-                </div>
-                <div class="col-4">
-                  <button class="btn btn-success btn-sm" @click="adduser">
-                    Guardar
-                  </button>
                 </div>
               </div>
               <br />
@@ -176,7 +167,7 @@
                 </div>
               </div>
               <div class="container" v-if="this.form_prof">
-                <div>Registro de profesionales</div>
+                <div><strong>Registro de profesionales</strong></div>
                 <br />
                 <div class="row">
                   <div class="col-4">
@@ -286,7 +277,7 @@
                         aria-label="Default select example"
                         v-model="pro_tipo"
                       >
-                        <option value="">Seleccicone Tipo Prof</option>
+                        <option value="">Seleccicone Tipo Profesional</option>
                         <option value="fisioterapia">Fisioterapia</option>
                         <option value="consulta">Consulta</option>
                         <option value="clases">Clases</option>
@@ -322,6 +313,12 @@
                       >
                         X
                       </button>
+                      <button
+                        class="btn btn-warning m-1 btn-sm"
+                        @click="eliminaritemP(prof.id)"
+                      >
+                        resetgit add
+                      </button>
                     </td>
                   </tr>
                 </tbody>
@@ -353,7 +350,7 @@
               <h1>nombre-nit-direccion-</h1>
               <h1>info de mision vision etc</h1> -->
 
-              <h2 class="display-6">Parametros de la Aplicacion</h2>
+              <h2><strong>Datos Empresariales</strong></h2>
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-12 col-md-6">
@@ -418,7 +415,7 @@
                         ># Whatsap</span
                       >
                       <input
-                        type="text"
+                        type="number"
                         class="form-control"
                         placeholder="Sin datos"
                         aria-label="Username"
@@ -427,22 +424,38 @@
                     </div>
                   </div>
                   <div class="col-12 col-md-6">
-                    <div class="input-group mb-3">
-                      <span class="input-group-text" id="basic-addon1"
-                        >Tipos de cita</span
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Sin datos"
-                        aria-label="Username"
-                        aria-describedby="basic-addon1"
-                      />
-                    </div>
+                    <button type="button" class="btn btn-primary btn-sm">
+                      Actualizar
+                    </button>
                   </div>
                 </div>
               </div>
-              <h2 class="display-6">Informacion Pagina</h2>
+
+              <br />
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapse4"
+              aria-expanded="false"
+              aria-controls="collapse4"
+            >
+              Personalizar Informacion de Pagina
+            </button>
+          </h2>
+          <div
+            id="collapse4"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body">
+              <h2><strong>Informacion de la Pagina</strong></h2>
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-12 col-md-6">
@@ -547,7 +560,36 @@
                   </div>
                 </div>
               </div>
-              <br />
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapse5"
+              aria-expanded="false"
+              aria-controls="collapse5"
+            >
+              Parametros funcionales
+            </button>
+          </h2>
+          <div
+            id="collapse5"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is
+              hidden by default, until the collapse plugin adds the appropriate
+              classes that we use to style each element. These classes control
+              the overall appearance, as well as the showing and hiding via CSS
+              transitions. You can modify any of this with custom CSS or
+              overriding our default variables. It's also worth noting that just
+              about any HTML can go within the <code>.accordion-body</code>,
+              though the transition does limit overflow.
             </div>
           </div>
         </div>
@@ -617,6 +659,7 @@ export default {
         bd: "usuarios",
       });
       try {
+        this.btn_adduser();
         await this.createEntradaUser(this.Datanewuser[0]);
         await this.getDatabyParam(this.paramsUsuarios);
         console.log("Usuario creado exitosamente.");
@@ -643,6 +686,7 @@ export default {
         bd: "profesionales",
       });
       try {
+        this.btn_addprof();
         await this.createEntradaProf(this.Datanewprof[0]);
         await this.getDatabyParam(this.paramsProfesionales);
       } catch (error) {
