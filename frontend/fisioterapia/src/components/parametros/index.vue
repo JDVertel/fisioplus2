@@ -39,21 +39,23 @@
                   <h6><strong>Registro de nuevo usuario</strong></h6>
                 </div>
                 <div class="row">
-                  <div class="col-4">
+                  <div class="col-6 col-md-4">
                     <div class="mb-3">
                       <select
                         class="form-select"
                         aria-label="Default select example"
                         v-model="user_tipodoc"
                       >
-                        <option value="" selected>Slecicone Tipo de Doc</option>
+                        <option value="" selected>
+                          Seleccione Tipo de Doc
+                        </option>
                         <option value="CC">Cedula</option>
                         <option value="TI">T Identidad</option>
                         <option value="PA">Pasaporte</option>
                       </select>
                     </div>
                   </div>
-                  <div class="col-4">
+                  <div class="col-6 col-md-4">
                     <div class="mb-3">
                       <input
                         type="number"
@@ -63,7 +65,7 @@
                       />
                     </div>
                   </div>
-                  <div class="col-4">
+                  <div class="col-6 col-md-4">
                     <div class="mb-3">
                       <input
                         type="text"
@@ -73,21 +75,21 @@
                       />
                     </div>
                   </div>
-                  <div class="col-4">
+                  <div class="col-6 col-md-4">
                     <div class="mb-3">
                       <select
                         class="form-select"
                         aria-label="Default select example"
                         v-model="user_rol"
                       >
-                        <option value="0" selected>Seleccione Rol</option>
+                        <option value="">Seleccione Rol</option>
                         <option value="admin">Administrador</option>
                         <option value="registro">Registro</option>
                         <option value="prof">Profesional</option>
                       </select>
                     </div>
                   </div>
-                  <div class="col-4">
+                  <div class="col-6 col-md-4">
                     <div class="mb-3">
                       <h6>
                         <strong>Nota: </strong>Los nuevos usuarios se crean con
@@ -96,7 +98,7 @@
                       </h6>
                     </div>
                   </div>
-                  <div class="col-4">
+                  <div class="col-6 col-md-4">
                     <div class="mb-3">
                       <button class="btn btn-success btn-sm" @click="adduser">
                         Guardar
@@ -128,6 +130,12 @@
                         @click="eliminaritemU(user.id)"
                       >
                         X
+                      </button>
+                      <button
+                        class="btn btn-warning m-1 btn-sm"
+                        @click="eliminaritemP(prof.id)"
+                      >
+                        reset pass
                       </button>
                     </td>
                   </tr>
@@ -170,23 +178,21 @@
                 <div><strong>Registro de profesionales</strong></div>
                 <br />
                 <div class="row">
-                  <div class="col-4">
+                  <div class="col-6 col-md-4">
                     <div class="mb-3">
                       <select
                         class="form-select"
                         aria-label="Default select example"
                         v-model="pro_tipodoc"
                       >
-                        <option value="" selected>
-                          Seleccione Tipo de Doc
-                        </option>
+                        <option value="">Seleccione Tipo de Doc</option>
                         <option value="CC">Cedula</option>
                         <option value="TI">T Identidad</option>
                         <option value="PA">Pasaporte</option>
                       </select>
                     </div>
                   </div>
-                  <div class="col-4">
+                  <div class="col-6 col-md-4">
                     <div class="mb-3">
                       <input
                         type="number"
@@ -196,7 +202,7 @@
                       />
                     </div>
                   </div>
-                  <div class="col-4">
+                  <div class="col-6 col-md-4">
                     <div class="mb-3">
                       <input
                         type="text"
@@ -206,7 +212,7 @@
                       />
                     </div>
                   </div>
-                  <div class="col-4">
+                  <div class="col-6 col-md-4">
                     <div class="mb-3">
                       <input
                         type="text"
@@ -216,7 +222,7 @@
                       />
                     </div>
                   </div>
-                  <div class="col-4">
+                  <div class="col-6 col-md-4">
                     <div class="mb-3">
                       <input
                         type="text"
@@ -226,7 +232,7 @@
                       />
                     </div>
                   </div>
-                  <div class="col-4">
+                  <div class="col-6 col-md-4">
                     <div class="mb-3">
                       <input
                         type="text"
@@ -237,7 +243,7 @@
                     </div>
                   </div>
 
-                  <div class="col-4">
+                  <div class="col-6 col-md-4">
                     <div class="mb-3">
                       <input
                         type="email"
@@ -248,7 +254,7 @@
                     </div>
                   </div>
 
-                  <div class="col-4">
+                  <div class="col-6 col-md-4">
                     <div class="mb-3">
                       <input
                         type="number"
@@ -259,7 +265,7 @@
                     </div>
                   </div>
 
-                  <div class="col-4">
+                  <div class="col-6 col-md-4">
                     <div class="mb-3">
                       <input
                         type="text"
@@ -270,21 +276,21 @@
                     </div>
                   </div>
 
-                  <div class="col-4">
+                  <div class="col-6 col-md-4">
                     <div class="mb-3">
                       <select
                         class="form-select"
                         aria-label="Default select example"
                         v-model="pro_tipo"
                       >
-                        <option value="">Seleccicone Tipo Profesional</option>
+                        <option value="">Seleccione Tipo Profesional</option>
                         <option value="fisioterapia">Fisioterapia</option>
                         <option value="consulta">Consulta</option>
                         <option value="clases">Clases</option>
                       </select>
                     </div>
                   </div>
-                  <div class="col-4">
+                  <div class="col-6 col-md-4">
                     <button class="btn btn-success btn-sm" @click="addprof">
                       guardar
                     </button>
@@ -313,11 +319,8 @@
                       >
                         X
                       </button>
-                      <button
-                        class="btn btn-warning m-1 btn-sm"
-                        @click="eliminaritemP(prof.id)"
-                      >
-                        resetgit add
+                      <button class="btn btn-warning m-1 btn-sm">
+                        reset pass
                       </button>
                     </td>
                   </tr>
@@ -615,6 +618,10 @@ export default {
     /*  */
     Datanewprof: [],
     DataDeleteP: [],
+    user_tipodoc: "",
+    user_rol: "",
+    pro_tipodoc: "",
+    pro_tipo: "",
 
     /* ---------valores quemados ------- */
     paramsProfesionales: [
@@ -638,14 +645,35 @@ export default {
 
   /* --------------------------------------------------------------------------------------------------- */
   methods: {
+    clearform_user() {
+      this.user_tipodoc = "";
+      this.user_numdoc = "";
+      this.user_nombre = "";
+      this.user_rol = "";
+    },
+    clearform_prof() {
+      this.pro_tipodoc = "";
+      this.pro_tipo = "";
+      this.pro_apell1 = "";
+      this.pro_apell2 = "";
+      this.pro_name1 = "";
+      this.pro_name2 = "";
+      this.pro_reg_medico = "";
+      this.pro_celular = "";
+      this.pro_correo = "";
+      this.pro_correo = "";
+    },
+
     btn_adduser() {
       this.form_user = !this.form_user;
       console.log("ejecutandometodo add user", this.form_user);
+      this.clearform_user();
     },
 
     btn_addprof() {
       this.form_prof = !this.form_prof;
       console.log("ejecutandometodo add prof", this.form_prof);
+      this.clearform_prof();
     },
 
     async adduser() {
