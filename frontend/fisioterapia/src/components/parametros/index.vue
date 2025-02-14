@@ -100,7 +100,16 @@
                   </div>
                   <div class="col-6 col-md-4">
                     <div class="mb-3">
-                      <button class="btn btn-success btn-sm" @click="adduser">
+                      <button
+                        class="btn btn-success btn-sm"
+                        @click="adduser"
+                        v-if="
+                          this.user_tipodoc !== '' &&
+                          this.user_numdoc !== '' &&
+                          this.user_nombre !== '' &&
+                          this.user_rol !== ''
+                        "
+                      >
                         Guardar
                       </button>
                     </div>
@@ -129,14 +138,11 @@
                         class="btn btn-danger m-1 btn-sm"
                         @click="eliminaritemU(user.id)"
                       >
-                        X
-                      </button>
-                      <button
-                        class="btn btn-warning m-1 btn-sm"
-                        @click="eliminaritemP(prof.id)"
-                      >
-                        reset pass
-                      </button>
+                      <i class="bi bi-trash3-fill"></i>
+                    </button>
+                    <button class="btn btn-warning m-1 btn-sm">
+                      <i class="bi bi-key"></i>
+                    </button>
                     </td>
                   </tr>
                 </tbody>
@@ -291,8 +297,22 @@
                     </div>
                   </div>
                   <div class="col-6 col-md-4">
-                    <button class="btn btn-success btn-sm" @click="addprof">
-                      guardar
+                    <button
+                      class="btn btn-success btn-sm"
+                      @click="addprof"
+                      v-if="
+                        this.pro_tipodoc !== '' &&
+                        this.pro_numdoc !== '' &&
+                        this.pro_name1 !== '' &&
+                        this.pro_apell1 !== '' &&
+                        this.pro_email !== '' &&
+                        this.pro_celular !== '' &&
+                        this.pro_reg_medico !== '' &&
+                        this.pro_tipo !== '' &&
+                        this.pro_correo !== ''
+                      "
+                    >
+                      Guardar
                     </button>
                   </div>
                 </div>
@@ -317,10 +337,10 @@
                         class="btn btn-danger m-1 btn-sm"
                         @click="eliminaritemP(prof.id)"
                       >
-                        X
+                      <i class="bi bi-trash3-fill"></i>
                       </button>
                       <button class="btn btn-warning m-1 btn-sm">
-                        reset pass
+                        <i class="bi bi-key"></i>
                       </button>
                     </td>
                   </tr>
@@ -585,14 +605,9 @@
             data-bs-parent="#accordionExample"
           >
             <div class="accordion-body">
-              <strong>This is the third item's accordion body.</strong> It is
-              hidden by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element. These classes control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+              <h6>tipos de citas</h6>
+              <h6>tipos de profesionales</h6>
+              <h6>tipos de servicios</h6>
             </div>
           </div>
         </div>
@@ -622,6 +637,8 @@ export default {
     user_rol: "",
     pro_tipodoc: "",
     pro_tipo: "",
+    formularioValidoU: false,
+    formularioValidoP: false,
 
     /* ---------valores quemados ------- */
     paramsProfesionales: [
@@ -653,7 +670,7 @@ export default {
     },
     clearform_prof() {
       this.pro_tipodoc = "";
-      this.pro_tipo = "";
+      this.pro_numdoc = "";
       this.pro_apell1 = "";
       this.pro_apell2 = "";
       this.pro_name1 = "";
@@ -661,7 +678,7 @@ export default {
       this.pro_reg_medico = "";
       this.pro_celular = "";
       this.pro_correo = "";
-      this.pro_correo = "";
+      this.pro_tipo = "";
     },
 
     btn_adduser() {
@@ -682,13 +699,14 @@ export default {
         id_ips: "1",
         doc: this.user_tipodoc + this.user_numdoc,
         nombre: this.user_nombre,
-        pass: this.user_pass1,
+        pass: "12345",
         rol: this.user_rol,
         bd: "usuarios",
       });
       try {
         this.btn_adduser();
         await this.createEntradaUser(this.Datanewuser[0]);
+        this.Datanewuser = [];
         await this.getDatabyParam(this.paramsUsuarios);
         console.log("Usuario creado exitosamente.");
       } catch (error) {
@@ -711,11 +729,13 @@ export default {
         reg_medico: this.pro_reg_medico,
         tipo: this.pro_tipo,
         correo: this.pro_correo,
+        pass: "12345",
         bd: "profesionales",
       });
       try {
         this.btn_addprof();
         await this.createEntradaProf(this.Datanewprof[0]);
+        this.Datanewprof = [];
         await this.getDatabyParam(this.paramsProfesionales);
       } catch (error) {
         // Manejar errores (¡fundamental!)
@@ -734,6 +754,7 @@ export default {
       });
       try {
         await this.DeleteItem(this.DataDeleteP[0]);
+        this.DataDeleteP = [];
         await this.getDatabyParam(this.paramsProfesionales);
       } catch (error) {
         // Manejar errores (¡fundamental!)
@@ -750,6 +771,7 @@ export default {
       this.DeleteItem(this.DataDeleteU[0]);
       try {
         await this.getDatabyParam(this.paramsUsuarios);
+        this.DataDeleteU = [];
         await this.getDatabyParam(this.paramsUsuarios);
       } catch (error) {
         // Manejar errores (¡fundamental!)

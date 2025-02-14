@@ -5,8 +5,10 @@
     </SidebarLayout>
   </div>
 </template>
-  
-  <script>
+
+<script>
+import "bootstrap-icons/font/bootstrap-icons.css"
+
 import "./assets/style.css";
 import SidebarLayout from "./layouts/SidebarLayout.vue";
 export default {
@@ -16,8 +18,8 @@ export default {
   },
 };
 </script>
-  
-  <style>
+
+<style>
 #app {
   min-height: 100vh;
 }
