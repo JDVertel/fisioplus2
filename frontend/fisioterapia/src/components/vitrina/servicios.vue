@@ -1,35 +1,87 @@
 <template>
   <div class="row row-cols-2 row-cols-md-4 row-cols-xl-6 g-4">
-    <div
-      class="col"
-      v-for="servicio in serviciosFiltrados"
-      :key="servicio.nombre"
-    >
-      <div class="card tarjeta">
-        <img
-          :src="`${servicio.img}`"
-          class="card-img-top imagenservicio"
-          alt="..."
-        />
+    <div class="col" v-for="servicio in serviciosFiltrados" :key="servicio.nombre">
+      <div class="card tarjeta" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        <img :src="`${servicio.img}`" class="card-img-top imagenservicio" alt="..." />
 
         <div class="cuerpo">
-          <h5 class="card-title titulo">{{ servicio.nombre }}</h5>
+          <h5 class="card-title"><strong>{{ servicio.nombre }}</strong></h5>
           <p class="card-text">{{ servicio.desc }}.</p>
         </div>
+
         <div class="pie">
-          <small>$ {{ servicio.precio }}</small>
-          <button
-            type="button"
-            v-on:click="reservaCitasW(servicio.nombre, this.telefono1)"
-            class="btnwsp"
-          >
-            <img
-              width="20"
-              height="20"
-              src="https://img.icons8.com/fluency/48/whatsapp.png"
-              alt="whatsapp"
-            />
-          </button>
+          <strong>$ {{ servicio.precio }}</strong>
+
+        </div>
+      </div>
+      <!-- MODAL -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Precios y planes</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-6">
+                  <div class="row">
+                    nombre
+                  </div>
+                  <div class="row">
+                    imagen
+                  </div>
+                </div>
+                <div class="col-6">
+
+
+                  <table class="table table-sm tabla-compacta">
+                    <thead>
+                      <tr>
+                        <th scope="col">Cant</th>
+                        <th scope="col">Valor</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>$ 30.000</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>$ 55.000</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>$ 800.00</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">4</th>
+                        <td>$ 100.000</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">5</th>
+                        <td>$ 130.000</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <div class="row">
+                <div class="col-6"> <button type="button" v-on:click="reservaCitasW(servicio.nombre, this.telefono1)">
+                    Solicitar 
+                    <img width="20" height="20" src="https://img.icons8.com/fluency/48/whatsapp.png" alt="whatsapp" />
+                  </button></div>
+                <div class="col-6"> <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -41,7 +93,10 @@
     servicios
 } from "../../firebase/bd"; */
 
-import { mapActions, mapState } from "vuex";
+import {
+  mapActions,
+  mapState
+} from "vuex";
 
 export default {
   data: () => ({

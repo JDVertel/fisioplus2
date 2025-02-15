@@ -38,7 +38,7 @@ div.content-body {
 }
 
 .btnwsp {
-  border-radius: 35px !important;
+  
   padding: 4px !important;
   border-style: none;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1) !important;
@@ -83,15 +83,15 @@ div.content-body {
 }
 
 .titulo {
-  font-size: 24px;
-  text-align: center;
+  font-size: 14px;
+  text-align:justify;
 }
 
 .cuerpo {
   padding: 10px;
   justify-content: center;
   align-content: center;
-  height: 140px;
+  height: 120px;
   overflow: hidden;
 }
 
@@ -114,6 +114,10 @@ div.content-body {
   z-index: 1;
   content: "";
 }
+.tabla-compacta td, .tabla-compacta th {
+  padding-top: 0.1rem;  /* Ajusta estos valores */
+  padding-bottom: 0.1rem; /* según sea necesario */
+}
 
 /*---------------------------------------------------mañas*/
 .radio-container {
@@ -132,9 +136,6 @@ div.content-body {
   font-size: 0.6em;
 }
 
-.texttable {
-  /*   font-size: 0.7em; */
-}
 
 .degradado {
   background-image: linear-gradient(to right, rgb(0, 128, 126), yellow, red);
