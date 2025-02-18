@@ -8,37 +8,42 @@
   text-decoration: none;
 }
 
-strong{
-  color:#34836E;
+strong {
+  color: #34836e;
+}
+strong2 {
+  color: #34836e;
+  font-size: 1.3rem;
 }
 
 .Cont_hc {
-
   margin-bottom: 15px;
 }
 
 button.accordion-button.collapsed {
   padding: 8px;
-  color:#ffffff ;
-  background-color: #34836E;
+  color: #ffffff;
+  background-color: #34836e;
 }
 
 button.accordion-button {
-  padding: 15px; 
+  padding: 15px;
 }
 
-div.accordion-body{
-background-color:#DBF6EF;
-
+div.accordion-body {
+  background-color: #dbf6ef;
 }
 
 div.content-body {
-  background-image: linear-gradient(to bottom right, #ffffff, rgb(150, 230, 209));
+  background-image: linear-gradient(
+    to bottom right,
+    #ffffff,
+    rgb(150, 230, 209)
+  );
   padding: 5px !important;
 }
 
 .btnwsp {
-  
   padding: 4px !important;
   border-style: none;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1) !important;
@@ -84,7 +89,7 @@ div.content-body {
 
 .titulo {
   font-size: 14px;
-  text-align:justify;
+  text-align: justify;
 }
 
 .cuerpo {
@@ -114,8 +119,9 @@ div.content-body {
   z-index: 1;
   content: "";
 }
-.tabla-compacta td, .tabla-compacta th {
-  padding-top: 0.1rem;  /* Ajusta estos valores */
+.tabla-compacta td,
+.tabla-compacta th {
+  padding-top: 0.1rem; /* Ajusta estos valores */
   padding-bottom: 0.1rem; /* según sea necesario */
 }
 
@@ -135,7 +141,6 @@ div.content-body {
   padding: 2px;
   font-size: 0.6em;
 }
-
 
 .degradado {
   background-image: linear-gradient(to right, rgb(0, 128, 126), yellow, red);

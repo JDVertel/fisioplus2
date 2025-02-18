@@ -1,41 +1,68 @@
 <template>
   <div class="row row-cols-2 row-cols-md-4 row-cols-xl-6 g-4">
-    <div class="col" v-for="servicio in serviciosFiltrados" :key="servicio.nombre">
-      <div class="card tarjeta" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        <img :src="`${servicio.img}`" class="card-img-top imagenservicio" alt="..." />
+    <div
+      class="col"
+      v-for="servicio in serviciosFiltrados"
+      :key="servicio.nombre"
+    >
+      <div class="card tarjeta">
+        <img
+          :src="`${servicio.img}`"
+          class="card-img-top imagenservicio"
+          alt="..."
+        />
 
         <div class="cuerpo">
-          <h5 class="card-title"><strong>{{ servicio.nombre }}</strong></h5>
+          <h5 class="card-title">
+            <strong>{{ servicio.nombre }}</strong>
+          </h5>
           <p class="card-text">{{ servicio.desc }}.</p>
         </div>
 
         <div class="pie">
-          <strong>$ {{ servicio.precio }}</strong>
-
+          <div class="row">
+            <button
+              type="button"
+              class="btn btn-success btn-sm"
+              data-bs-toggle="modal"
+              data-bs-target="#ModalProducto"
+              @click="openModal(servicio)"
+            >
+              Ver
+            </button>
+          </div>
         </div>
       </div>
       <!-- MODAL -->
-      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div
+        class="modal fade"
+        id="ModalProducto"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="ModalProductoLabel"
+        aria-hidden="true"
+      >
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="staticBackdropLabel">Precios y planes</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <h1 class="modal-title fs-5" id="ModalProductoLabel">
+                <strong2>Precios y planes</strong2>
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
             </div>
             <div class="modal-body">
               <div class="row">
-                <div class="col-6">
-                  <div class="row">
-                    nombre
-                  </div>
-                  <div class="row">
-                    imagen
-                  </div>
+                <div class="col-5">
+                  <div class="row">nombre</div>
+                  <div class="row">imagen</div>
                 </div>
-                <div class="col-6">
-
-
+                <div class="col-7">
                   <table class="table table-sm tabla-compacta">
                     <thead>
                       <tr>
@@ -45,40 +72,56 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <th scope="row">1</th>
+                        <td>X 1</td>
                         <td>$ 30.000</td>
                       </tr>
                       <tr>
-                        <th scope="row">2</th>
+                        <td>X 2</td>
                         <td>$ 55.000</td>
                       </tr>
                       <tr>
-                        <th scope="row">3</th>
+                        <td>X 3</td>
                         <td>$ 800.00</td>
                       </tr>
                       <tr>
-                        <th scope="row">4</th>
+                        <td>X 4</td>
                         <td>$ 100.000</td>
                       </tr>
                       <tr>
-                        <th scope="row">5</th>
+                        <td>X 5</td>
                         <td>$ 130.000</td>
                       </tr>
                     </tbody>
                   </table>
-
                 </div>
               </div>
             </div>
             <div class="modal-footer">
               <div class="row">
-                <div class="col-6"> <button type="button" v-on:click="reservaCitasW(servicio.nombre, this.telefono1)">
-                    Solicitar 
-                    <img width="20" height="20" src="https://img.icons8.com/fluency/48/whatsapp.png" alt="whatsapp" />
-                  </button></div>
-                <div class="col-6"> <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                <div class="col-7">
+                  <button
+                    type="button"
+                    class="btn btn-secundary btn-sm"
+                    v-on:click="reservaCitasW(servicio.nombre, this.telefono1)"
+                  >
+                    <img
+                      width="20"
+                      height="20"
+                      src="https://img.icons8.com/fluency/48/whatsapp.png"
+                      alt="whatsapp"
+                    />
+                    Solicitar
+                  </button>
                 </div>
-
+                <div class="col-5">
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    data-bs-dismiss="modal"
+                  >
+                    Cerrar
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -93,10 +136,7 @@
     servicios
 } from "../../firebase/bd"; */
 
-import {
-  mapActions,
-  mapState
-} from "vuex";
+import { mapActions, mapState } from "vuex";
 
 export default {
   data: () => ({
