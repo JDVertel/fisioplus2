@@ -120,13 +120,13 @@
                   class="form-control"
                   id="exampleFormControlTextarea1"
                   rows="3"
-                     placeholder="Descripcion fase de apoyo"
+                  placeholder="Descripcion fase de apoyo"
                   v-model="detalle_apoyo"
                 ></textarea>
                 <button
                   type="button"
                   class="btn btn-primary btn-sm"
-                  v-if="clase_apoyo !='0'&& detalle_apoyo !=''"
+                  v-if="clase_apoyo != '0' && detalle_apoyo != ''"
                   @click="AddAntec('apoyo', clase_apoyo, detalle_apoyo)"
                 >
                   + Agregar
@@ -175,10 +175,8 @@
                 <button
                   type="button"
                   class="btn btn-primary btn-sm"
-                  v-if="clase_balanceo !='0' && detalle_balanceo !=''"
-                  @click="
-                    AddAntec('balanceo', clase_balanceo, detalle_balanceo)
-                  "
+                  v-if="clase_balanceo != '0' && detalle_balanceo != ''"
+                  @click="AddAntec('balanceo', clase_balanceo, detalle_balanceo)"
                 >
                   + Agregar
                 </button>
@@ -193,17 +191,12 @@
                 <div class="container">
                   <div class="row">
                     <div class="col-12">
-                    
                       <select
                         class="form-select form-select-sm"
                         aria-label="Small select example"
                         v-model="eval_select"
                         v-on:change="
-                          b_evaluacion(
-                            this.eval_select,
-                            this.data_marcha,
-                            'nombre'
-                          )
+                          b_evaluacion(this.eval_select, this.data_marcha, 'nombre')
                         "
                       >
                         <option value="0" selected>---clasificacion---</option>
@@ -232,15 +225,12 @@
                       <button
                         type="button"
                         class="btn btn-primary btn-sm"
-                        v-if="eval_select !='0' && detalle_eval !='0'"
-                        @click="
-                          AddAntec('evaluacion', eval_select, detalle_eval)
-                        "
+                        v-if="eval_select != '0' && detalle_eval != '0'"
+                        @click="AddAntec('evaluacion', eval_select, detalle_eval)"
                       >
                         + Agregar
                       </button>
                     </div>
-        
                   </div>
                 </div>
               </div>
@@ -276,13 +266,9 @@
                 <button
                   type="button"
                   class="btn btn-primary btn-sm"
-                  v-if="clase_adaptaciones !='0' && detalle_adaptaciones !=''"
+                  v-if="clase_adaptaciones != '0' && detalle_adaptaciones != ''"
                   @click="
-                    AddAntec(
-                      'adaptaciones',
-                      clase_adaptaciones,
-                      detalle_adaptaciones
-                    )
+                    AddAntec('adaptaciones', clase_adaptaciones, detalle_adaptaciones)
                   "
                 >
                   + Agregar
@@ -311,16 +297,10 @@
                       <td>79 cm</td>
                       <td>66 cm</td>
                       <td>
-                        <input
-                          class="form-control form-control-sm"
-                          type="number"
-                        />
+                        <input class="form-control form-control-sm" type="number" />
                       </td>
                       <td>
-                        <input
-                          class="form-control form-control-sm"
-                          type="number"
-                        />
+                        <input class="form-control form-control-sm" type="number" />
                       </td>
                     </tr>
                     <tr>
@@ -328,16 +308,10 @@
                       <td>158 cm</td>
                       <td>132 cm</td>
                       <td>
-                        <input
-                          class="form-control form-control-sm"
-                          type="number"
-                        />
+                        <input class="form-control form-control-sm" type="number" />
                       </td>
                       <td>
-                        <input
-                          class="form-control form-control-sm"
-                          type="number"
-                        />
+                        <input class="form-control form-control-sm" type="number" />
                       </td>
                     </tr>
                     <tr>
@@ -345,16 +319,10 @@
                       <td>8.1 cm</td>
                       <td>7.1 cm</td>
                       <td>
-                        <input
-                          class="form-control form-control-sm"
-                          type="number"
-                        />
+                        <input class="form-control form-control-sm" type="number" />
                       </td>
                       <td>
-                        <input
-                          class="form-control form-control-sm"
-                          type="number"
-                        />
+                        <input class="form-control form-control-sm" type="number" />
                       </td>
                     </tr>
                     <tr>
@@ -362,16 +330,10 @@
                       <td>117pm</td>
                       <td>117pm</td>
                       <td>
-                        <input
-                          class="form-control form-control-sm"
-                          type="number"
-                        />
+                        <input class="form-control form-control-sm" type="number" />
                       </td>
                       <td>
-                        <input
-                          class="form-control form-control-sm"
-                          type="number"
-                        />
+                        <input class="form-control form-control-sm" type="number" />
                       </td>
                     </tr>
                     <tr>
@@ -379,16 +341,10 @@
                       <td>7-10°</td>
                       <td>6°</td>
                       <td>
-                        <input
-                          class="form-control form-control-sm"
-                          type="number"
-                        />
+                        <input class="form-control form-control-sm" type="number" />
                       </td>
                       <td>
-                        <input
-                          class="form-control form-control-sm"
-                          type="number"
-                        />
+                        <input class="form-control form-control-sm" type="number" />
                       </td>
                     </tr>
                   </tbody>
@@ -399,37 +355,36 @@
           <div class="col-12 col-md-6">
             <div class="card">
               <div class="card-header">Registro</div>
-          
-                <div class="table-responsive">
-                  <table class="table table-sm">
-                    <thead>
-                      <tr>
-                        <th>Fase</th>
-                        <th>Clasificacion</th>
-                        <th>Detalle</th>
-                        <th>Opc</th>
-                      </tr>
-                    </thead>
-                    <tbody class="table-group-divider">
-                      <tr v-for="(item, index) in NewAntec" :key="index">
-                        <td>{{ item.tipo }}</td>
-                        <td>{{ item.enfermedad }}</td>
-                        <td>{{ item.detalleenf }}</td>
-                        <td> <button
+
+              <div class="table-responsive">
+                <table class="table table-sm">
+                  <thead>
+                    <tr>
+                      <th>Fase</th>
+                      <th>Clasificacion</th>
+                      <th>Detalle</th>
+                      <th>Opc</th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-group-divider">
+                    <tr v-for="(item, index) in NewAntec" :key="index">
+                      <td>{{ item.tipo }}</td>
+                      <td>{{ item.enfermedad }}</td>
+                      <td>{{ item.detalleenf }}</td>
+                      <td>
+                        <button
                           class="btn btn-sm btn-danger"
                           @click="eliminaritem(index)"
                         >
                           <i class="bi bi-trash-fill"></i>
-                        </button></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-            <button class="btn btn-warning mt-3" @click="guardarInfo">
-              + Guardar
-            </button>
+            <button class="btn btn-warning mt-3" @click="guardarInfo">+ Guardar</button>
           </div>
         </div>
       </div>
@@ -448,9 +403,7 @@ export default {
     data_apoyo: insp_dinamica.filter((el) => el.class === "apoyo")[0],
     data_balanceo: insp_dinamica.filter((el) => el.class === "balanceo")[0],
     data_marcha: insp_dinamica.filter((el) => el.class === "marcha"),
-    data_adaptaciones: insp_dinamica.filter(
-      (el) => el.class === "adaptaciones"
-    )[0],
+    data_adaptaciones: insp_dinamica.filter((el) => el.class === "adaptaciones")[0],
     clase_apoyo: "",
     detalle_apoyo: "",
     clase_balanceo: "",
@@ -471,7 +424,7 @@ export default {
         detalleenf: detalle,
       };
       this.NewAntec = [...this.NewAntec, item];
-      this.limpiarcampos()
+      this.limpiarcampos();
     },
 
     eliminaritem(index) {
@@ -490,7 +443,6 @@ export default {
 
       this.clase_adaptaciones = "0";
       this.detalle_adaptaciones = "";
-
     },
 
     guardarInfo() {

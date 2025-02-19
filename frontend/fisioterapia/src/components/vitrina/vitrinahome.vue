@@ -3,11 +3,7 @@
     <div class="container">
       <br />
 
-      <ul
-        class="nav nav-tabs nav justify-content-end"
-        id="myTab"
-        role="tablist"
-      >
+      <ul class="nav nav-tabs nav justify-content-end" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
           <button
             class="nav-link active"
@@ -63,9 +59,9 @@
             </div>
           </div>
           <dir class="row">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo
-            fuga nisi sint recusandae odio tempore vitae, quod placeat non ipsa
-            quibusdam nihil eaque numquam cupiditate quasi in harum illum eum!
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo fuga nisi
+            sint recusandae odio tempore vitae, quod placeat non ipsa quibusdam nihil
+            eaque numquam cupiditate quasi in harum illum eum!
           </dir>
 
           <br />
@@ -96,8 +92,8 @@
                     </td>
                     <td>
                       Tipo: {{ articulo.tipo }} <br />
-                      Nombre: {{ articulo.nombre }} <br />Precio:
-                      {{ articulo.precio }} <br />
+                      Nombre: {{ articulo.nombre }}
+                      <br />
                       <button
                         class="btn btn-primary m-1 btn-sm"
                         data-bs-toggle="modal"
@@ -127,8 +123,8 @@
                         <i class="bi bi-eye"></i>
                       </button>
                     </td>
-                    <td></td>
-                    <td></td>
+                    <td>{{articulo.desc}}</td>
+                    <td>{{articulo.precios}}</td>
                   </tr>
                 </tbody>
               </table>
@@ -205,20 +201,10 @@
                           ></textarea>
                         </div>
                       </div>
-                      <div
-                        class="col-4 col-md-3"
-                        v-if="this.modalOption === 'N'"
-                      >
-                        <img
-                          :src="local_Image"
-                          class="img-thumbnail"
-                          alt="..."
-                        />
+                      <div class="col-4 col-md-3" v-if="this.modalOption === 'N'">
+                        <img :src="local_Image" class="img-thumbnail" alt="..." />
                       </div>
-                      <div
-                        class="col-4 col-md-3"
-                        v-if="this.modalOption === 'U'"
-                      >
+                      <div class="col-4 col-md-3" v-if="this.modalOption === 'U'">
                         <img
                           :src="`${this.s_img}`"
                           alt="imagen producto"
@@ -246,9 +232,43 @@
                         <strong>Listado de precios</strong>
                       </div>
                       <div class="col-6">
-                        <button type="button" class="btn btn-warning btn-sm">
+                        <button
+                          type="button"
+                          class="btn btn-warning btn-sm"
+                          @click="cargarcampositem()"
+                          v-if="!NewModal"
+                        >
                           + Nuevo
                         </button>
+                      </div>
+                    </div>
+                    <div class="container" v-if="NewModal">
+                      <div class="row mt-3">
+                        <div class="col-5">
+                          <input
+                            type="number"
+                            class="form-control"
+                            placeholder="Cant"
+                            v-model="cant"
+                          />
+                        </div>
+                        <div class="col-5">
+                          <input
+                            type="number"
+                            class="form-control"
+                            placeholder="Precio"
+                            v-model="precio"
+                          />
+                        </div>
+                        <div class="col-2">
+                          <button
+                            type="button"
+                            class="btn btn-warning btn-sm"
+                            @click="agregaritemlist(cant,precio)"
+                          >
+                            +
+                          </button>
+                        </div>
                       </div>
                     </div>
                     <hr />
@@ -261,10 +281,15 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
+                        <tr v-for="(item,index) in ArrayPrecios" :key="index">
+                          <td>{{item.cant}}</td>
+                          <td>{{item.precio}}</td>
+                          <td>     <button
+                            class="btn btn-sm btn-danger"
+                            @click="eliminaritemArray(index)"
+                          >
+                            <i class="bi bi-trash-fill"></i>
+                          </button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -369,10 +394,7 @@
                           alt="create-new"
                         />
                       </button>
-                      <button
-                        class="btn btn-danger m-1"
-                        @click="eliminaritem(item.id)"
-                      >
+                      <button class="btn btn-danger m-1" @click="eliminaritem(item.id)">
                         <img
                           width="15"
                           height="15"
@@ -467,20 +489,10 @@
                         </div>
                         <div class="col"></div>
                       </div>
-                      <div
-                        class="col-4 col-md-3"
-                        v-if="this.modalOption === 'N'"
-                      >
-                        <img
-                          :src="local_Image"
-                          class="img-thumbnail"
-                          alt="..."
-                        />
+                      <div class="col-4 col-md-3" v-if="this.modalOption === 'N'">
+                        <img :src="local_Image" class="img-thumbnail" alt="..." />
                       </div>
-                      <div
-                        class="col-4 col-md-3"
-                        v-if="this.modalOption === 'U'"
-                      >
+                      <div class="col-4 col-md-3" v-if="this.modalOption === 'U'">
                         <img
                           :src="`${this.p_img}`"
                           alt="imagen producto"
@@ -541,10 +553,8 @@
       <router-link to="/dashboard">Home</router-link>
     </div>
 
-    <br />
   </div>
 </template>
-
 
 <script>
 import { storage } from "./../../api/fire";
@@ -587,6 +597,9 @@ export default {
     imagenes: [],
     imagen: null,
     IMG: null,
+
+    NewModal: false,
+    ArrayPrecios:[],
   }),
 
   methods: {
@@ -595,6 +608,7 @@ export default {
       "updateVitrinaP",
       "updateVitrinaS",
       "createEntradaVitrina",
+      "createEntradaVitrinaS",
       "DeleteItemVitrina",
       "CambiarEstadoVitrina",
     ]),
@@ -641,14 +655,13 @@ export default {
         nombre: this.s_nombre,
         tipo: this.s_tipo,
         desc: this.s_detalle,
-        precio: this.s_precio,
+        precios: this.ArrayPrecios,
         img: this.s_img,
         publicado: true,
       });
       // Limpiar los campos después de agregar la persona
-      this.createEntradaVitrina(this.Servicios[0]);
+      this.createEntradaVitrinaS(this.Servicios[0]);
       console.log("guardando servicio", this.Servicios[0]);
-
       this.limpiarmodal();
     },
 
@@ -759,7 +772,29 @@ export default {
     cambiarEstadoItem(item) {
       this.CambiarEstadoVitrina(item);
     },
+    /* item de precios en modal servicios */
+    cargarcampositem() {
+      this.NewModal = true;
+    },
+/* ----ITEMS DE PRECIOS------------------------------------------  */
+    agregaritemlist(cant,precio) {
+      this.NewModal = false;
+      let item={
+        cant:cant,
+        precio:precio
+      };
+      this.ArrayPrecios=[...this.ArrayPrecios, item];
+      this.clearFormItem();
+    },
+    clearFormItem(){
+      this.cant="";
+      this.precio="";
+    },
 
+    eliminaritemArray(index) {
+      console.log(index);
+      this.ArrayPrecios.splice(index, 1);
+    },
     //----- IMAGEN-------------------------------------------
     /* mostrar la imagen al momento de cargar en el input */
     onSelectImage_s(event) {
