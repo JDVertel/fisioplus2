@@ -3,7 +3,11 @@
     <div class="container">
       <br />
 
-      <ul class="nav nav-tabs nav justify-content-end" id="myTab" role="tablist">
+      <ul
+        class="nav nav-tabs nav justify-content-end"
+        id="myTab"
+        role="tablist"
+      >
         <li class="nav-item" role="presentation">
           <button
             class="nav-link active"
@@ -15,7 +19,7 @@
             aria-controls="home-tab-pane"
             aria-selected="true"
           >
-            Vitrina
+            Servicios
           </button>
         </li>
         <li class="nav-item" role="presentation">
@@ -29,7 +33,7 @@
             aria-controls="profile-tab-pane"
             aria-selected="false"
           >
-            Inventario
+            Productos
           </button>
         </li>
       </ul>
@@ -59,14 +63,12 @@
             </div>
           </div>
           <div class="row">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo fuga nisi
-            sint recusandae odio tempore vitae, quod placeat non ipsa quibusdam nihil
-            eaque numquam cupiditate quasi in harum illum eum!
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo
+            fuga nisi sint recusandae odio tempore vitae, quod placeat non ipsa
+            quibusdam nihil eaque numquam cupiditate quasi in harum illum eum!
           </div>
 
           <br />
-          <!-- Boton modal1 -->
-
           <!--  -->
           <div class="col-12">
             <div class="table-responsive">
@@ -138,7 +140,10 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr v-for="(item, index) in articulo.precios" :key="index">
+                          <tr
+                            v-for="(item, index) in articulo.precios"
+                            :key="index"
+                          >
                             <td>
                               <small>{{ item.cant }}</small>
                             </td>
@@ -226,10 +231,20 @@
                           ></textarea>
                         </div>
                       </div>
-                      <div class="col-4 col-md-3" v-if="this.modalOption === 'N'">
-                        <img :src="local_Image" class="img-thumbnail" alt="..." />
+                      <div
+                        class="col-4 col-md-3"
+                        v-if="this.modalOption === 'N'"
+                      >
+                        <img
+                          :src="local_Image"
+                          class="img-thumbnail"
+                          alt="..."
+                        />
                       </div>
-                      <div class="col-4 col-md-3" v-if="this.modalOption === 'U'">
+                      <div
+                        class="col-4 col-md-3"
+                        v-if="this.modalOption === 'U'"
+                      >
                         <img
                           :src="`${this.s_img}`"
                           alt="imagen producto"
@@ -287,7 +302,7 @@
                         </div>
                         <div class="col-2">
                           <button
-                          v-if="this.modalOption === 'N'"
+                            v-if="this.modalOption === 'N'"
                             type="button"
                             class="btn btn-warning btn-sm"
                             @click="agregaritemlistN(cant, precio)"
@@ -295,7 +310,7 @@
                             +
                           </button>
                           <button
-                          v-if="this.modalOption === 'U'"
+                            v-if="this.modalOption === 'U'"
                             type="button"
                             class="btn btn-warning btn-sm"
                             @click="agregaritemlistU(cant, precio)"
@@ -306,7 +321,7 @@
                       </div>
                     </div>
                     <hr />
-                    <table class="table"  v-if="this.modalOption === 'N'">
+                    <table class="table" v-if="this.modalOption === 'N'">
                       <thead>
                         <tr>
                           <th scope="col">Cant</th>
@@ -329,7 +344,7 @@
                         </tr>
                       </tbody>
                     </table>
-                    <table class="table"  v-if="this.modalOption === 'U'">
+                    <table class="table" v-if="this.modalOption === 'U'">
                       <thead>
                         <tr>
                           <th scope="col">Cant</th>
@@ -371,6 +386,7 @@
                     v-on:click="BM_updateServicios()"
                     data-bs-dismiss="modal"
                   >
+                    <!-- SERVICIOS -->
                     Actualizar
                   </button>
 
@@ -378,7 +394,7 @@
                     type="submit"
                     v-if="modalOption == 'N'"
                     class="btn btn-primary"
-                    v-on:click="uploadImage_s()"
+                    v-on:click="crearServicio()"
                     data-bs-dismiss="modal"
                   >
                     Guardar
@@ -453,7 +469,10 @@
                           alt="create-new"
                         />
                       </button>
-                      <button class="btn btn-danger m-1" @click="eliminaritem(item.id)">
+                      <button
+                        class="btn btn-danger m-1"
+                        @click="eliminaritem(item.id)"
+                      >
                         <img
                           width="15"
                           height="15"
@@ -548,10 +567,20 @@
                         </div>
                         <div class="col"></div>
                       </div>
-                      <div class="col-4 col-md-3" v-if="this.modalOption === 'N'">
-                        <img :src="local_Image" class="img-thumbnail" alt="..." />
+                      <div
+                        class="col-4 col-md-3"
+                        v-if="this.modalOption === 'N'"
+                      >
+                        <img
+                          :src="local_Image"
+                          class="img-thumbnail"
+                          alt="..."
+                        />
                       </div>
-                      <div class="col-4 col-md-3" v-if="this.modalOption === 'U'">
+                      <div
+                        class="col-4 col-md-3"
+                        v-if="this.modalOption === 'U'"
+                      >
                         <img
                           :src="`${this.p_img}`"
                           alt="imagen producto"
@@ -583,6 +612,7 @@
                   >
                     Close
                   </button>
+                  <!--  -->
                   <button
                     type="button"
                     v-if="modalOption == 'U'"
@@ -590,8 +620,10 @@
                     v-on:click="BM_updateProductos()"
                     data-bs-dismiss="modal"
                   >
+                    <!-- productos -->
                     Actualizar
                   </button>
+                  <!--  -->
                   <button
                     type="button"
                     v-if="modalOption == 'N'"
@@ -601,6 +633,7 @@
                   >
                     Guardar
                   </button>
+                  <!--  -->
                 </div>
               </div>
             </div>
@@ -752,7 +785,7 @@ export default {
     },
 
     async saveVitrinaS() {
-      this.updateVitrinaP(this.Servicios[0]);
+      this.updateVitrinaS(this.Servicios[0]);
       /* console.log(this.Productos); */
     },
 
@@ -900,7 +933,7 @@ export default {
       }
     },
 
-    async uploadImage_s() {
+    async crearServicio() {
       try {
         const storage = getStorage();
         const storageRef = ref(storage, this.IMG);

@@ -29,8 +29,8 @@ export const updateVitrinaP = async ({ commit }, entradas) => {
 
 export const updateVitrinaS = async ({ commit }, entradas) => {
   console.log("variable entradas ", entradas);
-  const { id_ips, tipo, nombre, desc, precio, publicado,img } = entradas;
-  const dataToSave = { id_ips, tipo, nombre, desc, precio, publicado,img  };
+  const { id_ips, tipo, nombre, desc, precios, publicado,img } = entradas;
+  const dataToSave = { id_ips, tipo, nombre, desc, precios, publicado,img  };
   const ruta = `/vitrina/${entradas.id}.json`;
   //servicio
   const response = await firebase_api.put(ruta, dataToSave);
