@@ -42,11 +42,11 @@
           aria-labelledby="home-tab"
           tabindex="0"
         >
-          <div class="row mt-3">
-            <div class="col-10">
+          <div class="row mt-3 mb-3">
+            <div class="col-9">
               <h6><strong>Clases Consultas y Terapias</strong></h6>
             </div>
-            <div class="col-2">
+            <div class="col-3">
               <button
                 type="button"
                 class="btn btn-warning"
@@ -58,11 +58,11 @@
               </button>
             </div>
           </div>
-          <dir class="row">
+          <div class="row">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo fuga nisi
             sint recusandae odio tempore vitae, quod placeat non ipsa quibusdam nihil
             eaque numquam cupiditate quasi in harum illum eum!
-          </dir>
+          </div>
 
           <br />
           <!-- Boton modal1 -->
@@ -73,26 +73,29 @@
               <table class="table table-sm">
                 <thead>
                   <tr>
-                    <th scope="col">Imagen</th>
-                    <th scope="col">Detalle</th>
-                    <th scope="col">Descripcion</th>
-                    <th scope="col">Precios</th>
+                    <th>Imagen</th>
+                    <th>Detalle</th>
+                    <!--   <th scope="col">Descripcion</th> -->
+                    <th>Precios</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr v-for="articulo in vitrinaservicios" :key="articulo.id">
                     <td>
-                      <div class="container centrarcontenido">
-                        <img
-                          :src="`${articulo.img}`"
-                          alt="imagen producto"
-                          style="height: 70px"
-                        />
-                      </div>
+                      <img
+                        :src="`${articulo.img}`"
+                        alt="imagen producto"
+                        style="height: 70px"
+                        class="imagenconfig"
+                      />
                     </td>
+
                     <td>
-                      Tipo: {{ articulo.tipo }} <br />
-                      Nombre: {{ articulo.nombre }}
+                      <small>Tipo: {{ articulo.tipo }}</small
+                      ><br />
+                      <small>Nombre: {{ articulo.nombre }}</small>
+                      <br />
+                      <small>{{ articulo.desc }}</small>
                       <br />
                       <button
                         class="btn btn-primary m-1 btn-sm"
@@ -123,14 +126,36 @@
                         <i class="bi bi-eye"></i>
                       </button>
                     </td>
-                    <td>{{articulo.desc}}</td>
-                    <td>{{articulo.precios}}</td>
+                    <!-- <td>{{articulo.desc}}</td> -->
+                    <td class="tablaconfig">
+                      <table
+                        class="table table-sm table-striped table-borderless tablaconfig"
+                      >
+                        <thead>
+                          <tr>
+                            <td>Cant</td>
+                            <td>Valor</td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="(item, index) in articulo.precios" :key="index">
+                            <td>
+                              <small>{{ item.cant }}</small>
+                            </td>
+                            <td>
+                              <small>{{ item.precio }}</small>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
-
+          <br />
+          <br />
           <!-- inicio modal 1  servicios-->
           <div
             class="modal fade"
@@ -154,7 +179,7 @@
                     id="exampleModalLabel2"
                     v-if="this.modalOption === 'U'"
                   >
-                    Editar nuevo item de servicio
+                    Editar item de servicio
                   </h1>
                   <button
                     type="button"
@@ -262,9 +287,18 @@
                         </div>
                         <div class="col-2">
                           <button
+                          v-if="this.modalOption === 'N'"
                             type="button"
                             class="btn btn-warning btn-sm"
-                            @click="agregaritemlist(cant,precio)"
+                            @click="agregaritemlistN(cant, precio)"
+                          >
+                            +
+                          </button>
+                          <button
+                          v-if="this.modalOption === 'U'"
+                            type="button"
+                            class="btn btn-warning btn-sm"
+                            @click="agregaritemlistU(cant, precio)"
                           >
                             +
                           </button>
@@ -272,7 +306,7 @@
                       </div>
                     </div>
                     <hr />
-                    <table class="table">
+                    <table class="table"  v-if="this.modalOption === 'N'">
                       <thead>
                         <tr>
                           <th scope="col">Cant</th>
@@ -281,15 +315,40 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr v-for="(item,index) in ArrayPrecios" :key="index">
-                          <td>{{item.cant}}</td>
-                          <td>{{item.precio}}</td>
-                          <td>     <button
-                            class="btn btn-sm btn-danger"
-                            @click="eliminaritemArray(index)"
-                          >
-                            <i class="bi bi-trash-fill"></i>
-                          </button></td>
+                        <tr v-for="(itemN, index) in ArrayPrecios" :key="index">
+                          <td>{{ itemN.cant }}</td>
+                          <td>{{ itemN.precio }}</td>
+                          <td>
+                            <button
+                              class="btn btn-sm btn-danger"
+                              @click="eliminaritemArrayN(index)"
+                            >
+                              <i class="bi bi-trash-fill"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table class="table"  v-if="this.modalOption === 'U'">
+                      <thead>
+                        <tr>
+                          <th scope="col">Cant</th>
+                          <th scope="col">Precio</th>
+                          <th scope="col">Opc</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr v-for="(itemU, index) in s_precios" :key="index">
+                          <td>{{ itemU.cant }}</td>
+                          <td>{{ itemU.precio }}</td>
+                          <td>
+                            <button
+                              class="btn btn-sm btn-danger"
+                              @click="eliminaritemArrayU(index)"
+                            >
+                              <i class="bi bi-trash-fill"></i>
+                            </button>
+                          </td>
                         </tr>
                       </tbody>
                     </table>
@@ -552,7 +611,6 @@
 
       <router-link to="/dashboard">Home</router-link>
     </div>
-
   </div>
 </template>
 
@@ -599,7 +657,7 @@ export default {
     IMG: null,
 
     NewModal: false,
-    ArrayPrecios:[],
+    ArrayPrecios: [],
   }),
 
   methods: {
@@ -674,7 +732,7 @@ export default {
       //
       this.s_nombre = data.nombre;
       this.s_detalle = data.desc;
-      this.s_precio = data.precio;
+      this.s_precios = data.precios;
       this.s_img = data.img;
     },
 
@@ -686,7 +744,7 @@ export default {
         publicado: this.s_publicado,
         nombre: this.s_nombre,
         desc: this.s_detalle,
-        precio: this.s_precio,
+        precios: this.s_precios,
         img: this.s_img,
       });
       this.saveVitrinaS();
@@ -776,24 +834,37 @@ export default {
     cargarcampositem() {
       this.NewModal = true;
     },
-/* ----ITEMS DE PRECIOS------------------------------------------  */
-    agregaritemlist(cant,precio) {
+    /* ----ITEMS DE PRECIOS------------------------------------------  */
+    agregaritemlistN(cant, precio) {
       this.NewModal = false;
-      let item={
-        cant:cant,
-        precio:precio
+      let item = {
+        cant: cant,
+        precio: precio,
       };
-      this.ArrayPrecios=[...this.ArrayPrecios, item];
+      this.ArrayPrecios = [...this.ArrayPrecios, item];
       this.clearFormItem();
     },
-    clearFormItem(){
-      this.cant="";
-      this.precio="";
+    agregaritemlistU(cant, precio) {
+      this.NewModal = false;
+      let item = {
+        cant: cant,
+        precio: precio,
+      };
+      this.s_precios = [...this.s_precios, item];
+      this.clearFormItem();
+    },
+    clearFormItem() {
+      this.cant = "";
+      this.precio = "";
     },
 
-    eliminaritemArray(index) {
+    eliminaritemArrayN(index) {
       console.log(index);
       this.ArrayPrecios.splice(index, 1);
+    },
+    eliminaritemArrayU(index) {
+      console.log(index);
+      this.s_precios.splice(index, 1);
     },
     //----- IMAGEN-------------------------------------------
     /* mostrar la imagen al momento de cargar en el input */

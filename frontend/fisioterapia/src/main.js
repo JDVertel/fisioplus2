@@ -17,7 +17,7 @@ import VueAxios from "vue-axios";
 
 //firebase
 
-const app = createApp(App)
+const app = createApp(App);
 
 // Hacer bootstrap disponible globalmente
 window.bootstrap = bootstrap;

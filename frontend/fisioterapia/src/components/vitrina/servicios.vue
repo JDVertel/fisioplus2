@@ -17,18 +17,18 @@
               @click="ModalServicios(servicio)">
               Ver
             </button>
-            {{ servicio.precios}}
+    
           </div>
         </div>
       </div>
       <!-- MODAL -->
       <div class="modal fade" id="ModalProducto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="ModalProductoLabel" aria-hidden="true">
+        aria-labelledby="ModalProductoLabel" aria-hidden="false">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="ModalProductoLabel">
-                <strong2>Precios y planes</strong2>
+                <strong>Precios y planes</strong>
               </h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -39,6 +39,7 @@
                   <div class="row"> <img :src="`${t_img}`" class="card-img-top imagenservicio" alt="..." />
                   </div>
                 </div>
+       
                 <div class="col-7">
                   <table class="table table-sm tabla-compacta">
                     <thead>
@@ -47,27 +48,12 @@
                         <th scope="col">Valor</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody v-for="(item,index) in t_precios" :key="index">
                       <tr>
-                        <td>X 1</td>
-                        <td>$ 30.000</td>
+                        <td>X {{item.cant}}</td>
+                        <td>$ {{item.precio}}</td>
                       </tr>
-                      <tr>
-                        <td>X 2</td>
-                        <td>$ 55.000</td>
-                      </tr>
-                      <tr>
-                        <td>X 3</td>
-                        <td>$ 800.00</td>
-                      </tr>
-                      <tr>
-                        <td>X 4</td>
-                        <td>$ 100.000</td>
-                      </tr>
-                      <tr>
-                        <td>X 5</td>
-                        <td>$ 130.000</td>
-                      </tr>
+                    
                     </tbody>
                   </table>
                 </div>

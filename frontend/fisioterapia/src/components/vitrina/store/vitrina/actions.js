@@ -86,8 +86,8 @@ export const createEntradaVitrina = async ({ commit }, entradas) => {
 /* =========================================== */
 export const CambiarEstadoVitrina = async ({ commit }, entradas) => {
   /*  */
-  const { id_ips, tipo, nombre, desc, precio, cant, publicado, img } = entradas;
-  const DataStore = { id_ips, tipo, nombre, desc, precio, cant, publicado, img };
+  const { id_ips, tipo, nombre, desc, precios, cant, publicado, img } = entradas;
+  const DataStore = { id_ips, tipo, nombre, desc, precios, cant, publicado, img };
   DataStore.publicado = !publicado;
   console.log(DataStore);
   const ruta = `/vitrina/${entradas.id}.json`;
