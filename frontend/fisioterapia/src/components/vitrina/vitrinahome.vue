@@ -47,10 +47,10 @@
           tabindex="0"
         >
           <div class="row mt-3 mb-3">
-            <div class="col-9">
+            <div class="col-6">
               <h6><strong>Clases Consultas y Terapias</strong></h6>
             </div>
-            <div class="col-3">
+            <div class="col-6">
               <button
                 type="button"
                 class="btn btn-warning"
@@ -62,7 +62,7 @@
               </button>
             </div>
           </div>
-          <div class="row">
+          <div class="container">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo
             fuga nisi sint recusandae odio tempore vitae, quod placeat non ipsa
             quibusdam nihil eaque numquam cupiditate quasi in harum illum eum!
@@ -77,7 +77,8 @@
                   <tr>
                     <th>Imagen</th>
                     <th>Detalle</th>
-                    <!--   <th scope="col">Descripcion</th> -->
+                    <th>Descripcion</th>
+                    <th>Opc</th>
                     <th>Precios</th>
                   </tr>
                 </thead>
@@ -88,7 +89,6 @@
                         :src="`${articulo.img}`"
                         alt="imagen producto"
                         style="height: 70px"
-                        class="imagenconfig"
                       />
                     </td>
 
@@ -96,39 +96,40 @@
                       <small>Tipo: {{ articulo.tipo }}</small
                       ><br />
                       <small>Nombre: {{ articulo.nombre }}</small>
-                      <br />
-                      <small>{{ articulo.desc }}</small>
-                      <br />
-                      <button
-                        class="btn btn-primary m-1 btn-sm"
-                        data-bs-toggle="modal"
-                        data-bs-target="#exampleModal2"
-                        @click="M_editarservicios(articulo)"
-                      >
-                        <i class="bi bi-pen"></i>
-                      </button>
-                      <button
-                        class="btn btn-danger m-1 btn-sm"
-                        @click="eliminaritem(articulo.id)"
-                      >
-                        <i class="bi bi-trash"></i>
-                      </button>
-                      <button
-                        class="btn btn-warning m-1 btn-sm"
-                        @click="cambiarEstadoItem(articulo)"
-                        v-if="articulo.publicado == false"
-                      >
-                        <i class="bi bi-eye-slash-fill"></i>
-                      </button>
-                      <button
-                        class="btn btn-success m-1 btn-sm"
-                        @click="cambiarEstadoItem(articulo)"
-                        v-if="articulo.publicado == true"
-                      >
-                        <i class="bi bi-eye"></i>
-                      </button>
                     </td>
-                    <!-- <td>{{articulo.desc}}</td> -->
+                    <td>{{ articulo.desc }}</td>
+                    <td>
+                      <div class="container">
+                        <button
+                          class="btn btn-primary m-1 btn-sm"
+                          data-bs-toggle="modal"
+                          data-bs-target="#exampleModal2"
+                          @click="M_editarservicios(articulo)"
+                        >
+                          <i class="bi bi-pen"></i>
+                        </button>
+                        <button
+                          class="btn btn-danger m-1 btn-sm"
+                          @click="eliminaritem(articulo.id)"
+                        >
+                          <i class="bi bi-trash"></i>
+                        </button>
+                        <button
+                          class="btn btn-warning m-1 btn-sm"
+                          @click="cambiarEstadoItem(articulo)"
+                          v-if="articulo.publicado == false"
+                        >
+                          <i class="bi bi-eye-slash-fill"></i>
+                        </button>
+                        <button
+                          class="btn btn-success m-1 btn-sm"
+                          @click="cambiarEstadoItem(articulo)"
+                          v-if="articulo.publicado == true"
+                        >
+                          <i class="bi bi-eye"></i>
+                        </button>
+                      </div>
+                    </td>
                     <td class="tablaconfig">
                       <table
                         class="table table-sm table-striped table-borderless tablaconfig"
@@ -415,25 +416,38 @@
           tabindex="0"
         >
           <!-- Button modal 2  articulos -->
-          <h6 class="display-6">Articulos Tienda</h6>
-          <hr />
+          <div class="row mt-3 mb-3">
+            <div class="col-6">
+              <h6><strong>Articulos de la tienda</strong></h6>
+            </div>
+            <div class="col-6">
+              <button
+                type="button"
+                class="btn btn-warning"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+                @click="B_nuevo()"
+              >
+                + Producto
+              </button>
+            </div>
+          </div>
+          <div class="container mb-3">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo
+            fuga nisi sint recusandae odio tempore vitae, quod placeat non ipsa
+            quibusdam nihil eaque numquam cupiditate quasi in harum illum eum!
+          </div>
+
           <!--  -->
           <div class="col-12">
-            <button
-              type="button"
-              class="btn btn-warning"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
-              @click="B_nuevo()"
-            >
-              + Producto
-            </button>
             <div class="table-responsive">
               <table class="table table-sm">
                 <thead>
                   <tr>
-                    <th scope="col">Img</th>
-                    <th scope="col">Detalle</th>
+                    <th>Imagen</th>
+                    <th>Detalle</th>
+                    <th>Precio</th>
+                    <th>Opciones</th>
                   </tr>
                 </thead>
 
@@ -451,48 +465,42 @@
 
                     <td>
                       Cantidad: {{ item.cant }} <br />
-                      nombre: {{ item.nombre }} <br />precio: {{ item.precio }}
+                      nombre: {{ item.nombre }}
                       <!--         <br>publicado: {{item.publicado}}
                                          Id: {{item.id}} -->
                       <br />
-
+                    </td>
+                    <td>
+                      {{ item.precio }}
+                    </td>
+                    <td>
                       <button
-                        class="btn btn-warning m-1"
+                        class="btn btn-primary btn-sm m-1"
                         data-bs-toggle="modal"
                         data-bs-target="#exampleModal"
                         @click="M_editarproductos(item)"
                       >
-                        <img
-                          width="15"
-                          height="15"
-                          src="https://img.icons8.com/ios/50/create-new.png"
-                          alt="create-new"
-                        />
+                        <i class="bi bi-pen"></i>
                       </button>
                       <button
-                        class="btn btn-danger m-1"
+                        class="btn btn-danger btn-sm m-1"
                         @click="eliminaritem(item.id)"
                       >
-                        <img
-                          width="15"
-                          height="15"
-                          src="https://img.icons8.com/material-rounded/24/filled-trash.png"
-                          alt="filled-trash"
-                        />
+                        <i class="bi bi-trash"></i>
                       </button>
                       <button
-                        class="btn btn-success m-1"
+                        class="btn btn-warning btn-sm m-1"
                         @click="cambiarEstadoItem(item)"
                         v-if="item.publicado == false"
                       >
-                        Mostrar
+                        <i class="bi bi-eye-slash-fill"></i>
                       </button>
                       <button
-                        class="btn btn-primary m-1"
+                        class="btn btn-success btn-sm m-1"
                         @click="cambiarEstadoItem(item)"
                         v-if="item.publicado == true"
                       >
-                        Ocultar
+                        <i class="bi bi-eye"></i>
                       </button>
                     </td>
                   </tr>
