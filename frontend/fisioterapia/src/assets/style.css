@@ -11,9 +11,28 @@
 strong {
   color: #34836e;
 }
-strong2 {
-  color: #34836e;
-  font-size: 1.3rem;
+
+div.card.clasecitas {
+  color: #dbf6ef;
+  padding: 5px !important;
+  text-shadow: 2px 2px 5px #333;
+}
+
+.card_detalle {
+  font-size: 0.8rem !important;
+  padding: 1px;
+  text-shadow: 2px 2px 5px #333;
+}
+
+.card_contador {
+  font-size: 0.7rem !important;
+  padding: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sinpadding {
+  padding: 3px !important;
 }
 
 .Cont_hc {
@@ -61,7 +80,7 @@ div.content-body {
 
 .centrarcontenido {
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -90,8 +109,6 @@ div.content-body {
 .card:hover {
   box-shadow: 0 9px 9px 0 rgba(0, 0, 0, 0.2);
 }
-
-
 
 /* ....................................................... */
 .tarjeta {

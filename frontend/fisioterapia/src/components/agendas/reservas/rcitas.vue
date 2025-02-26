@@ -14,29 +14,43 @@ id_ips :{{ id_ips }} - id_user: {{ id_user }}- rol: {{ rol }}- info:{{ info }}
 <hr> -->
   <div>
     <div class="container">
-      <div class="row"  >
-        <div class="col-3 col-md-2"  v-for="agenda in this.dataAgendas" :key="agenda.id">
-          
-          <div class="card">
-            <h6>Fecha: {{agenda.fecha}}</h6>
-            <h6>Tipo: {{agenda.clase}}</h6>
-            <h6>Profesional</h6>
+      <div class="row">
+        <div
+          class="col-3 col-md-1 sinpadding"
+          v-for="agenda in this.dataAgendas"
+          :key="agenda.id"
+        >
+          <div
+            class="card clasecitas mb-2"
+            v-bind:class="{
+              'bg-success': agenda.clase === 'clases',
+              'bg-primary': agenda.clase === 'fisioterapia',
+              'bg-warning': agenda.clase === 'consulta',
+            }"
+          >
+            <h5>Dia Sem</h5>
             <hr />
-            <h1>34</h1>
-            <p>Reservas</p>
+            <div class="container card_detalle">
+              {{ agenda.fecha }} <br />
+              {{ agenda.clase }} <br />
+              Ramon jose Vertel
+            </div>
+            <hr />
+            <div class="container card_contador">
+              <h5>34</h5>
+              Reservas
+            </div>
           </div>
         </div>
       </div>
     </div>
-<br>
+    <br />
     <div class="container" style="background-color: #3453">
       <div class="container">
         <div class="row">
           <div class="container">
             <br />
-            <h5>
-              Selecciona tipo, profesional, fecha y hora de la reserva
-            </h5>
+            <h5>Selecciona tipo, profesional, fecha y hora de la reserva</h5>
             <div class="row">
               <div class="col-6 col-md-3">
                 <select
@@ -104,7 +118,6 @@ id_ips :{{ id_ips }} - id_user: {{ id_user }}- rol: {{ rol }}- info:{{ info }}
               <button
                 type="button "
                 class="btn btn-success btn-sm"
-           
                 :disabled="GuardarR_isButtonDisabled"
               >
                 Guardar cita
@@ -137,7 +150,6 @@ id_ips :{{ id_ips }} - id_user: {{ id_user }}- rol: {{ rol }}- info:{{ info }}
         </div>
       </div>
     </div>
-
 
     <div class="container">
       <br />
@@ -330,8 +342,7 @@ id_ips :{{ id_ips }} - id_user: {{ id_user }}- rol: {{ rol }}- info:{{ info }}
                   <td>
                     <button
                       class="btn btn-success btn-sm"
-                      
-                           @click="BTN_Guardar_cita()"
+                      @click="BTN_Guardar_cita()"
                     >
                       Reservar
                     </button>
@@ -343,7 +354,6 @@ id_ips :{{ id_ips }} - id_user: {{ id_user }}- rol: {{ rol }}- info:{{ info }}
         </div>
         <!--  -->
 
-       
         <!--  -->
         <div
           class="container"
@@ -523,7 +533,6 @@ export default {
     },
 
     BTN_Reservar_BuscarProfesionales() {
-
       this.btnagendar = true;
     },
 
@@ -621,9 +630,8 @@ export default {
     },
 
     filtrarFechasByProf() {
-
       console.log(" datos agendas cargados", this.dataAgendas);
-      
+
       this.fechasActivas = this.dataAgendas.filter(
         (registro) =>
           registro.id_profesional === this.p_reserva &&

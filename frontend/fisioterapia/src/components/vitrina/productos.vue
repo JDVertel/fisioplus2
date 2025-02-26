@@ -16,12 +16,12 @@
           <p class="card-text">{{ producto.desc }}</p>
         </div>
         <div class="pie">
-          $ {{ producto.precio }}
           <button
             type="button"
             v-on:click="reservaCitasW(producto.nombre, this.telefono1)"
             class="btnwsp"
           >
+            $ {{ producto.precio }}
             <img
               width="20"
               height="20"
