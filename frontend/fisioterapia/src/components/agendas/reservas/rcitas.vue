@@ -14,11 +14,12 @@ id_ips :{{ id_ips }} - id_user: {{ id_user }}- rol: {{ rol }}- info:{{ info }}
 <hr> -->
   <div>
     <div class="container">
-      <div class="row">
-        <div class="col-3 col-md-2">
+      <div class="row"  >
+        <div class="col-3 col-md-2"  v-for="agenda in this.dataAgendas" :key="agenda.id">
+          
           <div class="card">
-            <h6>Fecha</h6>
-            <h6>Tipo de Agenda</h6>
+            <h6>Fecha: {{agenda.fecha}}</h6>
+            <h6>Tipo: {{agenda.clase}}</h6>
             <h6>Profesional</h6>
             <hr />
             <h1>34</h1>
@@ -27,6 +28,117 @@ id_ips :{{ id_ips }} - id_user: {{ id_user }}- rol: {{ rol }}- info:{{ info }}
         </div>
       </div>
     </div>
+<br>
+    <div class="container" style="background-color: #3453">
+      <div class="container">
+        <div class="row">
+          <div class="container">
+            <br />
+            <h5>
+              Selecciona tipo, profesional, fecha y hora de la reserva
+            </h5>
+            <div class="row">
+              <div class="col-6 col-md-3">
+                <select
+                  class="form-select form-select-sm textarea"
+                  id="inputGroupSelect_treserva"
+                  v-model="t_reserva"
+                  @change="filtarProf()"
+                >
+                  <option selected value="">Tipo de Reserva</option>
+                  <option value="fisioterapia">Fisioterapia</option>
+                  <option value="consulta">Consulta</option>
+                  <option value="clases">Clase</option>
+                </select>
+              </div>
+              <div class="col-6 col-md-3">
+                <select
+                  class="form-select form-select-sm textarea"
+                  id="inputGroupSelect02"
+                  v-model="p_reserva"
+                  @change="filtrarFechasByProf()"
+                >
+                  <option selected value="">Profesional</option>
+                  <option
+                    v-for="profactivo in this.profactivos"
+                    :key="profactivo.id"
+                    :value="profactivo.id"
+                  >
+                    {{ profactivo.name1 }} {{ profactivo.apell1 }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-6 col-md-3">
+                <select
+                  class="form-select form-select-sm textarea"
+                  id="miSelect"
+                  v-model="f_reserva"
+                  @change="VerListadoCitasAsignadas()"
+                >
+                  <option selected value="">Dia de reserva</option>
+                  <option
+                    v-for="fecha in this.fechasActivas"
+                    :key="fecha.id"
+                    :value="fecha.id"
+                  >
+                    {{ fecha.fecha }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="col-6 col-md-3">
+                <div class="input-group input-group-sm mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-sm"
+                    >Hora:</span
+                  >
+                  <input
+                    type="time"
+                    class="form-control"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm"
+                    v-model="listahora"
+                  />
+                </div>
+              </div>
+
+              <button
+                type="button "
+                class="btn btn-success btn-sm"
+           
+                :disabled="GuardarR_isButtonDisabled"
+              >
+                Guardar cita
+              </button>
+            </div>
+          </div>
+          <br />
+          <div class="container">
+            <h5>Agenda del tipo, profesional y dia seleccionado</h5>
+            <table class="table table-sm table-striped">
+              <thead class="table-dark">
+                <tr>
+                  <th scope="col">Hora</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Celular</th>
+                  <th scope="col">Tipo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="cita in this.sortedListaCitasDia" :key="cita.id">
+                  <th>{{ cita.hora }}</th>
+                  <td>{{ cita.paciente }}</td>
+                  <td>{{ cita.telpaciente }}</td>
+                  <td>{{ cita.tipo }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <br />
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <div class="container">
       <br />
       <div class="card">
@@ -218,7 +330,8 @@ id_ips :{{ id_ips }} - id_user: {{ id_user }}- rol: {{ rol }}- info:{{ info }}
                   <td>
                     <button
                       class="btn btn-success btn-sm"
-                      @click="BTN_Reservar_BuscarProfesionales"
+                      
+                           @click="BTN_Guardar_cita()"
                     >
                       Reservar
                     </button>
@@ -230,114 +343,7 @@ id_ips :{{ id_ips }} - id_user: {{ id_user }}- rol: {{ rol }}- info:{{ info }}
         </div>
         <!--  -->
 
-        <div class="container" style="background-color: #3453">
-          <div class="container">
-            <div class="row">
-              <div class="container">
-                <br />
-                <h5>
-                  Selecciona tipo, profesional, fecha y hora de la reserva
-                </h5>
-                <div class="row">
-                  <div class="col-6 col-md-3">
-                    <select
-                      class="form-select form-select-sm textarea"
-                      id="inputGroupSelect_treserva"
-                      v-model="t_reserva"
-                      @change="filtarProf()"
-                    >
-                      <option selected value="">Tipo de Reserva</option>
-                      <option value="terapia">Terapia</option>
-                      <option value="consulta">Consulta</option>
-                      <option value="clase">Clase</option>
-                    </select>
-                  </div>
-                  <div class="col-6 col-md-3">
-                    <select
-                      class="form-select form-select-sm textarea"
-                      id="inputGroupSelect02"
-                      v-model="p_reserva"
-                      @change="filtrarFechasByProf()"
-                    >
-                      <option selected value="">Profesional</option>
-                      <option
-                        v-for="profactivo in this.profactivos"
-                        :key="profactivo.id"
-                        :value="profactivo.id"
-                      >
-                        {{ profactivo.name1 }} {{ profactivo.apell1 }}
-                      </option>
-                    </select>
-                  </div>
-                  <div class="col-6 col-md-3">
-                    <select
-                      class="form-select form-select-sm textarea"
-                      id="miSelect"
-                      v-model="f_reserva"
-                      @change="VerListadoCitasAsignadas()"
-                    >
-                      <option selected value="">Dia de reserva</option>
-                      <option
-                        v-for="fecha in this.fechasActivas"
-                        :key="fecha.id"
-                        :value="fecha.id"
-                      >
-                        {{ fecha.fecha }}
-                      </option>
-                    </select>
-                  </div>
-
-                  <div class="col-6 col-md-3">
-                    <div class="input-group input-group-sm mb-3">
-                      <span class="input-group-text" id="inputGroup-sizing-sm"
-                        >Hora:</span
-                      >
-                      <input
-                        type="time"
-                        class="form-control"
-                        aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-sm"
-                        v-model="listahora"
-                      />
-                    </div>
-                  </div>
-
-                  <button
-                    type="button "
-                    class="btn btn-success btn-sm"
-                    @click="BTN_Guardar_cita()"
-                    :disabled="GuardarR_isButtonDisabled"
-                  >
-                    Guardar cita
-                  </button>
-                </div>
-              </div>
-              <br />
-              <div class="container">
-                <h5>Agenda del tipo, profesional y dia seleccionado</h5>
-                <table class="table table-sm table-striped">
-                  <thead class="table-dark">
-                    <tr>
-                      <th scope="col">Hora</th>
-                      <th scope="col">Nombre</th>
-                      <th scope="col">Celular</th>
-                      <th scope="col">Tipo</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr v-for="cita in this.sortedListaCitasDia" :key="cita.id">
-                      <th>{{ cita.hora }}</th>
-                      <td>{{ cita.paciente }}</td>
-                      <td>{{ cita.telpaciente }}</td>
-                      <td>{{ cita.tipo }}</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <br />
-              </div>
-            </div>
-          </div>
-        </div>
+       
         <!--  -->
         <div
           class="container"
@@ -517,7 +523,7 @@ export default {
     },
 
     BTN_Reservar_BuscarProfesionales() {
-      this.Get_Agendamiento_pacientes_fecha();
+
       this.btnagendar = true;
     },
 
@@ -615,6 +621,9 @@ export default {
     },
 
     filtrarFechasByProf() {
+
+      console.log(" datos agendas cargados", this.dataAgendas);
+      
       this.fechasActivas = this.dataAgendas.filter(
         (registro) =>
           registro.id_profesional === this.p_reserva &&
@@ -734,6 +743,7 @@ export default {
   created() {
     this.DeleteStore();
     this.GetAllProfesionalesToIPS();
+    this.Get_Agendamiento_pacientes_fecha();
     /*  this.GetAllcitasToPaciente() */
   },
 };
