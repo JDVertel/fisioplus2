@@ -14,36 +14,41 @@ id_ips :{{ id_ips }} - id_user: {{ id_user }}- rol: {{ rol }}- info:{{ info }}
 <hr> -->
   <div>
     <div class="container">
-      <div class="row">
-        <div
-          class="col-3 col-md-1 sinpadding"
-          v-for="agenda in this.dataAgendas"
-          :key="agenda.id"
-        >
-          <div
-            class="card clasecitas mb-2"
-            v-bind:class="{
-              'bg-success': agenda.clase === 'clases',
-              'bg-primary': agenda.clase === 'fisioterapia',
-              'bg-warning': agenda.clase === 'consulta',
-            }"
-          >
-            <h5>Dia Sem</h5>
-            <hr />
-            <div class="container card_detalle">
-              {{ agenda.fecha }} <br />
-              {{ agenda.clase }} <br />
-              Ramon jose Vertel
-            </div>
-            <hr />
-            <div class="container card_contador">
-              <h5>34</h5>
-              Reservas
+      <div class="row vitrinahorizontal">
+        <div class="col-12">
+          <div class="card-container">
+            <div
+              class="card mb-2"
+              v-for="agenda in dataAgendas"
+              :key="agenda.id"
+            >
+              <div
+                class="card-content"
+                v-bind:class="{
+                  theme_clases: agenda.clase === 'clases',
+                  theme_fisio: agenda.clase === 'fisioterapia',
+                  theme_consulta: agenda.clase === 'consulta',
+                }"
+              >
+                <h5>{{ getDayOfWeek(agenda.fecha) }}</h5>
+                <hr />
+                <div class="container card_detalle">
+                  {{ agenda.fecha }} <br />
+                  {{ agenda.clase }} <br />
+                  Ramon jose Vertel
+                </div>
+                <hr />
+                <div class="container card_contador">
+                  <h5>34</h5>
+                  Reservadas
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
     <br />
     <div class="container" style="background-color: #3453">
       <div class="container">
@@ -693,6 +698,20 @@ export default {
       this.listahora = "";
       console.log("vaciando de campos del formulario de reservas");
     },
+
+    getDayOfWeek(dateString) {
+      const date = new Date(dateString);
+      const days = [
+        "Domingo",
+        "Lunes",
+        "Martes",
+        "Miércoles",
+        "Jueves",
+        "Viernes",
+        "Sábado",
+      ];
+      return days[date.getDay()];
+    },
   },
 
   computed: {
@@ -743,6 +762,8 @@ export default {
     diaformatedfecha() {
       return moment(new Date()).format("YYYY-MM-DD");
     },
+    /* Fecha a Dia de semana */
+
     /*  */
   },
 

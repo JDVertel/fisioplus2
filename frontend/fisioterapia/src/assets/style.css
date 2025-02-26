@@ -12,7 +12,7 @@ strong {
   color: #34836e;
 }
 
-div.card.clasecitas {
+.card.titulo {
   color: #dbf6ef;
   padding: 5px !important;
   text-shadow: 2px 2px 5px #333;
@@ -30,6 +30,7 @@ div.card.clasecitas {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  text-shadow: 2px 2px 5px #333;
 }
 .sinpadding {
   padding: 3px !important;
@@ -109,13 +110,44 @@ div.content-body {
 .card:hover {
   box-shadow: 0 9px 9px 0 rgba(0, 0, 0, 0.2);
 }
+/* ........................................................ */
+.card-container {
+  display: flex;
+  overflow-x: auto; /* Permite deslizar horizontalmente */
+  padding: 10px;
+  gap: 100px;
+}
 
+.card-content {
+  flex: 0 0 auto; /* Cada card ocupa su propio espacio */
+  width: 100px; /* Ajusta el ancho de cada card */
+  margin: 0px;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+}
+
+/* Opcional: Estilos para mejorar la apariencia */
+.card_detalle,
+.card_contador h5 {
+  margin-top: 0;
+}
+
+.theme_clases {
+  background-color: rgb(79, 220, 47);
+}
+.theme_fisio {
+  background-color: rgb(0, 138, 138);
+}
+.theme_consulta {
+  background-color: rgb(226, 193, 7);
+}
 /* ....................................................... */
 .tarjeta {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid lightgray;
+  border: 1px solid rgb(255, 255, 255);
 }
 
 .titulo {
