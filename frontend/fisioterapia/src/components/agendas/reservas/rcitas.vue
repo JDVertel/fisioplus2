@@ -16,12 +16,8 @@ id_ips :{{ id_ips }} - id_user: {{ id_user }}- rol: {{ rol }}- info:{{ info }}
     <div class="container">
       <div class="row vitrinahorizontal">
         <div class="col-12">
-          <div class="card-container">
-            <div
-              class="card mb-2"
-              v-for="agenda in dataAgendas"
-              :key="agenda.id"
-            >
+          <div class="card-container" >
+            <div class="card mb-2" v-for="agenda in dataAgendas" :key="agenda.id" @click="verListadoReservasByIdAgenda(agenda.id)">
               <div
                 class="card-content"
                 v-bind:class="{
@@ -30,12 +26,12 @@ id_ips :{{ id_ips }} - id_user: {{ id_user }}- rol: {{ rol }}- info:{{ info }}
                   theme_consulta: agenda.clase === 'consulta',
                 }"
               >
-                <h5>{{ getDayOfWeek(agenda.fecha) }}</h5>
+                <h5 class="card_titulo">{{ getDayOfWeek(agenda.fecha) }}</h5>
                 <hr />
                 <div class="container card_detalle">
-                  {{ agenda.fecha }} <br />
-                  {{ agenda.clase }} <br />
-                  Ramon jose Vertel
+                  <h6>{{ agenda.fecha }}</h6>
+                  <h6>{{ agenda.clase }}</h6>
+                  <p>{{ verNombreProfesional(agenda.id_profesional) }}</p>
                 </div>
                 <hr />
                 <div class="container card_contador">
@@ -50,6 +46,36 @@ id_ips :{{ id_ips }} - id_user: {{ id_user }}- rol: {{ rol }}- info:{{ info }}
     </div>
 
     <br />
+
+
+<div class="container" v-if="this.sortedListaCitasDia">
+  <div class="row mb-3">
+    <div class="col-10"> <h5>Detalle de Agenda Seleccionada</h5></div>
+    <div class="col-2"><button type="button" class="btn btn-primary btn-sm"><i class="bi bi-plus-circle"></i></button></div>
+  </div>
+
+  <table class="table table-sm table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Hora</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Celular</th>
+        <th scope="col">Tipo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="cita in this.sortedListaCitasDia" :key="cita.id">
+        <th>{{ cita.hora }}</th>
+        <td>{{ cita.paciente }}</td>
+        <td>{{ cita.telpaciente }}</td>
+        <td>{{ cita.tipo }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <br />
+</div>
+    <br>
+
     <div class="container" style="background-color: #3453">
       <div class="container">
         <div class="row">
@@ -77,7 +103,7 @@ id_ips :{{ id_ips }} - id_user: {{ id_user }}- rol: {{ rol }}- info:{{ info }}
                   v-model="p_reserva"
                   @change="filtrarFechasByProf()"
                 >
-                  <option selected value="">Profesional</option>
+                  <option selected value="">Profesionall</option>
                   <option
                     v-for="profactivo in this.profactivos"
                     :key="profactivo.id"
@@ -107,9 +133,7 @@ id_ips :{{ id_ips }} - id_user: {{ id_user }}- rol: {{ rol }}- info:{{ info }}
 
               <div class="col-6 col-md-3">
                 <div class="input-group input-group-sm mb-3">
-                  <span class="input-group-text" id="inputGroup-sizing-sm"
-                    >Hora:</span
-                  >
+                  <span class="input-group-text" id="inputGroup-sizing-sm">Hora:</span>
                   <input
                     type="time"
                     class="form-control"
@@ -130,28 +154,7 @@ id_ips :{{ id_ips }} - id_user: {{ id_user }}- rol: {{ rol }}- info:{{ info }}
             </div>
           </div>
           <br />
-          <div class="container">
-            <h5>Agenda del tipo, profesional y dia seleccionado</h5>
-            <table class="table table-sm table-striped">
-              <thead class="table-dark">
-                <tr>
-                  <th scope="col">Hora</th>
-                  <th scope="col">Nombre</th>
-                  <th scope="col">Celular</th>
-                  <th scope="col">Tipo</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="cita in this.sortedListaCitasDia" :key="cita.id">
-                  <th>{{ cita.hora }}</th>
-                  <td>{{ cita.paciente }}</td>
-                  <td>{{ cita.telpaciente }}</td>
-                  <td>{{ cita.tipo }}</td>
-                </tr>
-              </tbody>
-            </table>
-            <br />
-          </div>
+
         </div>
       </div>
     </div>
@@ -208,8 +211,8 @@ id_ips :{{ id_ips }} - id_user: {{ id_user }}- rol: {{ rol }}- info:{{ info }}
           <div class="card-body">
             <h5 class="card-title">Registro de nuevo paciente</h5>
             <p class="card-text">
-              Paciente no encontrado, ingrese los siguientes datos para
-              registarlo y poder realizar una reserva
+              Paciente no encontrado, ingrese los siguientes datos para registarlo y poder
+              realizar una reserva
             </p>
 
             <div class="row">
@@ -305,10 +308,7 @@ id_ips :{{ id_ips }} - id_user: {{ id_user }}- rol: {{ rol }}- info:{{ info }}
                 </div>
               </div>
             </div>
-            <button
-              class="btn btn-warning btn-sm"
-              @click="cancelar_cerrarmodal()"
-            >
+            <button class="btn btn-warning btn-sm" @click="cancelar_cerrarmodal()">
               Cancelar
             </button>
             <button
@@ -345,10 +345,7 @@ id_ips :{{ id_ips }} - id_user: {{ id_user }}- rol: {{ rol }}- info:{{ info }}
                   <td>{{ pac.numdoc }}</td>
                   <td>{{ pac.name1 }} {{ pac.apell1 }}</td>
                   <td>
-                    <button
-                      class="btn btn-success btn-sm"
-                      @click="BTN_Guardar_cita()"
-                    >
+                    <button class="btn btn-success btn-sm" @click="BTN_Guardar_cita()">
                       Reservar
                     </button>
                   </td>
@@ -465,6 +462,7 @@ export default {
     idpaciente: "",
     valorSeleccionadoSelect: "",
     btnagendar: false,
+    id_agenda:"",
   }),
 
   /* --------------------------------------------------------------------------- */
@@ -530,9 +528,7 @@ export default {
     /* ----------------PROFESIONALES--------------------------------------------------------------------------------------------------------------------------------------------------- */
 
     nombreProfesional(dataID) {
-      const nombreProf = this.dataprofesionales.filter(
-        (prof) => prof.id == dataID
-      );
+      const nombreProf = this.dataprofesionales.filter((prof) => prof.id == dataID);
       const resultado = nombreProf[0];
       return resultado.name1 + " " + resultado.apell1;
     },
@@ -604,9 +600,20 @@ export default {
           rta: "setStateCitas",
         },
       ];
-      this.desord_ListaCitasDia = await this.getDatabyParam(
-        this.params_citasDia
-      );
+      this.desord_ListaCitasDia = await this.getDatabyParam(this.params_citasDia);
+      //ordenamos la cita por hora computado
+    },
+
+    async VerListadoCitasAsignadasNew(fechaID) {
+      this.params_citasDia = [
+        {
+          bd: "citas",
+          parametro: "id_agenda",
+          valor: fechaID,
+          rta: "setStateCitas",
+        },
+      ];
+      this.desord_ListaCitasDia = await this.getDatabyParam(this.params_citasDia);
       //ordenamos la cita por hora computado
     },
 
@@ -615,8 +622,7 @@ export default {
       this.btnagendar = false;
       this.params_GuardarFechaCita = [
         {
-          paciente:
-            this.datapaciente[0].name1 + " " + this.datapaciente[0].apell1,
+          paciente: this.datapaciente[0].name1 + " " + this.datapaciente[0].apell1,
           numdoc: this.datapaciente[0].numdoc,
           telpaciente: this.datapaciente[0].celular,
           estado: "0",
@@ -639,8 +645,7 @@ export default {
 
       this.fechasActivas = this.dataAgendas.filter(
         (registro) =>
-          registro.id_profesional === this.p_reserva &&
-          registro.clase === this.t_reserva
+          registro.id_profesional === this.p_reserva && registro.clase === this.t_reserva
       );
       console.log("Fechas del profesional activas:", this.fechasActivas[0]);
       this.desord_ListaCitasDia = [];
@@ -712,6 +717,20 @@ export default {
       ];
       return days[date.getDay()];
     },
+
+  
+
+    verNombreProfesional(idprof) {
+      const profesional= this.dataprofesionales.find((prof) => prof.id === idprof);
+       const name = profesional.name1 + " "+ profesional.apell1
+       return name
+    },
+
+    verListadoReservasByIdAgenda(id_agendas) {
+      this.id_agenda = id_agendas;
+      this.VerListadoCitasAsignadasNew(id_agendas);
+     
+    },
   },
 
   computed: {
@@ -739,9 +758,7 @@ export default {
     },
 
     GuardarR_isButtonDisabled() {
-      return (
-        !this.t_reserva || !this.p_reserva || !this.listahora || !this.f_reserva
-      );
+      return !this.t_reserva || !this.p_reserva || !this.listahora || !this.f_reserva;
     },
 
     Guardar_p_isButtonDisabled() {

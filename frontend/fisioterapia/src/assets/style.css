@@ -12,29 +12,39 @@ strong {
   color: #34836e;
 }
 
-.card.titulo {
+.card_titulo {
   color: #dbf6ef;
-  padding: 5px !important;
   text-shadow: 2px 2px 5px #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px !important;
 }
+
+
 
 .card_detalle {
   font-size: 0.8rem !important;
   padding: 1px;
   text-shadow: 2px 2px 5px #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px !important;
 }
 
 .card_contador {
-  font-size: 0.7rem !important;
+  font-size: 0.8rem !important;
   padding: 1px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   text-shadow: 2px 2px 5px #333;
 }
-.sinpadding {
-  padding: 3px !important;
-}
+
+
 
 .Cont_hc {
   margin-bottom: 15px;

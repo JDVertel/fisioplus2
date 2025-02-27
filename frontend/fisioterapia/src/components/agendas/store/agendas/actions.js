@@ -47,6 +47,11 @@ export const getDataByRangoSuperior = async ({ commit }, parametros) => {
             ...data[id],
         });
     }
+    datasalida.sort((a, b) => {
+        if (a.fecha < b.fecha) return -1;
+        if (a.fecha > b.fecha) return 1;
+        return 0;
+      });
     console.log("datos de consulta de", bd, " rango:", valor, datasalida);
     if (datasalida.length != 0) {
         commit(`${rta}`, datasalida);
