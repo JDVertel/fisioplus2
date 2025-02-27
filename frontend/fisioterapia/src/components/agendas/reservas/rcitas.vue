@@ -37,11 +37,12 @@ id_ips :{{ id_ips }} - id_user: {{ id_user }}- rol: {{ rol }}- info:{{ info }}
                 <div class="container card_detalle">
                   <h6>{{ agenda.fecha }}</h6>
                   <h6>{{ agenda.clase }}</h6>
+
                   <p>{{ verNombreProfesional(agenda.id_profesional) }}</p>
                 </div>
                 <hr />
                 <div class="container card_contador">
-                  <!-- <h5>{{ CountListadoCitasAsignadas(agenda.id) }}</h5> -->
+                  <h5>{{ contarregistros(agenda.id) }}</h5>
                   Reservadas
                 </div>
               </div>
@@ -491,6 +492,8 @@ export default {
     btnagendar: false,
     id_agenda: "",
     agendaarray: [],
+    countListaReservas: "",
+    params: [],
   }),
 
   /* --------------------------------------------------------------------------- */
@@ -514,7 +517,7 @@ export default {
       "createEntradanewPaciente",
       "ClosetModalNewPaciente",
       "NewgetDataUsersbyParam",
-      "getCountDatabyParam",
+      "getCountbyParam",
     ]),
     /* =================================================== */
     /* ---------PACIENTES---------------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -636,22 +639,7 @@ export default {
       );
     },
     /* -------------------------------- */
-
-    async CountListadoCitasAsignadas(data_idAgenda) {
-      this.params_citasDia = [
-        {
-          bd: "citas",
-          parametro: "id_agenda",
-          valor: data_idAgenda,
-          rta: "setStateCitas",
-        },
-      ];
-      this.desord_ListaCitasDia = await this.getCountDatabyParam(
-        this.params_citasDia
-      );
-      const cantidadElementos = this.desord_ListaCitasDia.length;
-      return cantidadElementos;
-    },
+    contarregistros() {},
     /* -------------------------------- */
 
     async BTN_Guardar_cita() {
@@ -768,8 +756,6 @@ export default {
       this.agendaarray = id_agendas;
       this.VerListadoCitasAsignadasNew(id_agendas.id);
     },
-
-    ContatItemsReservaByAgenda() {},
   },
 
   computed: {

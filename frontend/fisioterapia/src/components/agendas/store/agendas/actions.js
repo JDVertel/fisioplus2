@@ -1,5 +1,9 @@
 import firebase_api from "@/api/firebaseApi";
 
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------FIN CONTEO ----------------------- */
+
 /* -----------------------AGENDAS----------------------------------------- */
 export const getDatabyParam = async ({ commit }, parametros) => {
   console.log(parametros);
@@ -31,34 +35,6 @@ export const getDatabyParam = async ({ commit }, parametros) => {
   } else {
     console.log("sin datos en la consulta");
   }
-  return datasalida;
-};
-
-export const getCountDatabyParam = async (parametros) => {
-  console.log(parametros);
-  const [{ bd, parametro, valor, rta }] = parametros;
-  const response = await firebase_api.get(`/${bd}.json`, {
-    params: {
-      orderBy: `"${parametro}"`,
-      equalTo: `"${valor}"`,
-    },
-  });
-  const { data } = response;
-  const datasalida = [];
-  for (let id of Object.keys(data)) {
-    datasalida.push({
-      id,
-      ...data[id],
-    });
-  }
-  console.log(
-    "data consulta por parametros",
-    bd,
-    "por",
-    parametro,
-    "rta:",
-    datasalida
-  );
   return datasalida;
 };
 
